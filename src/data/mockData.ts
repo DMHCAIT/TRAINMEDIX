@@ -192,7 +192,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 50,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-derm', 'dept-med', 'dept-radio'],
+    departments: ['dept-derm', 'dept-radio'],
     availableSlotsCount: 5,
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
     address: 'New Delhi',
@@ -204,7 +204,11 @@ export const HOSPITALS: Hospital[] = [
       'Expert radiology and diagnostic support',
       'Personalized treatment by experienced specialists'
     ],
-    mostBookedSpecialization: 'Cosmetic Gynecology & Hair Restoration'
+    mostBookedSpecialization: 'Cosmetic Gynecology & Hair Restoration',
+    offeredDepartments: {
+      'Skin, ENT & Aesthetic Medicine': ['Cosmetic Gyne', 'Hair Transplant'],
+      'Diagnostic & Imaging Sciences': ['Radiology']
+    }
   },
   {
     id: 'hosp-2',
@@ -213,7 +217,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 60,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-med', 'dept-cardio', 'dept-icu'],
+    departments: ['dept-med'],
     availableSlotsCount: 4,
     image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80',
     address: 'Delhi',
@@ -225,7 +229,10 @@ export const HOSPITALS: Hospital[] = [
       'Advanced diabetic foot care treatments',
       'Hypertension and metabolic disorder management'
     ],
-    mostBookedSpecialization: 'Endocrinology & Diabetic Care'
+    mostBookedSpecialization: 'Endocrinology & Diabetic Care',
+    offeredDepartments: {
+      'Medicine & Physician Specialties': ['Diabetes', 'Endocrinology', 'Diabetes Educator', 'Diabetic Foot Care', 'Hypertension']
+    }
   },
   {
     id: 'hosp-3',
@@ -234,7 +241,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 120,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-med', 'dept-surg', 'dept-obg', 'dept-ortho'],
+    departments: ['dept-derm', 'dept-med', 'dept-super', 'dept-surg', 'dept-radio'],
     availableSlotsCount: 6,
     image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80',
     address: 'New Delhi',
@@ -246,7 +253,14 @@ export const HOSPITALS: Hospital[] = [
       'Advanced diagnostics and surgical facilities',
       'Ethical, patient-centered medical care'
     ],
-    mostBookedSpecialization: 'General Surgery & Internal Medicine'
+    mostBookedSpecialization: 'General Surgery & Internal Medicine',
+    offeredDepartments: {
+      'Skin, ENT & Aesthetic Medicine': ['ENT', 'Derma'],
+      'Medicine & Physician Specialties': ['Internal Medicine', 'Diabetes', 'Pulmology'],
+      'Superspeciality Programs': ['Gastroenterology', 'Urology'],
+      'Surgical & Procedural Specialties': ['Spine Surgery'],
+      'Diagnostic & Imaging Sciences': ['Optholomology']
+    }
   },
   {
     id: 'hosp-4',
@@ -255,7 +269,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 100,
     accreditation: 'NABH Accredited',
     rating: 4.6,
-    departments: ['dept-em', 'dept-med', 'dept-surg', 'dept-obg', 'dept-paed'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-derm', 'dept-super', 'dept-paed', 'dept-mental'],
     availableSlotsCount: 5,
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80',
     address: 'New Delhi',
@@ -267,7 +281,19 @@ export const HOSPITALS: Hospital[] = [
       'Expert neurology and neurosurgery support',
       'Comprehensive surgical treatment facilities'
     ],
-    mostBookedSpecialization: 'Emergency & Critical Care'
+    mostBookedSpecialization: 'Emergency & Critical Care',
+    offeredDepartments: {
+      'Emergency & Critical Care Training': ['Emergency Medicine', 'Critical Care', 'Anesthesia'],
+      'Cardiac Sciences': ['Clinical Cardiology', 'Echocardiography'],
+      'Medicine & Physician Specialties': ['Internal Medicine', 'Diabetology', 'Endocrinology', 'Rheumatology', 'Sleep Medicine'],
+      'Diagnostic & Imaging Sciences': ['Clinical Pathology', 'Radiology'],
+      'Surgical & Procedural Specialties': ['General Surgery', 'Laparoscopic Surgery', 'Orthopedic', 'Urology'],
+      'Skin, ENT & Aesthetic Medicine': ['ENT', 'Cosmetology', 'Dermatology'],
+      'Superspeciality Programs': ['Neurosurgery', 'Neurology', 'Oncology'],
+      'Pediatrics & Neonatal Care': ['Pediatric Surgery'],
+      'Mental Health & Rehabilitation': ['Psychiatric Medicine'],
+      'Other': ['Hospital Administrative']
+    }
   },
   {
     id: 'hosp-5',
@@ -276,7 +302,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 150,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-em', 'dept-icu', 'dept-cardio', 'dept-ortho', 'dept-med'],
+    departments: ['dept-obg', 'dept-med', 'dept-em'],
     availableSlotsCount: 7,
     image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80',
     address: 'Noida',
@@ -288,7 +314,12 @@ export const HOSPITALS: Hospital[] = [
       'Experienced doctors across multiple specialties',
       'Quality inpatient and outpatient medical care'
     ],
-    mostBookedSpecialization: 'ICU & Cardiac Sciences'
+    mostBookedSpecialization: 'ICU & Cardiac Sciences',
+    offeredDepartments: {
+      "Women's Health & Fertility": ['Reproductive Medicine', 'Infertility Management', 'Obstetrics and Gynaecology'],
+      'Medicine & Physician Specialties': ['Internal Medicine'],
+      'Emergency & Critical Care Training': ['Critical Care']
+    }
   },
   {
     id: 'hosp-6',
@@ -297,7 +328,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 100,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-em', 'dept-icu', 'dept-med', 'dept-surg', 'dept-ortho'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-dental', 'dept-mental', 'dept-super'],
     availableSlotsCount: 6,
     image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80',
     address: 'Haryana',
@@ -309,7 +340,10 @@ export const HOSPITALS: Hospital[] = [
       'Patient-focused treatment and medical support',
       'Modern healthcare with experienced professionals'
     ],
-    mostBookedSpecialization: 'Orthopaedics & Joint Replacement'
+    mostBookedSpecialization: 'Orthopaedics & Joint Replacement',
+    offeredDepartments: {
+      'All Departments': ['All Department']
+    }
   },
   {
     id: 'hosp-7',
@@ -318,7 +352,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 30,
     accreditation: 'NABH Accredited',
     rating: 4.9,
-    departments: ['dept-derm', 'dept-med', 'dept-surg'],
+    departments: ['dept-derm'],
     availableSlotsCount: 4,
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
     address: 'Lucknow',
@@ -330,7 +364,10 @@ export const HOSPITALS: Hospital[] = [
       'Expert trichology consultation and care',
       'Personalized aesthetic treatment solutions'
     ],
-    mostBookedSpecialization: 'Cosmetic Dermatology & Laser'
+    mostBookedSpecialization: 'Cosmetic Dermatology & Laser',
+    offeredDepartments: {
+      'Skin, ENT & Aesthetic Medicine': ['Dermatology', 'Cosmetology', 'Trichology']
+    }
   },
   {
     id: 'hosp-8',
@@ -339,7 +376,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 120,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-icu', 'dept-em', 'dept-med', 'dept-cardio'],
+    departments: ['dept-em'],
     availableSlotsCount: 6,
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80',
     address: 'Lucknow',
@@ -351,7 +388,10 @@ export const HOSPITALS: Hospital[] = [
       'Advanced life support and monitoring',
       'Quality patient-centered critical care management'
     ],
-    mostBookedSpecialization: 'Anaesthesia & ICU Management'
+    mostBookedSpecialization: 'Anaesthesia & ICU Management',
+    offeredDepartments: {
+      'Emergency & Critical Care Training': ['Anesthesia', 'Critical Care']
+    }
   },
   {
     id: 'hosp-9',
@@ -360,7 +400,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 150,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-em', 'dept-icu', 'dept-med', 'dept-surg', 'dept-obg'],
+    departments: ['dept-obg', 'dept-radio'],
     availableSlotsCount: 8,
     image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80',
     address: 'Ghaziabad',
@@ -372,7 +412,11 @@ export const HOSPITALS: Hospital[] = [
       'Expert high-risk pregnancy management',
       'Minimally invasive gynecological procedures'
     ],
-    mostBookedSpecialization: 'Reproductive Medicine & IVF'
+    mostBookedSpecialization: 'Reproductive Medicine & IVF',
+    offeredDepartments: {
+      "Women's Health & Fertility": ['Reproductive Medicine', 'High Risk Pregnancy', 'Obs & Gynae', 'Laparascopic And Hysteroscopy', 'IVF'],
+      'Diagnostic & Imaging Sciences': ['Embryology']
+    }
   },
   {
     id: 'hosp-10',
@@ -381,7 +425,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 80,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-surg', 'dept-obg', 'dept-ent', 'dept-med'],
+    departments: ['dept-obg', 'dept-surg'],
     availableSlotsCount: 5,
     image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80',
     address: 'Jaipur',
@@ -393,7 +437,11 @@ export const HOSPITALS: Hospital[] = [
       'High-quality maternal healthcare support',
       'Experienced gynecology specialist team'
     ],
-    mostBookedSpecialization: 'Advanced Laparoscopic Gynecology'
+    mostBookedSpecialization: 'Advanced Laparoscopic Gynecology',
+    offeredDepartments: {
+      "Women's Health & Fertility": ['Obstetrics and Gynaecology', 'Hysterectomy', 'Laparoscopy Tubal Surgery'],
+      'Surgical & Procedural Specialties': ['Laparoscopic Surgery']
+    }
   },
   {
     id: 'hosp-11',
@@ -402,7 +450,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 40,
     accreditation: 'NABH Accredited',
     rating: 4.6,
-    departments: ['dept-ent', 'dept-surg', 'dept-med'],
+    departments: ['dept-dental'],
     availableSlotsCount: 3,
     image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80',
     address: 'Bharatpur',
@@ -414,7 +462,10 @@ export const HOSPITALS: Hospital[] = [
       'Comprehensive facial aesthetic treatments',
       'Modern dental oncology care services'
     ],
-    mostBookedSpecialization: 'Maxillofacial Surgery & Implantology'
+    mostBookedSpecialization: 'Maxillofacial Surgery & Implantology',
+    offeredDepartments: {
+      'Dental Sciences': ['Maxillofacial Surgery', 'Implantology', 'Facial Plastic Surgery', 'Advance Dentistry', 'Endocontics', 'Oncology Dentistry', 'Head & Neck Oncology']
+    }
   },
   {
     id: 'hosp-12',
@@ -423,7 +474,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 300,
     accreditation: 'NABH & NABL Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-radio', 'dept-med', 'dept-ortho'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-dental', 'dept-mental', 'dept-super'],
     availableSlotsCount: 9,
     image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80',
     address: 'Pune',
@@ -435,7 +486,10 @@ export const HOSPITALS: Hospital[] = [
       'Experienced multidisciplinary medical specialists',
       'Modern emergency and critical care'
     ],
-    mostBookedSpecialization: 'Emergency Medicine Rotation'
+    mostBookedSpecialization: 'Emergency Medicine Rotation',
+    offeredDepartments: {
+      'All Departments': ['All Department']
+    }
   },
   {
     id: 'hosp-13',
@@ -444,7 +498,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 350,
     accreditation: 'NABH Accredited',
     rating: 4.9,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-radio', 'dept-med', 'dept-surg', 'dept-paed'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-dental', 'dept-mental', 'dept-super'],
     availableSlotsCount: 10,
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
     address: 'Navi Mumbai',
@@ -456,7 +510,10 @@ export const HOSPITALS: Hospital[] = [
       'Modern infrastructure and patient care',
       'Expert specialist consultation available'
     ],
-    mostBookedSpecialization: 'Interventional Cardiology'
+    mostBookedSpecialization: 'Interventional Cardiology',
+    offeredDepartments: {
+      'All Departments': ['All Department']
+    }
   },
   {
     id: 'hosp-14',
@@ -465,7 +522,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 50,
     accreditation: 'Clinical Simulation Accredited',
     rating: 4.9,
-    departments: ['dept-em', 'dept-icu', 'dept-med', 'dept-surg'],
+    departments: ['dept-med', 'dept-cardio', 'dept-radio', 'dept-surg', 'dept-em', 'dept-derm', 'dept-super', 'dept-paed', 'dept-mental'],
     availableSlotsCount: 6,
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80',
     address: 'Bengaluru',
@@ -477,7 +534,18 @@ export const HOSPITALS: Hospital[] = [
       'Modern healthcare education facilities',
       'Practical learning through medical simulators'
     ],
-    mostBookedSpecialization: 'Clinical Simulation & Airway Skills'
+    mostBookedSpecialization: 'Clinical Simulation & Airway Skills',
+    offeredDepartments: {
+      'Medicine & Physician Specialties': ['Sleep Medicine', 'Diabetology', 'Internal Medicine', 'Endocrinology', 'Rheumatology'],
+      'Cardiac Sciences': ['Echocardiography', 'Clinical Cardiology'],
+      'Diagnostic & Imaging Sciences': ['Clinical Pathology', 'Radiology'],
+      'Surgical & Procedural Specialties': ['Urology', 'Orthopedic', 'General Surgery', 'Laparoscopic Surgery', 'Neurosurgery'],
+      'Emergency & Critical Care Training': ['Anesthesia', 'Critical Care', 'Emergency Medicine'],
+      'Skin, ENT & Aesthetic Medicine': ['ENT', 'Cosmetology', 'Dermatology'],
+      'Superspeciality Programs': ['Neurology', 'Oncology'],
+      'Pediatrics & Neonatal Care': ['Pediatric Surgery'],
+      'Mental Health & Rehabilitation': ['Psychiatric Medicine']
+    }
   },
   {
     id: 'hosp-15',
@@ -486,7 +554,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 600,
     accreditation: 'NABH & NABL Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-radio', 'dept-obg', 'dept-med'],
+    departments: ['dept-med', 'dept-cardio', 'dept-surg', 'dept-em', 'dept-radio', 'dept-obg'],
     availableSlotsCount: 11,
     image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80',
     address: 'Hyderabad',
@@ -498,7 +566,15 @@ export const HOSPITALS: Hospital[] = [
       'Expert ophthalmology and specialty treatments',
       'Multidisciplinary patient-focused healthcare'
     ],
-    mostBookedSpecialization: 'Cardiothoracic & Critical Care'
+    mostBookedSpecialization: 'Cardiothoracic & Critical Care',
+    offeredDepartments: {
+      'Medicine & Physician Specialties': ['Diabetology', 'Pulmonary Medicine'],
+      'Cardiac Sciences': ['Clinical Cardiology'],
+      'Surgical & Procedural Specialties': ['General Surgery'],
+      'Emergency & Critical Care Training': ['Emergency Medicine'],
+      'Diagnostic & Imaging Sciences': ['Opthalmology'],
+      "Women's Health & Fertility": ['Obs & Gyne']
+    }
   },
   {
     id: 'hosp-16',
@@ -507,7 +583,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 400,
     accreditation: 'NABH Accredited',
     rating: 4.9,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-radio', 'dept-med', 'dept-surg', 'dept-ortho'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-dental', 'dept-mental', 'dept-super'],
     availableSlotsCount: 8,
     image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80',
     address: 'Hyderabad',
@@ -519,7 +595,10 @@ export const HOSPITALS: Hospital[] = [
       'Modern diagnostics and emergency facilities',
       'Experienced multidisciplinary healthcare professionals'
     ],
-    mostBookedSpecialization: 'Critical Care & Emergency Rotation'
+    mostBookedSpecialization: 'Critical Care & Emergency Rotation',
+    offeredDepartments: {
+      'All Departments': ['All Department']
+    }
   },
   {
     id: 'hosp-17',
@@ -528,7 +607,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 1000,
     accreditation: 'JCI & NABH Accredited',
     rating: 4.9,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-radio', 'dept-obg', 'dept-med', 'dept-surg'],
+    departments: ['dept-obg', 'dept-radio', 'dept-surg', 'dept-med', 'dept-derm', 'dept-em', 'dept-paed', 'dept-super', 'dept-mental'],
     availableSlotsCount: 14,
     image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80',
     address: 'Hyderabad',
@@ -540,7 +619,18 @@ export const HOSPITALS: Hospital[] = [
       'Specialized oncology and cancer treatment',
       'Minimally invasive surgical expertise available'
     ],
-    mostBookedSpecialization: 'Minimally Invasive Surgery & OBG'
+    mostBookedSpecialization: 'Minimally Invasive Surgery & OBG',
+    offeredDepartments: {
+      "Women's Health & Fertility": ['Fetal Medicine', 'Reproductive Medicine', 'Obs & Gynae', 'Cosmetic Gynae', 'High Risk Pregnancy', 'Gynae Oncology', 'IVF', 'Embryology'],
+      'Diagnostic & Imaging Sciences': ['Interventional Radiology', 'Neuroradiology', 'MSK USG', 'Vascular USG', 'Fetal Echo', 'USG'],
+      'Surgical & Procedural Specialties': ['General Surgery', 'Urology', 'Vascular Surgery', 'Minimal Invasive Surgery', 'Laparoscopy', 'Arthroscopy-Arthroplasty', 'Neurosurgery'],
+      'Medicine & Physician Specialties': ['Spine Medicine', 'Internal Medicine', 'Sports Medicine', 'Epidemiology'],
+      'Skin, ENT & Aesthetic Medicine': ['Dermatology', 'Trichology', 'Opthamology'],
+      'Emergency & Critical Care Training': ['Emergency Medicine', 'Anesthesia'],
+      'Pediatrics & Neonatal Care': ['Pediatric Neurology', 'Pediatric Surgery'],
+      'Superspeciality Programs': ['GI Endoscopy', 'Neurology', 'Oral Oncology', 'Surgical Onco', 'Endourology'],
+      'Mental Health & Rehabilitation': ['Psychiatric']
+    }
   },
   {
     id: 'hosp-18',
@@ -549,7 +639,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 150,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-med', 'dept-ortho', 'dept-surg'],
+    departments: ['dept-med', 'dept-cardio', 'dept-radio', 'dept-surg', 'dept-em', 'dept-derm', 'dept-super', 'dept-paed', 'dept-mental'],
     availableSlotsCount: 7,
     image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80',
     address: 'Patna',
@@ -561,7 +651,18 @@ export const HOSPITALS: Hospital[] = [
       'Experienced healthcare professionals available',
       'Patient-centered quality medical care'
     ],
-    mostBookedSpecialization: 'Cardiology & General Medicine'
+    mostBookedSpecialization: 'Cardiology & General Medicine',
+    offeredDepartments: {
+      'Medicine & Physician Specialties': ['Sleep Medicine', 'Diabetology', 'Internal Medicine', 'Endocrinology', 'Rheumatology'],
+      'Cardiac Sciences': ['Echocardiography', 'Clinical Cardiology'],
+      'Diagnostic & Imaging Sciences': ['Clinical Pathology', 'Radiology'],
+      'Surgical & Procedural Specialties': ['Urology', 'Orthopedic', 'General Surgery', 'Laparoscopic Surgery', 'Neurosurgery'],
+      'Emergency & Critical Care Training': ['Anesthesia', 'Critical Care', 'Emergency Medicine'],
+      'Skin, ENT & Aesthetic Medicine': ['ENT', 'Cosmetology', 'Dermatology'],
+      'Superspeciality Programs': ['Neurology', 'Oncology'],
+      'Pediatrics & Neonatal Care': ['Pediatric Surgery'],
+      'Mental Health & Rehabilitation': ['Psychiatric Medicine']
+    }
   },
   {
     id: 'hosp-19',
@@ -570,7 +671,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 120,
     accreditation: 'NABH Accredited',
     rating: 4.6,
-    departments: ['dept-em', 'dept-med', 'dept-surg', 'dept-obg', 'dept-paed'],
+    departments: ['dept-surg', 'dept-obg', 'dept-paed', 'dept-em', 'dept-super', 'dept-med'],
     availableSlotsCount: 5,
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
     address: 'Purnia',
@@ -582,7 +683,15 @@ export const HOSPITALS: Hospital[] = [
       'Specialized nephrology and urology care',
       'Emergency and critical care support'
     ],
-    mostBookedSpecialization: 'Maternity & Laparoscopic Surgery'
+    mostBookedSpecialization: 'Maternity & Laparoscopic Surgery',
+    offeredDepartments: {
+      'Surgical & Procedural Specialties': ['General & Laparoscopic Surgery', 'Urology'],
+      "Women's Health & Fertility": ['Gynecology & Obstetrics'],
+      'Pediatrics & Neonatal Care': ['Pediatrics', 'Neonatology'],
+      'Emergency & Critical Care Training': ['Emergency Medicine', 'Critical Care Medicine', 'Anesthesiology'],
+      'Superspeciality Programs': ['Nephrology'],
+      'Medicine & Physician Specialties': ['Pain Management']
+    }
   },
   {
     id: 'hosp-20',
@@ -591,7 +700,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 200,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-icu', 'dept-med', 'dept-surg', 'dept-obg', 'dept-radio'],
+    departments: ['dept-em', 'dept-cardio', 'dept-med', 'dept-radio', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-dental', 'dept-mental', 'dept-super'],
     availableSlotsCount: 8,
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80',
     address: 'Srinagar',
@@ -603,7 +712,10 @@ export const HOSPITALS: Hospital[] = [
       'Quality emergency healthcare support',
       'Modern patient-focused treatment facilities'
     ],
-    mostBookedSpecialization: 'General Medicine & Emergency Care'
+    mostBookedSpecialization: 'General Medicine & Emergency Care',
+    offeredDepartments: {
+      'All Departments': ['All Department']
+    }
   },
   {
     id: 'hosp-21',
@@ -612,7 +724,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 150,
     accreditation: 'NABH Accredited',
     rating: 4.7,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-med', 'dept-ortho', 'dept-surg'],
+    departments: ['dept-cardio', 'dept-med', 'dept-surg', 'dept-obg', 'dept-paed', 'dept-derm', 'dept-super', 'dept-em', 'dept-radio'],
     availableSlotsCount: 6,
     image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80',
     address: 'Srinagar',
@@ -624,7 +736,18 @@ export const HOSPITALS: Hospital[] = [
       'Comprehensive oncology and surgical services',
       'Modern critical care and diagnostics'
     ],
-    mostBookedSpecialization: 'Trauma & Critical Care'
+    mostBookedSpecialization: 'Trauma & Critical Care',
+    offeredDepartments: {
+      'Cardiac Sciences': ['Interventional Cardiology'],
+      'Medicine & Physician Specialties': ['Internal Medicine', 'Rheumatology', 'Pulmonology'],
+      'Surgical & Procedural Specialties': ['Neurosurgery', 'Orthopaedic & Joint Replacement Surgery', 'Laparoscopic Surgery', 'Urology', 'OncoSurgery', 'Plastic & Vascular Surgery'],
+      "Women's Health & Fertility": ['Gynaecology'],
+      'Pediatrics & Neonatal Care': ['Paediatrics & Neonatology'],
+      'Skin, ENT & Aesthetic Medicine': ['Ophthalmology', 'ENT'],
+      'Superspeciality Programs': ['Gastroenterology', 'Nephrology', 'Neurology'],
+      'Emergency & Critical Care Training': ['Trauma & Critical Care'],
+      'Diagnostic & Imaging Sciences': ['Radiology']
+    }
   },
   {
     id: 'hosp-22',
@@ -633,7 +756,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 250,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-cardio', 'dept-icu', 'dept-med', 'dept-ortho', 'dept-surg', 'dept-obg'],
+    departments: ['dept-cardio', 'dept-med', 'dept-super', 'dept-surg', 'dept-paed', 'dept-obg', 'dept-em', 'dept-radio'],
     availableSlotsCount: 9,
     image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80',
     address: 'Mohali',
@@ -645,7 +768,17 @@ export const HOSPITALS: Hospital[] = [
       'Expert multidisciplinary specialist consultations',
       'High-risk pregnancy and fetal medicine'
     ],
-    mostBookedSpecialization: 'Tertiary Care & Organ Transplant'
+    mostBookedSpecialization: 'Tertiary Care & Organ Transplant',
+    offeredDepartments: {
+      'Cardiac Sciences': ['Cardiology and Cardiac Surgery'],
+      'Medicine & Physician Specialties': ['Pulmonology', 'Psychiatry', 'Dietetics'],
+      'Superspeciality Programs': ['Neurology and Neurosurgery', 'Oncology (Medical/Surgical/Radiation)', 'Nephrology And Urology', 'Gastrointestinal Surgery', 'Transplant Medicine'],
+      'Surgical & Procedural Specialties': ['Orthopedics and Joint Replacement', 'Laparoscopic and General Surgery', 'Vascular Surgery', 'ENT', 'Head and Neck Surgery'],
+      'Pediatrics & Neonatal Care': ['Paediatrics and Neonatology'],
+      "Women's Health & Fertility": ['High Risk Pregnancy Fetal Medicine', 'Gynecology and Obstetrics'],
+      'Emergency & Critical Care Training': ['Emergency Medicine'],
+      'Diagnostic & Imaging Sciences': ['Dialysis']
+    }
   },
   {
     id: 'hosp-23',
@@ -654,7 +787,7 @@ export const HOSPITALS: Hospital[] = [
     bedCapacity: 200,
     accreditation: 'NABH Accredited',
     rating: 4.8,
-    departments: ['dept-em', 'dept-icu', 'dept-cardio', 'dept-med', 'dept-surg', 'dept-ortho'],
+    departments: ['dept-cardio', 'dept-med', 'dept-super', 'dept-surg', 'dept-paed', 'dept-obg', 'dept-em', 'dept-radio'],
     availableSlotsCount: 7,
     image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80',
     address: 'Dehradun',
@@ -666,7 +799,17 @@ export const HOSPITALS: Hospital[] = [
       'Specialized oncology and surgical expertise',
       'High-quality patient-centered healthcare services'
     ],
-    mostBookedSpecialization: 'Neurology & Surgical Care'
+    mostBookedSpecialization: 'Neurology & Surgical Care',
+    offeredDepartments: {
+      'Cardiac Sciences': ['Cardiology and Cardiac Surgery'],
+      'Medicine & Physician Specialties': ['Pulmonology', 'Psychiatry', 'Dietetics'],
+      'Superspeciality Programs': ['Neurology and Neurosurgery', 'Oncology (Medical/Surgical/Radiation)', 'Nephrology And Urology', 'Gastrointestinal Surgery', 'Transplant Medicine'],
+      'Surgical & Procedural Specialties': ['Orthopedics and Joint Replacement', 'Laparoscopic and General Surgery', 'Vascular Surgery', 'ENT', 'Head and Neck Surgery'],
+      'Pediatrics & Neonatal Care': ['Paediatrics and Neonatology'],
+      "Women's Health & Fertility": ['High Risk Pregnancy Fetal Medicine', 'Gynecology and Obstetrics'],
+      'Emergency & Critical Care Training': ['Emergency Medicine'],
+      'Diagnostic & Imaging Sciences': ['Dialysis']
+    }
   }
 ];
 

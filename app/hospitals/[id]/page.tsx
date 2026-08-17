@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useApp } from '../../../src/context/AppContext';
 import { DEPARTMENTS } from '../../../src/data/mockData';
+import { Department } from '../../../src/types';
 import { getSubCategoryUrl, toSlug } from '../../../src/utils/subCategoryUtils';
 import {
   ArrowLeft,
@@ -64,6 +65,59 @@ export default function HospitalDetailPage() {
   const hospitalDepartments = DEPARTMENTS.filter((dept) =>
     hospital.departments.includes(dept.id) || hospital.departments.includes(dept.code)
   );
+
+  // Compute exact program cards offered based on hospital.offeredDepartments
+  const programCards = React.useMemo(() => {
+    if (hospital.offeredDepartments && Object.keys(hospital.offeredDepartments).length > 0) {
+      if (hospital.offeredDepartments['All Departments'] || hospital.offeredDepartments['All Department']) {
+        return DEPARTMENTS.flatMap((dept) =>
+          (dept.subDepartments || []).map((subName) => ({
+            dept,
+            deptName: dept.name,
+            subName
+          }))
+        );
+      }
+
+      return Object.entries(hospital.offeredDepartments).flatMap(([deptTitle, specs]) => {
+        const matchedDept = DEPARTMENTS.find(
+          (d) =>
+            d.name.toLowerCase() === deptTitle.toLowerCase() ||
+            d.name.toLowerCase().includes(deptTitle.toLowerCase()) ||
+            deptTitle.toLowerCase().includes(d.name.toLowerCase())
+        );
+
+        const deptObj: Department = matchedDept || {
+          id: 'dept-general',
+          name: deptTitle,
+          code: 'CLINICAL',
+          description: `${deptTitle} specialized clinical training program.`,
+          availableCities: [hospital.city],
+          subDepartments: specs,
+          hospitalsCount: 1,
+          iconName: 'Stethoscope',
+          featured: false,
+          baseFeePerMonth: 45000,
+          clinicalHighlights: ['Hands-on patient care', 'DMHCA certification'],
+          image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+        };
+
+        return specs.map((subName) => ({
+          dept: deptObj,
+          deptName: deptTitle,
+          subName
+        }));
+      });
+    }
+
+    return hospitalDepartments.flatMap((dept) =>
+      (dept.subDepartments || []).map((subName) => ({
+        dept,
+        deptName: dept.name,
+        subName
+      }))
+    );
+  }, [hospital, hospitalDepartments]);
 
   // Get open training slots for this hospital
   const hospitalSlots = slots.filter(
@@ -205,24 +259,29 @@ export default function HospitalDetailPage() {
             </h2>
           </div>
           <span className="text-xs font-bold text-slate-500">
-            {hospitalDepartments.reduce((acc, d) => acc + (d.subDepartments?.length || 0), 0)} Available Specializations
+            {programCards.length} Available Specializations
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {hospitalDepartments.flatMap((dept) =>
-            (dept.subDepartments || []).map((subName, sIdx) => {
+        {programCards.length === 0 ? (
+          <div className="bg-slate-50 p-8 rounded-3xl text-center border border-slate-200 space-y-2">
+            <h4 className="text-sm font-extrabold text-slate-700">No active specialization programs configured yet</h4>
+            <p className="text-xs text-slate-500 font-medium">Please contact hospital administration or check back soon for updated rotation slots.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {programCards.map(({ dept, deptName, subName }, sIdx) => {
               const subUrl = getSubCategoryUrl(dept, subName);
               return (
                 <div
-                  key={`${dept.id}-${sIdx}`}
+                  key={`${dept.id}-${subName}-${sIdx}`}
                   className="bg-white rounded-2xl p-4 sm:p-5 border border-[#CBE5D7] shadow-xs hover:shadow-md hover:border-[#2F855A] text-left transition group flex flex-col justify-between gap-3"
                 >
                   <div className="space-y-2.5">
                     {/* Broad Category Badge */}
                     <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#C5DED0]">
                       <Stethoscope className="w-3 h-3" />
-                      {dept.code} ({dept.name})
+                      {dept.code || 'CLINICAL'} ({deptName})
                     </span>
 
                     {/* Sub-Department Name (Primary) */}
@@ -240,7 +299,7 @@ export default function HospitalDetailPage() {
                   <div className="pt-3 border-t border-slate-100 space-y-2.5 mt-auto">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold text-[#2F855A] font-heading">
-                        ₹{dept.baseFeePerMonth.toLocaleString('en-IN')}<span className="text-[10px] text-slate-400 font-normal">/mo</span>
+                        ₹{(dept.baseFeePerMonth || 45000).toLocaleString('en-IN')}<span className="text-[10px] text-slate-400 font-normal">/mo</span>
                       </span>
                       <button
                         type="button"
@@ -248,7 +307,7 @@ export default function HospitalDetailPage() {
                         className="text-[11px] text-[#2F855A] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <Sparkles className="w-3 h-3 text-amber-500" />
-                        <span>Veiw details</span>
+                        <span>View details</span>
                       </button>
                     </div>
 
@@ -263,9 +322,9 @@ export default function HospitalDetailPage() {
                   </div>
                 </div>
               );
-            })
-          )}
-        </div>
+            })}
+          </div>
+        )}
       </div>
 
       {/* Available Slots at this Hospital */}

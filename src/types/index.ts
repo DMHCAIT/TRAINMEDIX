@@ -51,6 +51,7 @@ export interface Hospital {
   description?: string;
   clinicalHighlights?: string[];
   mostBookedSpecialization?: string;
+  offeredDepartments?: Record<string, string[]>;
 }
 
 export interface TrainingSlot {

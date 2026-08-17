@@ -3,13 +3,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { 
-  Calendar, 
-  Award, 
-  FileText, 
-  CheckCircle2, 
-  Clock, 
-  Plus, 
+import {
+  Calendar,
+  Award,
+  FileText,
+  CheckCircle2,
+  Clock,
+  Plus,
   ClipboardList
 } from 'lucide-react';
 
@@ -59,9 +59,9 @@ export const UserDashboard: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
+
       {/* Dashboard Top Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -113,11 +113,10 @@ export const UserDashboard: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id as any)}
-              className={`relative flex shrink-0 items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition whitespace-nowrap touch-target cursor-pointer min-w-max ${
-                isActive
-                  ? 'text-white font-extrabold'
-                  : 'bg-white/80 text-slate-700 hover:bg-slate-100/80 border border-slate-200/80'
-              }`}
+              className={`relative flex shrink-0 items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition whitespace-nowrap touch-target cursor-pointer min-w-max ${isActive
+                ? 'text-white font-extrabold'
+                : 'bg-white/80 text-slate-700 hover:bg-slate-100/80 border border-slate-200/80'
+                }`}
             >
               {isActive && (
                 <motion.div
@@ -138,14 +137,14 @@ export const UserDashboard: React.FC = () => {
 
       {/* TAB 1: MY BOOKINGS */}
       {activeSubTab === 'bookings' && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
           className="space-y-6"
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-            
+
             {/* Main Booking Card / Empty State */}
             <div className="lg:col-span-2 space-y-4">
               {bookings.length === 0 ? (
@@ -173,8 +172,8 @@ export const UserDashboard: React.FC = () => {
                   const specializationTitle = bk.subDepartment || deptMatch?.subDepartments?.[0] || bk.departmentName || 'Specialty Clinical';
 
                   return (
-                    <motion.div 
-                      key={bk.id} 
+                    <motion.div
+                      key={bk.id}
                       whileHover={{ y: -3 }}
                       className="glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 space-y-5 shadow-xs"
                     >
@@ -246,14 +245,14 @@ export const UserDashboard: React.FC = () => {
             <div className="space-y-4">
               <div className="glass-card rounded-3xl p-6 border border-slate-200/80 space-y-4 shadow-xs">
                 <h4 className="text-xs font-extrabold text-[#2F855A] uppercase tracking-wider font-heading">Rotation Completion</h4>
-                
+
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-bold text-slate-700">
                     <span>Clinical Rotation Progress</span>
                     <span className="text-[#2F855A] font-heading">{bookings.length > 0 ? '65%' : '0%'}</span>
                   </div>
                   <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80 p-0.5">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: bookings.length > 0 ? '65%' : '0%' }}
                       transition={{ duration: 1, ease: 'easeOut' }}
@@ -276,7 +275,7 @@ export const UserDashboard: React.FC = () => {
 
       {/* TAB 2: CLINICAL LOGBOOK */}
       {activeSubTab === 'logbook' && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
@@ -344,7 +343,7 @@ export const UserDashboard: React.FC = () => {
 
       {/* TAB 3: DOCUMENTS */}
       {activeSubTab === 'documents' && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
@@ -356,9 +355,7 @@ export const UserDashboard: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
               {[
-                { title: 'State Medical Council License', status: 'Verified', date: '2026-07-20' },
-                { title: 'MBBS Degree Certificate', status: 'Verified', date: '2026-07-20' },
-                { title: 'Aadhaar / Passport Photo ID', status: 'Verified', date: '2026-07-20' }
+                { title: 'Degree Certificate', status: 'Verified', date: '2026-07-20' }
               ].map((doc, idx) => (
                 <div key={idx} className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-2">
                   <div className="flex items-center justify-between">
@@ -378,7 +375,7 @@ export const UserDashboard: React.FC = () => {
 
       {/* TAB 4: SCHEDULE */}
       {activeSubTab === 'schedule' && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
@@ -412,14 +409,14 @@ export const UserDashboard: React.FC = () => {
       <AnimatePresence>
         {showAddLogModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="bg-white border border-slate-200 rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl text-slate-900"
             >
               <h3 className="text-lg font-bold text-slate-900 font-heading">Log Clinical Procedure</h3>
-              
+
               <form onSubmit={handleAddLog} className="space-y-3.5 text-xs">
                 <div>
                   <label className="block text-slate-700 font-bold mb-1">Procedure Name</label>
