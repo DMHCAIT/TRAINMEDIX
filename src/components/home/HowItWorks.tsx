@@ -30,7 +30,7 @@ export const HowItWorks: React.FC = () => {
       step: '02',
       title: 'Choose City & Hospital',
       subtitle: 'Top Partner Hospitals',
-      description: 'Select your target location (Delhi, Noida, Mumbai, Hyderabad, Bangalore).',
+      description: 'Select your preferred location (Delhi, Noida, Mumbai, Hyderabad, lucknow).',
       icon: MapPin,
       badge: 'Step 2'
     },

@@ -88,8 +88,8 @@ export const ValueSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
         >
-          <div className="inline-flex items-center gap-2 bg-white border border-[#E3D9CC] text-[#1F1C18] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
-            <ShieldCheck className="w-4 h-4 text-[#2F855A]" />
+          <div className="inline-flex items-center gap-2 bg-white border border-[#E3D9CC] text-[#4A7865] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
+            <ShieldCheck className="w-4 h-4 text-[#4A7865]" />
             <span>Core Value Proposition</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1F1C18] tracking-tight font-heading">
