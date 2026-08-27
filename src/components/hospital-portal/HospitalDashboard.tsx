@@ -3,13 +3,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { 
-  Building2, 
-  Clock, 
-  BarChart3, 
-  Layers, 
-  CalendarRange,
-  ChevronDown
+import {
+  Building2,
+  Clock,
+  BarChart3,
+  Layers,
+  CalendarRange
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { HospitalOverview } from './HospitalOverview';
@@ -21,12 +20,11 @@ export type HospitalTab = 'overview' | 'departments' | 'slots' | 'approvals';
 
 export const HospitalDashboard: React.FC = () => {
   const router = useRouter();
-  const { 
-    bookings, 
-    departments, 
-    slots, 
-    hospitals, 
-    activeHospital, 
+  const {
+    bookings,
+    departments,
+    slots,
+    activeHospital,
     userProfile,
     role,
     isLoggedIn,
@@ -83,7 +81,7 @@ export const HospitalDashboard: React.FC = () => {
       )}
 
       {/* Header Banner - Single Hospital Account */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -125,11 +123,10 @@ export const HospitalDashboard: React.FC = () => {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`relative flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs font-bold transition cursor-pointer shrink-0 ${
-                  isActive
+                className={`relative flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-2xl text-xs font-bold transition cursor-pointer shrink-0 ${isActive
                     ? 'text-white font-extrabold shadow-sm'
                     : 'bg-white/90 text-slate-700 hover:bg-slate-100/90 border border-slate-200/80'
-                }`}
+                  }`}
               >
                 {isActive && (
                   <motion.div
@@ -143,9 +140,8 @@ export const HospitalDashboard: React.FC = () => {
                   {tab.icon}
                   <span>{tab.label}</span>
                   {tab.count !== undefined && (
-                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                    }`}>
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
+                      }`}>
                       {tab.count}
                     </span>
                   )}

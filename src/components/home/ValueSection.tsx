@@ -2,14 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  Stethoscope, 
-  Clock, 
-  MapPin, 
-  Award, 
-  CheckCircle2, 
-  ShieldCheck, 
+import {
+  Building2,
+  Stethoscope,
+  Clock,
+  MapPin,
+  Award,
+  CheckCircle2,
+  ShieldCheck,
   Flame,
   ArrowRight
 } from 'lucide-react';
@@ -23,7 +23,7 @@ export const ValueSection: React.FC = () => {
       icon: Building2,
       title: 'Department-Wise Booking',
       subtitle: 'Precision Specialty Focus',
-      description: 'Book hands-on clinical exposure in specific departments like Emergency Medicine, Cardiology, ICU, Radiology, Surgery, and 6 more.',
+      description: 'Book clinical exposure in specific departments like Emergency Medicine, Cardiology, ICU, Radiology, Surgery, and 6 more.',
       iconBg: 'bg-[#E2F0EA] text-[#3D7A5C] border-[#C5DED0]',
       badge: '11 Departments'
     },
@@ -31,7 +31,7 @@ export const ValueSection: React.FC = () => {
       icon: Stethoscope,
       title: 'Real Hospital Exposure',
       subtitle: 'Live Patient Interaction',
-      description: 'Train directly in tertiary JCI & NABH accredited hospitals alongside senior chief mentors, scrub in OTs, and manage ward rounds.',
+      description: 'Train directly in tertiary JCI & Partner hospitals alongside senior consultants & specialist faculty, scrub in OTs, and manage ward rounds.',
       iconBg: 'bg-[#E8F3EE] text-[#4A7865] border-[#CBE2D7]',
       badge: 'Live Clinical Practice'
     },
@@ -39,25 +39,25 @@ export const ValueSection: React.FC = () => {
       icon: Clock,
       title: 'Flexible Training Duration',
       subtitle: '1 / 3 / 6 Months Options',
-      description: 'Tailor your rotation to your schedule. Choose from 1-month intensive observerships to 6-month clinical fellowship programs.',
+      description: 'Tailor your rotation to your schedule with flexible 1-month, 3-month, or 6-month clinical rotation options.',
       iconBg: 'bg-[#E2F0EA] text-[#2F855A] border-[#C5DED0]',
-      badge: '1, 3, or 6 Months'
+      badge: '1 - 6 Months'
     },
     {
       icon: MapPin,
       title: 'City & Hospital Selection',
       subtitle: 'Top Metro Hubs',
-      description: 'Choose your preferred city (Delhi, Noida, Mumbai, Hyderabad, Bangalore) and pick top partner hospitals matching your career goals.',
+      description: 'Choose your preferred location and pick top partner hospitals matching your career goals.',
       iconBg: 'bg-[#E2F0EA] text-[#2F855A] border-[#C5DED0]',
-      badge: '5 Metro Cities'
+      badge: 'Top Cities'
     },
     {
       icon: Award,
       title: 'Verified Certification',
-      subtitle: 'DMHCA QR Verified',
-      description: 'Receive an official DMHCA clinical completion certificate with instant QR code verification code for credentialing and career advancement.',
+      subtitle: 'DMHCA Verified',
+      description: 'Receive an official DMHCA clinical completion certificate with instant verification credentialing and career advancement.',
       iconBg: 'bg-[#FCF7E8] text-[#D6A125] border-[#F4E6BD]',
-      badge: 'Instant QR Verification'
+      badge: 'Instant Verification'
     }
   ];
 
@@ -77,16 +77,16 @@ export const ValueSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-[#EBF7F1] border-b border-[#CBE5D7] relative overflow-hidden">
+    <section className="py-10 sm:py-14 bg-[#EBF7F1] border-b border-[#CBE5D7] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+          className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
         >
           <div className="inline-flex items-center gap-2 bg-white border border-[#E3D9CC] text-[#1F1C18] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
             <ShieldCheck className="w-4 h-4 text-[#2F855A]" />
@@ -101,7 +101,7 @@ export const ValueSection: React.FC = () => {
         </motion.div>
 
         {/* Value Cards Grid */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -111,7 +111,7 @@ export const ValueSection: React.FC = () => {
           {coreValues.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={cardVariants}
                 whileHover={{ y: -6, scale: 1.01 }}
@@ -122,7 +122,7 @@ export const ValueSection: React.FC = () => {
                     <div className={`w-13 h-13 rounded-2xl border flex items-center justify-center ${item.iconBg} shadow-2xs`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="bg-[#EBF7F1] text-[#1F1C18] border border-[#CBE5D7] text-[11px] font-bold px-3 py-1 rounded-full shadow-2xs">
+                    <span className="bg-[#EBF7F1] text-[#4A7865] border border-[#CBE5D7] text-[11px] font-bold px-3 py-1 rounded-full shadow-2xs">
                       {item.badge}
                     </span>
                   </div>
@@ -158,7 +158,7 @@ export const ValueSection: React.FC = () => {
           })}
 
           {/* Brand Comparison Card */}
-          <motion.div 
+          <motion.div
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01 }}
             className="bg-[#1F1C18] text-white rounded-3xl p-7 flex flex-col justify-between shadow-2xl border border-slate-700/50"

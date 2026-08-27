@@ -24,7 +24,6 @@ class BackendStore {
       email: 'apollo@trainmedix.com',
       phone: '+91 11 2651 5050',
       role: 'hospital',
-      bedCapacity: '650',
       address: 'Sarita Vihar, Delhi Mathura Road, New Delhi - 110076',
       createdAt: new Date().toISOString()
     }

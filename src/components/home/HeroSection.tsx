@@ -4,20 +4,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import {
-  Building2,
-  MapPin,
-  Clock,
-  CalendarCheck,
   ArrowRight,
   Play,
-  Check,
   CheckCheck,
-  Search,
-  Star,
-  ShieldCheck,
-  UserCheck,
-  Zap,
-  Sparkles
+  Search
 } from 'lucide-react';
 import { CITIES } from '../../data/mockData';
 import type { CityName, DurationOption } from '../../types';
@@ -89,7 +79,7 @@ export const HeroSection: React.FC = () => {
               </h1>
 
               <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl pt-3 leading-relaxed font-medium">
-                Book hands-on clinical exposure with certified medical specialists in top DMHCA-accredited tertiary hospitals across India.
+                Book clinical exposure with certified medical specialists in top DMHCA-accredited tertiary hospitals across India.
               </p>
             </motion.div>
 
@@ -254,8 +244,8 @@ export const HeroSection: React.FC = () => {
                 }}
                 placeholder="Select Specialty (11 Available)"
                 options={[
-                  { value: '', label: 'Select Specialty (11 Available)' },
-                  ...departments.map((d) => ({ value: d.id, label: `${d.name} (${d.hospitalsCount} Hospitals)` }))
+                  { value: '', label: 'Select Specialty' },
+                  ...departments.map((d) => ({ value: d.id, label: `${d.name}` }))
                 ]}
               />
             </div>
@@ -276,7 +266,7 @@ export const HeroSection: React.FC = () => {
                   }
                 }}
                 options={[
-                  { value: 'All', label: 'All Metro Cities (India)' },
+                  { value: 'All', label: 'All Cities (India)' },
                   ...CITIES.map((c) => ({ value: c, label: c })),
                   { value: 'Other', label: 'Other (Specify City)' },
                 ]}
@@ -309,9 +299,9 @@ export const HeroSection: React.FC = () => {
                 value={duration}
                 onChange={(val) => setDuration(val as DurationOption)}
                 options={[
-                  { value: '1 Month', label: '1 Month Observership' },
-                  { value: '3 Months', label: '3 Months Clinical Rotation' },
-                  { value: '6 Months', label: '6 Months Fellowship' },
+                  { value: '1 Month', label: '1 Month' },
+                  { value: '3 Months', label: '3 Months' },
+                  { value: '6 Months', label: '6 Months' },
                 ]}
               />
             </div>
@@ -346,7 +336,7 @@ export const HeroSection: React.FC = () => {
           </div>
           <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-[#CBE5D7] text-center shadow-2xs">
             <p className="text-2xl sm:text-3xl font-black text-[#E11D48] font-heading">100%</p>
-            <p className="text-xs text-slate-600 font-semibold">Hands-on Patient Exposure</p>
+            <p className="text-xs text-slate-600 font-semibold">Real-World Exposure</p>
           </div>
         </div>
 

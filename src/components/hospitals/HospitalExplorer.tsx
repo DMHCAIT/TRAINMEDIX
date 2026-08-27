@@ -5,12 +5,11 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
-import { 
-  Building2, 
-  MapPin, 
-  Bed, 
-  Star, 
-  CheckCircle2, 
+import {
+  Building2,
+  MapPin,
+  Star,
+  CheckCircle2,
   CalendarCheck,
   Search,
   Filter,
@@ -30,13 +29,12 @@ export const HospitalExplorer: React.FC = () => {
   const [customCityText, setCustomCityText] = useState('');
 
   const filteredHospitals = hospitals.filter((hosp) => {
-    const matchesSearch = 
+    const matchesSearch =
       hosp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hosp.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      hosp.chiefMentor.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCity = 
-      selectedCity === 'All' || 
+      hosp.address.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesCity =
+      selectedCity === 'All' ||
       selectedCity === 'Other' ||
       hosp.city.toLowerCase().includes(selectedCity.toLowerCase()) ||
       hosp.address.toLowerCase().includes(selectedCity.toLowerCase());
@@ -64,9 +62,9 @@ export const HospitalExplorer: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      
+
       {/* Page Title */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -75,7 +73,7 @@ export const HospitalExplorer: React.FC = () => {
       >
         <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
           <Building2 className="w-4 h-4 text-[#2F855A] animate-pulse" />
-          <span>Accredited Partner Hospital Network</span>
+          <span>Training Partner Hospital Network</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
           Explore Partner <span className="gradient-text-blue">Hospital Centres</span>
@@ -86,7 +84,7 @@ export const HospitalExplorer: React.FC = () => {
       </motion.div>
 
       {/* Filter & Search Bar */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -117,7 +115,7 @@ export const HospitalExplorer: React.FC = () => {
                 }
               }}
               options={[
-                { value: 'All', label: 'All Metro Cities' },
+                { value: 'All', label: 'All Cities' },
                 ...CITIES.map((c) => ({ value: c, label: c })),
                 { value: 'Other', label: 'Other (Specify City)' },
               ]}
@@ -146,7 +144,7 @@ export const HospitalExplorer: React.FC = () => {
       </motion.div>
 
       {/* Hospital Cards Grid */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -237,7 +235,7 @@ export const HospitalExplorer: React.FC = () => {
       </motion.div>
 
       {/* Infinite Scroll Sentinel & Loader */}
-      <div ref={sentinelRef} className="flex justify-center py-6">
+      <div ref={sentinelRef} className={`flex justify-center ${hasMore ? 'py-4' : 'py-0'}`}>
         <AnimatePresence>
           {hasMore && (
             <motion.div

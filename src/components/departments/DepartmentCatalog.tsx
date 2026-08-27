@@ -7,7 +7,6 @@ import { useApp } from '../../context/AppContext';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
 import {
   Building2,
-  MapPin,
   Clock,
   CalendarCheck,
   Search,
@@ -111,15 +110,20 @@ export const DepartmentCatalog: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
+    <section className="pt-2 sm:pt-4 pb-10 sm:pb-14 bg-gradient-to-b from-[#F0F8F4] via-[#EBF7F1]/50 to-slate-50 relative overflow-hidden">
+      {/* Background Ambient Mesh Gradient Orbs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
 
-      {/* Page Title */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center max-w-3xl mx-auto space-y-4"
-      >
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10 z-10">
+
+        {/* Page Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
+        >
         <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#BBE2D1] text-[#2F855A] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
           <Building2 className="w-4 h-4 text-[#2F855A] animate-pulse" />
           <span>Department-Wise Clinical Rotations</span>
@@ -128,7 +132,7 @@ export const DepartmentCatalog: React.FC = () => {
           Explore Clinical Training <span className="gradient-text-blue">Departments</span>
         </h1>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Choose your specialty rotation from DMHCA accredited departments across partner tertiary hospitals in metro cities.
+          Choose your specialty rotation from DMHCA accredited departments across partner tertiary hospitals.
         </p>
       </motion.div>
 
@@ -287,23 +291,7 @@ export const DepartmentCatalog: React.FC = () => {
                       </div>
                     )}
 
-                    {/* Available Cities */}
-                    <div>
-                      <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block mb-1.5 font-heading">
-                        Available Locations:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {dept.availableCities.map((city) => (
-                          <span
-                            key={city}
-                            className="bg-[#E2F0EA] border border-[#C5DED0] text-[#2F855A] text-[11px] px-2.5 py-1 rounded-lg flex items-center gap-1 font-semibold shadow-2xs"
-                          >
-                            <MapPin className="w-3 h-3 text-[#2F855A]" />
-                            {city}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+
 
                     {/* Key Specs Bar Grid */}
                     <div className="grid grid-cols-2 gap-2.5 text-xs bg-slate-50/80 p-3 rounded-2xl border border-slate-200/80">
@@ -359,7 +347,7 @@ export const DepartmentCatalog: React.FC = () => {
       </motion.div>
 
       {/* Infinite Scroll Sentinel & Loader */}
-      <div ref={sentinelRef} className="flex justify-center py-6">
+      <div ref={sentinelRef} className={`flex justify-center ${hasMore ? 'py-4' : 'py-0'}`}>
         <AnimatePresence>
           {hasMore && (
             <motion.div
@@ -394,6 +382,7 @@ export const DepartmentCatalog: React.FC = () => {
         onClose={() => setIsSubModalOpen(false)}
       />
 
-    </div>
+      </div>
+    </section>
   );
 };

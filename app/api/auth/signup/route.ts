@@ -12,7 +12,6 @@ export async function POST(req: NextRequest) {
       phone,
       qualification,
       interests,
-      bedCapacity,
       address
     } = body;
 
@@ -39,7 +38,6 @@ export async function POST(req: NextRequest) {
       role,
       qualification: qualification ? qualification.trim() : undefined,
       interests: Array.isArray(interests) ? interests : [],
-      bedCapacity: bedCapacity ? bedCapacity.trim() : undefined,
       address: address ? address.trim() : undefined
     });
 
@@ -51,7 +49,6 @@ export async function POST(req: NextRequest) {
       role: createdUser.role,
       qualification: createdUser.qualification,
       interests: createdUser.interests,
-      bedCapacity: createdUser.bedCapacity,
       address: createdUser.address
     };
 

@@ -9,17 +9,12 @@ import { Department } from '../../../src/types';
 import { getSubCategoryUrl, toSlug } from '../../../src/utils/subCategoryUtils';
 import {
   ArrowLeft,
-  Building2,
   MapPin,
-  Bed,
   Star,
   CheckCircle2,
   CalendarCheck,
   Stethoscope,
-  Layers,
   Award,
-  ChevronRight,
-  ShieldCheck,
   Clock,
   Sparkles
 } from 'lucide-react';
@@ -98,7 +93,7 @@ export default function HospitalDetailPage() {
           iconName: 'Stethoscope',
           featured: false,
           baseFeePerMonth: 45000,
-          clinicalHighlights: ['Hands-on patient care', 'DMHCA certification'],
+          clinicalHighlights: ['Patient care', 'DMHCA certification'],
           image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
         };
 
@@ -143,7 +138,7 @@ export default function HospitalDetailPage() {
   };
 
   return (
-    <div className="min-h-screen pt-4 sm:pt-6 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <div className="pt-4 sm:pt-6 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
 
       {/* Back Button Navigation */}
       <div>
@@ -247,7 +242,7 @@ export default function HospitalDetailPage() {
         </div>
       </div>
 
-      {/* SPECIALIZATIONS — listed per Sub-Department with broad category badge */}
+      {/* SPECIALIZATIONS — listed per Sub-Department with category badge */}
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
@@ -278,7 +273,7 @@ export default function HospitalDetailPage() {
                   className="bg-white rounded-2xl p-4 sm:p-5 border border-[#CBE5D7] shadow-xs hover:shadow-md hover:border-[#2F855A] text-left transition group flex flex-col justify-between gap-3"
                 >
                   <div className="space-y-2.5">
-                    {/* Broad Category Badge */}
+                    {/* Category Badge */}
                     <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#C5DED0]">
                       <Stethoscope className="w-3 h-3" />
                       {dept.code || 'CLINICAL'} ({deptName})
@@ -290,7 +285,7 @@ export default function HospitalDetailPage() {
                         {subName}
                       </h3>
                       <p className="text-[11px] text-slate-500 font-medium mt-0.5 line-clamp-2">
-                        Direct hands-on patient exposure & DMHCA certified logbook evaluation.
+                        Clinical exposure & DMHCA certified logbook evaluation.
                       </p>
                     </div>
                   </div>
@@ -342,7 +337,7 @@ export default function HospitalDetailPage() {
             return (
               <div key={slot.id} className="bg-white p-5 rounded-3xl border border-[#CBE5D7] shadow-xs space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
-                  {/* Broad category badge */}
+                  {/* Category badge */}
                   {slotDept && (
                     <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#C5DED0]">
                       <Stethoscope className="w-3 h-3" />

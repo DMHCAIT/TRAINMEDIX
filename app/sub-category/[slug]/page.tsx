@@ -9,15 +9,10 @@ import {
   ArrowLeft,
   Building2,
   MapPin,
-  Stethoscope,
   CheckCircle2,
   CalendarCheck,
-  Sparkles,
-  Award,
   Layers,
-  ChevronRight,
-  ShieldCheck,
-  Check
+  ChevronRight
 } from 'lucide-react';
 
 export default function SubCategoryDetailPage() {
@@ -61,7 +56,19 @@ export default function SubCategoryDetailPage() {
   }
 
   const parentDept = subCategory.parentDepartment;
-  const affiliatedHospitals = hospitals.filter(h => h.departments.includes(parentDept.id));
+  const affiliatedHospitals = hospitals.filter(h => {
+    if (h.offeredDepartments) {
+      return Object.entries(h.offeredDepartments).some(([deptName, specs]) => {
+        return (
+          deptName.toLowerCase() === parentDept.name.toLowerCase() ||
+          specs.some(s => s.toLowerCase() === subCategory.name.toLowerCase() || s === 'All Department')
+        );
+      });
+    }
+    return h.departments.includes(parentDept.id);
+  });
+  const availableCitiesList = Array.from(new Set(affiliatedHospitals.map(h => h.city))).filter(Boolean);
+  const displayCities = availableCitiesList.length > 0 ? availableCitiesList : parentDept.availableCities;
   const categorySlots = slots.filter(s => s.departmentId === parentDept.id);
 
   const handleStartBooking = () => {
@@ -122,7 +129,7 @@ export default function SubCategoryDetailPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-emerald-100 font-medium leading-relaxed max-w-3xl">
-              Specialized clinical hands-on rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
+              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold text-white/90">
@@ -132,7 +139,7 @@ export default function SubCategoryDetailPage() {
               </div>
               <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10">
                 <MapPin className="w-4 h-4 text-emerald-300" />
-                <span>{parentDept.availableCities.length} Metro Cities</span>
+                <span>{displayCities.length} Cities</span>
               </div>
             </div>
           </div>
@@ -152,7 +159,7 @@ export default function SubCategoryDetailPage() {
             </div>
 
             <p className="text-xs text-slate-600 font-medium">
-              Specialized clinical training with dedicated hospital mentor supervision.
+              Specialized clinical training with dedicated hospital supervision.
             </p>
 
             <button
@@ -174,12 +181,12 @@ export default function SubCategoryDetailPage() {
         {/* Main Column (Mobile Order Controls + Desktop Left 8 Columns) */}
         <div className="lg:col-span-8 flex flex-col space-y-8">
 
-          {/* 1. Hands-On Clinical Competencies (Highlights) - Mobile Order 1 */}
+          {/* 1. Clinical Competencies (Highlights) - Mobile Order 1 */}
           <div className="order-1 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-5">
             <div className="border-b border-slate-100 pb-4">
               <h3 className="text-lg font-extrabold text-slate-900 font-heading flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2F855A]" />
-                Hands-On Procedural Skills in {subCategory.name}
+                Specialized Procedural Skills in {subCategory.name}
               </h3>
               <p className="text-xs text-slate-600 font-medium mt-0.5">
                 Core clinical competencies and practical case management covered during rotation
@@ -203,10 +210,10 @@ export default function SubCategoryDetailPage() {
           <div className="order-2 lg:hidden bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#2F855A]" />
-              Available Cities ({parentDept.availableCities.length})
+              Available Cities ({displayCities.length})
             </h4>
             <div className="flex flex-wrap gap-2">
-              {parentDept.availableCities.map((city) => (
+              {displayCities.map((city) => (
                 <span
                   key={city}
                   className="bg-[#EBF7F1] text-[#2F855A] border border-[#CBE5D7] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"
@@ -268,7 +275,7 @@ export default function SubCategoryDetailPage() {
                 Affiliated Hospitals for {subCategory.name} ({affiliatedHospitals.length})
               </h3>
               <p className="text-xs text-slate-600 font-medium mt-0.5">
-                Partner clinical centers providing hands-on training in this sub-category
+                Partner clinical centers providing training in this category
               </p>
             </div>
 
@@ -308,10 +315,10 @@ export default function SubCategoryDetailPage() {
           <div className="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#2F855A]" />
-              Available Cities ({parentDept.availableCities.length})
+              Available Cities ({displayCities.length})
             </h4>
             <div className="flex flex-wrap gap-2">
-              {parentDept.availableCities.map((city) => (
+              {displayCities.map((city) => (
                 <span
                   key={city}
                   className="bg-[#EBF7F1] text-[#2F855A] border border-[#CBE5D7] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"

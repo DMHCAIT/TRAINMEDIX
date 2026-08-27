@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  MapPin, 
-  Clock, 
-  CalendarCheck, 
-  CheckCircle2, 
+import {
+  Building2,
+  MapPin,
+  Clock,
+  CalendarCheck,
+  CheckCircle2,
   ChevronRight,
   Sparkles,
   ArrowRight
@@ -30,7 +30,7 @@ export const HowItWorks: React.FC = () => {
       step: '02',
       title: 'Choose City & Hospital',
       subtitle: 'Top Partner Hospitals',
-      description: 'Select your target location (Delhi, Noida, Mumbai, Hyderabad, Bangalore) and hospital based on bed capacity.',
+      description: 'Select your target location (Delhi, Noida, Mumbai, Hyderabad, Bangalore).',
       icon: MapPin,
       badge: 'Step 2'
     },
@@ -38,7 +38,7 @@ export const HowItWorks: React.FC = () => {
       step: '03',
       title: 'Pick Duration',
       subtitle: 'Flexible Rotation',
-      description: 'Choose 1 Month (Observership), 3 Months (Core Clinical Rotation), or 6 Months (Clinical Fellowship).',
+      description: 'Choose 1 Month, 3 Months, or 6 Months clinical training commitment.',
       icon: Clock,
       badge: 'Step 3'
     },
@@ -54,7 +54,7 @@ export const HowItWorks: React.FC = () => {
       step: '05',
       title: 'Confirm & Start Training',
       subtitle: 'DMHCA Onboarding',
-      description: 'Fill medical credentials, upload license, complete secure payment, and receive instant onboarding confirmation.',
+      description: 'Fill medical credentials, upload documents, complete payment, and receive instant onboarding confirmation.',
       icon: CheckCircle2,
       badge: 'Step 5'
     }
@@ -76,16 +76,16 @@ export const HowItWorks: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white border-b border-slate-200/80 relative">
+    <section className="py-10 sm:py-14 bg-white border-b border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Title */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+          className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
         >
           <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
             <Sparkles className="w-4 h-4 text-[#2F855A] animate-spin" style={{ animationDuration: '8s' }} />
@@ -100,7 +100,7 @@ export const HowItWorks: React.FC = () => {
         </motion.div>
 
         {/* Steps Grid */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -110,7 +110,7 @@ export const HowItWorks: React.FC = () => {
           {steps.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
@@ -152,7 +152,7 @@ export const HowItWorks: React.FC = () => {
         </motion.div>
 
         {/* Bottom Callout */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

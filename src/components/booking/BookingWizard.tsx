@@ -267,7 +267,7 @@ export const BookingWizard: React.FC = () => {
                     <span>Step 1: Select Clinical Department</span>
                   </h2>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Choose the department where you wish to undergo direct hands-on hospital exposure.
+                    Choose the department where you wish to undergo direct hospital exposure.
                   </p>
                 </div>
 
@@ -362,7 +362,7 @@ export const BookingWizard: React.FC = () => {
                     <span>Step 2: Select Training City & Region</span>
                   </h2>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Choose the metro city where you want to complete your hospital clinical rotation.
+                    Choose the city where you want to complete your hospital clinical rotation.
                   </p>
                 </div>
 
@@ -392,7 +392,7 @@ export const BookingWizard: React.FC = () => {
                           {selected && <CheckCircle2 className="w-5 h-5 text-blue-600" />}
                         </div>
                         <p className="text-xs text-slate-600">
-                          Partner tertiary hospitals available in {c} NCR/Metropolitan area.
+                          Partner tertiary hospitals available in {c}.
                         </p>
                       </motion.div>
                     );
@@ -509,9 +509,6 @@ export const BookingWizard: React.FC = () => {
                             </span>
                           </div>
 
-                          <p className="text-xs text-slate-600">
-                            <strong>Chief Mentor:</strong> {hosp.chiefMentor}
-                          </p>
                         </div>
 
                         <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
@@ -545,21 +542,18 @@ export const BookingWizard: React.FC = () => {
                   {[
                     {
                       dur: '1 Month',
-                      type: 'Clinical Observership',
                       desc: 'Ideal for intensive specialty exposure, procedural observation, and clinical ward rounds.',
                       multiplier: 1
                     },
                     {
                       dur: '3 Months',
-                      type: 'Core Clinical Rotation',
-                      desc: 'Recommended for comprehensive hands-on practice, case presentation, and procedure assists.',
+                      desc: 'Recommended for comprehensive practice, case presentation, and procedure assists.',
                       recommended: true,
                       multiplier: 3
                     },
                     {
                       dur: '6 Months',
-                      type: 'Advanced Clinical Fellowship',
-                      desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and DMHCA Fellowship seal.',
+                      desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and DMHCA certification.',
                       multiplier: 6
                     }
                   ].map((opt) => {
@@ -592,7 +586,6 @@ export const BookingWizard: React.FC = () => {
                             <h4 className="text-xl font-bold text-slate-900 font-heading">{opt.dur}</h4>
                             {selected && <CheckCircle2 className="w-5 h-5 text-blue-600" />}
                           </div>
-                          <p className="text-xs font-bold text-blue-600">{opt.type}</p>
                           <p className="text-xs text-slate-600 leading-relaxed">{opt.desc}</p>
                         </div>
 
@@ -678,11 +671,11 @@ export const BookingWizard: React.FC = () => {
                           <div className="space-y-2 flex-1 min-w-0">
                             {/* Badges Row */}
                             <div className="flex items-center gap-2 flex-wrap">
-                              {/* Broad Category Badge */}
+                              {/* Category Badge */}
                               {slotDept && (
                                 <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#2F855A] text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-[#C5DED0]">
                                   <Stethoscope className="w-3 h-3" />
-                                  <span>Broad Category: {slotDept.name}</span>
+                                  <span>Category: {slotDept.name}</span>
                                 </span>
                               )}
                               {/* Seat Capacity Warning */}
@@ -958,13 +951,13 @@ export const BookingWizard: React.FC = () => {
                     <span className="text-[10px] font-mono font-extrabold text-[#2F855A] bg-[#E2F0EA] px-2.5 py-0.5 rounded-md border border-[#C5DED0]">
                       {specializationModalDept.code}
                     </span>
-                    <span className="text-[11px] font-bold text-slate-500">Broad Clinical Department</span>
+                    <span className="text-[11px] font-bold text-slate-500">Clinical Department</span>
                   </div>
                   <h3 className="text-lg sm:text-2xl font-extrabold text-slate-900 font-heading leading-tight">
                     Select Specialization in {specializationModalDept.name}
                   </h3>
                   <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                    Clinical rotation credentials & logbook procedures are issued on the specific specialization name below:
+                    Your clinical rotation certificate and procedure logbook will be issued under the specialization you select below:
                   </p>
                 </div>
                 <button
@@ -1010,7 +1003,7 @@ export const BookingWizard: React.FC = () => {
                           )}
                         </div>
                         <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                          Direct Hands-on Rotation • DMHCA Certified Logbook • HOD Mentorship
+                          Supervised Clinical Rotation • DMHCA-Certified Logbook • Hospital Mentorship
                         </p>
                         <div className="pt-0.5">
                           <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#2F855A] bg-[#E2F0EA] px-2.5 py-1 rounded-lg border border-[#C5DED0] whitespace-nowrap">

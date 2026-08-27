@@ -3,12 +3,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { 
-  Award, 
-  ShieldCheck, 
-  QrCode, 
-  Search, 
-  CheckCircle2, 
+import {
+  Award,
+  ShieldCheck,
+  QrCode,
+  Search,
+  CheckCircle2,
   Printer,
   Sparkles
 } from 'lucide-react';
@@ -36,9 +36,9 @@ export const CertificatePortal: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-      
+
       {/* Top Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -58,7 +58,7 @@ export const CertificatePortal: React.FC = () => {
       </motion.div>
 
       {/* QR Code Verification Search Box */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -92,7 +92,7 @@ export const CertificatePortal: React.FC = () => {
           </div>
 
           {verificationError && (
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-xs text-rose-600 font-bold flex items-center gap-1"
@@ -106,7 +106,7 @@ export const CertificatePortal: React.FC = () => {
       {/* Interactive Paper-Style Certificate View Card */}
       <AnimatePresence mode="wait">
         {activeCert && (
-          <motion.div 
+          <motion.div
             key={activeCert.certificateId}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -114,7 +114,7 @@ export const CertificatePortal: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 relative overflow-hidden border border-slate-200/80"
           >
-            
+
             {/* Certificate Header Badge */}
             <div className="flex items-center justify-between border-b border-slate-200/80 pb-4">
               <div className="flex items-center gap-3.5">
@@ -142,7 +142,7 @@ export const CertificatePortal: React.FC = () => {
 
             {/* Certificate Frame Preview */}
             <div className="border-4 border-double border-slate-300/80 bg-gradient-to-br from-amber-50/30 via-white to-slate-50/50 p-8 sm:p-12 rounded-3xl text-center space-y-6 relative shadow-inner">
-              
+
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-[10px] px-3.5 py-1 rounded-full uppercase tracking-widest shadow-2xs">
                   <Sparkles className="w-3 h-3 text-amber-500" />
@@ -162,7 +162,7 @@ export const CertificatePortal: React.FC = () => {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-700 max-w-2xl mx-auto leading-relaxed font-medium">
-                has successfully completed <strong>{activeCert.duration}</strong> of direct hands-on clinical training in the Department of <strong className="text-slate-900 font-heading">{activeCert.departmentName}</strong> at <strong className="text-slate-900 font-heading">{activeCert.hospitalName}</strong> under the supervision of DMHCA accredited clinical faculty.
+                has successfully completed <strong>{activeCert.duration}</strong> of direct clinical training in the Department of <strong className="text-slate-900 font-heading">{activeCert.departmentName}</strong> at <strong className="text-slate-900 font-heading">{activeCert.hospitalName}</strong> under the supervision of DMHCA accredited clinical faculty.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-3xl mx-auto items-center text-xs">

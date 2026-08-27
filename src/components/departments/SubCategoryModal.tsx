@@ -4,18 +4,14 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Department } from '../../types';
-import { toSlug, getSubCategoryUrl } from '../../utils/subCategoryUtils';
+import { getSubCategoryUrl } from '../../utils/subCategoryUtils';
 import {
   X,
   Layers,
-  ChevronRight,
-  Sparkles,
-  Stethoscope,
-  Building2,
-  MapPin,
-  CheckCircle2,
   ArrowRight
 } from 'lucide-react';
+
+import { useApp } from '../../context/AppContext';
 
 interface SubCategoryModalProps {
   department: Department | null;
@@ -25,8 +21,20 @@ interface SubCategoryModalProps {
 
 export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, isOpen, onClose }) => {
   const router = useRouter();
+  const { hospitals } = useApp();
 
   if (!isOpen || !department) return null;
+
+  const deptHospitals = hospitals.filter(h => {
+    if (h.offeredDepartments) {
+      return Object.keys(h.offeredDepartments).some(
+        deptName => deptName.toLowerCase() === department.name.toLowerCase()
+      );
+    }
+    return h.departments.includes(department.id);
+  });
+  const uniqueCitiesCount = Array.from(new Set(deptHospitals.map(h => h.city))).filter(Boolean).length || department.availableCities.length;
+  const uniqueHospitalsCount = deptHospitals.length || department.hospitalsCount;
 
   const handleSelectSubCategory = (subName: string) => {
     onClose();
@@ -119,7 +127,7 @@ export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, 
 
             <div className="pt-2 text-center">
               <span className="text-[11px] text-slate-500 font-medium">
-                🏥 Available across {department.availableCities.length} metro cities at {department.hospitalsCount} accredited hospitals
+                🏥 Available across {uniqueCitiesCount} cities at {uniqueHospitalsCount} partner hospitals
               </span>
             </div>
           </div>

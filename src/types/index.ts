@@ -1,20 +1,20 @@
 export type UserRole = 'trainee' | 'hospital' | 'admin';
 
-export type CityName = 
-  | 'Delhi' 
-  | 'Noida' 
-  | 'Gurugram' 
-  | 'Mumbai' 
-  | 'Pune' 
-  | 'Hyderabad' 
-  | 'Bangalore' 
-  | 'Chennai' 
-  | 'Kolkata' 
-  | 'Ahmedabad' 
-  | 'Jaipur' 
-  | 'Chandigarh' 
-  | 'Kochi' 
-  | 'Lucknow' 
+export type CityName =
+  | 'Delhi'
+  | 'Noida'
+  | 'Gurugram'
+  | 'Mumbai'
+  | 'Pune'
+  | 'Hyderabad'
+  | 'Bangalore'
+  | 'Chennai'
+  | 'Kolkata'
+  | 'Ahmedabad'
+  | 'Jaipur'
+  | 'Chandigarh'
+  | 'Kochi'
+  | 'Lucknow'
   | 'Bhopal'
   | 'Other'
   | (string & {});
@@ -40,14 +40,12 @@ export interface Hospital {
   id: string;
   name: string;
   city: CityName;
-  bedCapacity?: number;
-  accreditation?: string;
   rating: number;
   departments: string[]; // department IDs
   availableSlotsCount: number;
   image: string;
   address: string;
-  chiefMentor: string;
+  chiefMentor?: string;
   description?: string;
   clinicalHighlights?: string[];
   mostBookedSpecialization?: string;

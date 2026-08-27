@@ -168,7 +168,7 @@ export const UserDashboard: React.FC = () => {
               ) : (
                 bookings.map((bk) => {
                   const deptMatch = DEPARTMENTS.find(d => d.id === bk.departmentId || d.name === bk.departmentName);
-                  const broadCategoryName = deptMatch ? deptMatch.name : (bk.departmentName || 'Clinical Department');
+                  const CategoryName = deptMatch ? deptMatch.name : (bk.departmentName || 'Clinical Department');
                   const specializationTitle = bk.subDepartment || deptMatch?.subDepartments?.[0] || bk.departmentName || 'Specialty Clinical';
 
                   return (
@@ -184,7 +184,7 @@ export const UserDashboard: React.FC = () => {
                               REF: {bk.bookingRef}
                             </span>
                             <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
-                              {broadCategoryName}
+                              {CategoryName}
                             </span>
                           </div>
                           <h3 className="text-xl font-extrabold text-slate-900 font-heading">
@@ -223,8 +223,8 @@ export const UserDashboard: React.FC = () => {
                             DR
                           </div>
                           <div>
-                            <p className="font-bold text-slate-900 font-heading">Chief Mentor: Assigned HOD</p>
-                            <p className="text-[11px] text-slate-600">{specializationTitle} ({broadCategoryName}) · {bk.hospitalName}</p>
+                            <p className="font-bold text-slate-900 font-heading">Clinical Department Lead</p>
+                            <p className="text-[11px] text-slate-600">{specializationTitle} ({CategoryName}) · {bk.hospitalName}</p>
                           </div>
                         </div>
 

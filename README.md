@@ -2,15 +2,15 @@
 
 **India's First Department-Wise Hospital Training Booking Platform by DMHCA**
 
-TrainMedix connects healthcare professionals, MBBS doctors, postgraduates, and medical trainees with verified partner hospitals across India (Delhi NCR, Mumbai, Bangalore, Hyderabad, etc.) for hands-on clinical exposure, real patient interaction, mentor-guided procedure logbooks, and official DMHCA certification.
+TrainMedix connects healthcare professionals, MBBS doctors, postgraduates, and medical trainees with verified partner hospitals across India (Delhi NCR, Mumbai, Bangalore, Hyderabad, etc.) for clinical exposure, real patient interaction, mentor-guided procedure logbooks, and official DMHCA certification.
 
 ---
 
 ## ✨ Key Features
 
 ### 🩺 1. Department & Specialization Catalog
-- Browse **11+ broad clinical departments** including Emergency Medicine, Cardiology, General Medicine, Radiology, Surgery, Obstetrics & Gynaecology, Paediatrics, Cosmetology & ENT, Dental, Psychiatry & Rehab, and Super Speciality.
-- Explore **40+ specialized clinical programs** with procedural skills lists, hands-on learning goals, and logbook evaluation details.
+- Browse **11+ clinical departments** including Emergency Medicine, Cardiology, General Medicine, Radiology, Surgery, Obstetrics & Gynaecology, Paediatrics, Cosmetology & ENT, Dental, Psychiatry & Rehab, and Super Speciality.
+- Explore **40+ specialized clinical programs** with procedural skills lists, learning goals, and logbook evaluation details.
 
 ### 🏥 2. Partner Hospital Directory
 - Filter **23+ top training hospitals and clinical centers** by city, department availability, and rating.
@@ -28,7 +28,7 @@ TrainMedix connects healthcare professionals, MBBS doctors, postgraduates, and m
 ### 📊 5. Portals & Dashboards
 - **Trainee Dashboard**: Manage active rotations, view rotation status, track clinical logbooks, and access certificates.
 - **Hospital Portal**: Manage open rotation slots, review incoming trainee applications, verify degree certificates, and update seat capacity.
-- **Admin Control Panel**: Configure broad clinical departments, manage hospital partners, oversee rotation slots, and view platform metrics.
+- **Admin Control Panel**: Configure clinical departments, manage hospital partners, oversee rotation slots, and view platform metrics.
 - **QR Certificate Verification**: Instant verification portal for DMHCA accredited clinical rotation certificates.
 
 ---

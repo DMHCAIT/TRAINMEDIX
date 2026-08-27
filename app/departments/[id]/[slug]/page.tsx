@@ -9,16 +9,11 @@ import {
   ArrowLeft,
   Building2,
   MapPin,
-  Stethoscope,
   CheckCircle2,
   CalendarCheck,
   Sparkles,
   Award,
   Layers,
-  ChevronRight,
-  ShieldCheck,
-  Check,
-  Bed,
   Star
 } from 'lucide-react';
 
@@ -58,7 +53,19 @@ export default function DepartmentSubCategoryDetailPage() {
   }
 
   const parentDept = subCategory.parentDepartment;
-  const affiliatedHospitals = hospitals.filter(h => h.departments.includes(parentDept.id));
+  const affiliatedHospitals = hospitals.filter(h => {
+    if (h.offeredDepartments) {
+      return Object.entries(h.offeredDepartments).some(([deptName, specs]) => {
+        return (
+          deptName.toLowerCase() === parentDept.name.toLowerCase() ||
+          specs.some(s => s.toLowerCase() === subCategory.name.toLowerCase() || s === 'All Department')
+        );
+      });
+    }
+    return h.departments.includes(parentDept.id);
+  });
+  const availableCitiesList = Array.from(new Set(affiliatedHospitals.map(h => h.city))).filter(Boolean);
+  const displayCities = availableCitiesList.length > 0 ? availableCitiesList : parentDept.availableCities;
   const categorySlots = slots.filter(s => s.departmentId === parentDept.id);
 
   const handleStartBooking = () => {
@@ -82,7 +89,7 @@ export default function DepartmentSubCategoryDetailPage() {
   };
 
   return (
-    <div className="min-h-screen pt-4 sm:pt-6 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <div className="pt-4 sm:pt-6 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
 
       {/* Back Navigation */}
       <div>
@@ -119,7 +126,7 @@ export default function DepartmentSubCategoryDetailPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-emerald-100 font-medium leading-relaxed max-w-3xl">
-              Specialized clinical hands-on rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
+              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
             </p>
 
             {/* Quick Metrics */}
@@ -130,7 +137,7 @@ export default function DepartmentSubCategoryDetailPage() {
               </span>
               <span className="bg-white/15 backdrop-blur-md text-white text-xs font-bold px-3.5 py-1.5 rounded-xl border border-white/20 flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-emerald-300" />
-                {parentDept.availableCities.length} Metro Cities
+                {displayCities.length} Cities
               </span>
             </div>
           </div>
@@ -146,7 +153,7 @@ export default function DepartmentSubCategoryDetailPage() {
                 <span className="text-xs font-bold text-slate-500">/ Month</span>
               </div>
               <p className="text-[11px] text-slate-600 font-medium mt-1">
-                Specialized clinical training with dedicated hospital mentor supervision.
+                Specialized clinical training with dedicated hospital supervision.
               </p>
             </div>
 
@@ -196,7 +203,7 @@ export default function DepartmentSubCategoryDetailPage() {
             </div>
           </div>
           <p className="text-xs text-slate-600 font-medium leading-relaxed">
-            Upon successful completion of the {subCategory.name} rotation and logbook evaluation by the chief mentor, candidates receive an official DMHCA accredited rotation certificate.
+            Upon successful completion of the {subCategory.name} rotation and logbook evaluation by the hospital department lead, candidates receive an official DMHCA accredited rotation certificate.
           </p>
         </div>
 

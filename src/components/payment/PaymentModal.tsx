@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  X, 
-  CreditCard, 
-  Smartphone, 
-  Building, 
-  Globe, 
-  ShieldCheck, 
-  CheckCircle2, 
+import {
+  X,
+  CreditCard,
+  Smartphone,
+  Building,
+  Globe,
+  ShieldCheck,
+  CheckCircle2,
   Lock
 } from 'lucide-react';
 import type { Booking } from '../../types';
@@ -54,7 +54,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
       <div className="bg-white border border-slate-200 rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200 text-slate-900">
-        
+
         {/* Header */}
         <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -80,12 +80,12 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               <div className="flex justify-between"><span>Payment Method:</span> <span className="font-semibold">{paymentMethod}</span></div>
               <div className="flex justify-between"><span>Hospital:</span> <span className="font-semibold">{bookingData.hospitalName}</span></div>
               <div className="flex justify-between"><span>Specialization:</span> <span className="font-semibold">{bookingData.subDepartment || bookingData.departmentName}</span></div>
-              <div className="flex justify-between"><span>Broad Category:</span> <span className="font-semibold">{bookingData.departmentName}</span></div>
+              <div className="flex justify-between"><span>Category:</span> <span className="font-semibold">{bookingData.departmentName}</span></div>
             </div>
           </div>
         ) : (
           <div className="p-6 space-y-6">
-            
+
             {/* Price Summary Breakdown */}
             <div className="bg-blue-50/60 p-4 rounded-2xl border border-blue-200 space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-600">
@@ -122,11 +122,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                       key={m.id}
                       type="button"
                       onClick={() => setPaymentMethod(m.id as Booking['paymentMethod'])}
-                      className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition touch-target ${
-                        selected
+                      className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition touch-target ${selected
                           ? 'bg-blue-50 border-blue-600 text-blue-800 font-bold shadow-sm'
                           : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
-                      }`}
+                        }`}
                     >
                       <Icon className={`w-4 h-4 mb-2 ${selected ? 'text-blue-600' : 'text-slate-500'}`} />
                       <span className="text-xs">{m.label}</span>

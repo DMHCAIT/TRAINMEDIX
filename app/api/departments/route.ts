@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       iconName: 'Activity',
       featured: false,
       baseFeePerMonth: 45000,
-      clinicalHighlights: ['Hands-on Clinical Rotation', 'Mentor Supervision']
+      clinicalHighlights: ['Specialized Clinical Rotation', 'Mentor Supervision']
     });
 
     return NextResponse.json({

@@ -36,7 +36,6 @@ export async function POST(req: NextRequest) {
       role: user.role,
       qualification: user.qualification,
       interests: user.interests,
-      bedCapacity: user.bedCapacity,
       address: user.address
     };
 

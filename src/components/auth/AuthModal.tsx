@@ -12,16 +12,12 @@ import {
   ShieldCheck,
   ArrowRight,
   CheckCircle2,
-  Sparkles,
   Stethoscope,
   Lock,
   KeyRound,
   Building2,
   MapPin,
-  HeartPulse,
-  Zap,
-  RefreshCw,
-  Award
+  RefreshCw
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { DEPARTMENTS } from '../../data/mockData';
@@ -151,7 +147,6 @@ export const AuthModal: React.FC = () => {
     isAuthModalOpen,
     setIsAuthModalOpen,
     authMode,
-    setAuthMode,
     setIsLoggedIn,
     setUserProfile,
     setActiveTab,
@@ -181,7 +176,6 @@ export const AuthModal: React.FC = () => {
 
   // Hospital-specific signup state
   const [hospContactType, setHospContactType] = useState<'email' | 'phone'>('email');
-  const [bedCapacity, setBedCapacity] = useState('');
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [hospitalAddress, setHospitalAddress] = useState('');
 
@@ -205,7 +199,6 @@ export const AuthModal: React.FC = () => {
     setPreferredCity('Delhi NCR');
     setSignupOtp(['', '', '', '']);
     setHospContactType('email');
-    setBedCapacity('');
     setSelectedDepartments([]);
     setHospitalAddress('');
   };
@@ -222,7 +215,6 @@ export const AuthModal: React.FC = () => {
       setSelectedInterests(['Emergency Medicine', 'Cardiology']);
       setPreferredCity('Delhi NCR');
       setHospContactType('email');
-      setBedCapacity('');
       setSelectedDepartments([]);
       setHospitalAddress('');
       setSignupOtp(['', '', '', '']);
@@ -335,7 +327,6 @@ export const AuthModal: React.FC = () => {
       interests: signupRole === 'hospital'
         ? selectedDepartments.map(id => DEPARTMENTS.find(d => d.id === id)?.name || id)
         : selectedInterests,
-      bedCapacity: bedCapacity.trim(),
       address: hospitalAddress.trim()
     };
 
@@ -364,7 +355,6 @@ export const AuthModal: React.FC = () => {
         phone: hospContactType === 'phone' ? (phoneNumber.trim() || '+91 11 2651 5050') : '',
         interests: deptNames.length > 0 ? deptNames : ['Hospital Operations'],
         address: hospitalAddress.trim(),
-        bedCapacity: bedCapacity.trim(),
         accreditation: qualification,
         role: 'hospital'
       });
@@ -725,7 +715,7 @@ export const AuthModal: React.FC = () => {
                 )}
 
 
-                {/* STEP 2: CONTACT & BED CAPACITY (Hospital) / EMAIL & PHONE (Trainee) */}
+                {/* STEP 2: CONTACT (Hospital) / EMAIL & PHONE (Trainee) */}
                 {signupStep === 2 && (
                   <motion.form
                     initial={{ opacity: 0, x: 20 }}
