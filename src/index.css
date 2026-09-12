@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Medxtio Harmonious Palette with Mint Background */
+    --color-cream-canvas: #EBF7F1;
+    --color-desert-sand: #C6EAD7;
+    --color-periwinkle: #2F855A;
+    --color-periwinkle-light: #E2F0EA;
+    --color-bronze-copper: #2F855A;
+    --color-charcoal-dark: #1F1C18;
+    --color-sage-green: #6B9080;
+    --color-terracotta: #2F855A;
+    --color-warm-amber: #2F855A;
+
+    --surface-bg: #EBF7F1;
+    --card-bg: #FFFFFF;
+    --border-light: #CBE5D7;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1F1C18;
+    background-color: #EBF7F1;
+    background-image:
+      radial-gradient(at 10% 10%, rgba(198, 234, 215, 0.4) 0px, transparent 50%),
+      radial-gradient(at 90% 20%, rgba(47, 133, 90, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 80%, rgba(168, 222, 193, 0.2) 0px, transparent 50%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Design Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #CBE5D7;
+  box-shadow: 0 10px 30px -10px rgba(31, 28, 24, 0.05);
+}
+
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #CBE5D7;
+  box-shadow: 0 8px 24px -6px rgba(31, 28, 24, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: #2F855A;
+  box-shadow: 0 16px 36px -10px rgba(47, 133, 90, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Medxtio Text Gradients */
+.gradient-text-periwinkle {
+  background: linear-gradient(135deg, #047857 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-bronze {
+  background: linear-gradient(135deg, #059669 0%, #34D399 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #0D9488 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-mesh {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(47, 133, 90, 0.08) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(224, 190, 154, 0.12) 0, transparent 50%);
+}
+
+/* Animations */
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EBF7F1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CEC0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2F855A;
+}
+
+/* Hide browser native password reveal eye icons (Edge, Chrome, Safari, IE) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
