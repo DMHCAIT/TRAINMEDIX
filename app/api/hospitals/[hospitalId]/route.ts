@@ -3,15 +3,15 @@ import { backendStore } from '../../../../src/lib/backendStore';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ hospitalId: string }> }
 ) {
   try {
-    const { id } = await params;
-    const hospital = backendStore.getHospitalById(id);
+    const { hospitalId } = await params;
+    const hospital = backendStore.getHospitalById(hospitalId);
 
     if (!hospital) {
       return NextResponse.json(
-        { success: false, error: `Hospital '${id}' not found.` },
+        { success: false, error: `Hospital '${hospitalId}' not found.` },
         { status: 404 }
       );
     }

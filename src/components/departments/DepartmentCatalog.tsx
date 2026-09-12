@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
-import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+
 import {
   Building2,
   Clock,
@@ -24,7 +24,6 @@ import {
   Crosshair,
   CheckCircle2,
   Zap,
-  Loader2,
   ChevronRight,
   Layers,
   Brain
@@ -53,6 +52,10 @@ export const DepartmentCatalog: React.FC = () => {
   // Sub-Category Pop-Up Modal State
   const [modalDepartment, setModalDepartment] = useState<Department | null>(null);
   const [isSubModalOpen, setIsSubModalOpen] = useState(false);
+  
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 18;
 
   const handleOpenSubCategories = (dept: Department) => {
     setModalDepartment(dept);
@@ -91,8 +94,30 @@ export const DepartmentCatalog: React.FC = () => {
     return matchesSearch && matchesCity;
   });
 
-  const { visibleCount, sentinelRef, hasMore } = useInfiniteScroll(filteredDepartments.length, 6);
-  const visibleDepartments = filteredDepartments.slice(0, visibleCount);
+  // Reset to page 1 when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, filterCity, customCityText]);
+  
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredDepartments.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleDepartments = filteredDepartments.slice(startIndex, endIndex);
+  
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -327,34 +352,37 @@ export const DepartmentCatalog: React.FC = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Infinite Scroll Sentinel & Loader */}
-      <div ref={sentinelRef} className={`flex justify-center ${hasMore ? 'py-4' : 'py-0'}`}>
-        <AnimatePresence>
-          {hasMore && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="flex items-center gap-2 text-blue-600">
-                <Loader2 className="w-5 h-5 animate-spin" />
-                <span className="text-xs font-semibold text-slate-500">Loading more departments…</span>
-              </div>
-              <div className="flex gap-1.5">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-blue-400"
-                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 0.8, delay: i * 0.15, repeat: Infinity }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col sm:flex-row justify-center items-center gap-4 py-6 sm:py-8"
+        >
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            className="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 bg-slate-200 text-slate-700 hover:bg-slate-300 enabled:hover:shadow-md"
+          >
+            ← Previous
+          </button>
+          
+          <div className="flex items-center gap-2">
+            <span className="text-slate-600 font-medium text-sm">
+              Page <span className="font-bold text-[#2F855A]">{currentPage}</span> of <span className="font-bold text-[#2F855A]">{totalPages}</span>
+            </span>
+            <span className="text-slate-500 text-xs">({filteredDepartments.length} total)</span>
+          </div>
+          
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 bg-[#2F855A] text-white hover:bg-[#276749] enabled:hover:shadow-md"
+          >
+            Next →
+          </button>
+        </motion.div>
+      )}
 
       {/* Sub-Category Pop-Up Window Modal */}
       <SubCategoryModal

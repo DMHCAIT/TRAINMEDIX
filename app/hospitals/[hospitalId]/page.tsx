@@ -32,7 +32,7 @@ export default function HospitalDetailPage() {
     setActiveTab
   } = useApp();
 
-  const hospitalId = params?.id as string;
+  const hospitalId = params?.hospitalId as string;
 
   // Find hospital by name-based slug (e.g. /hospitals/dharma-diabetic-centre) or fallback to ID
   const hospital = hospitals.find(
