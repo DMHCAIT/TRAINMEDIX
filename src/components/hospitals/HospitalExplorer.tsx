@@ -176,7 +176,10 @@ export const HospitalExplorer: React.FC = () => {
                     alt={hosp.name}
                     className="w-full h-full object-cover brightness-105 saturate-110 group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent pointer-events-none" />
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+                    style={{ backgroundImage: 'linear-gradient(to top, rgb(2 6 23 / 0.75), rgb(2 6 23 / 0.2), transparent)' }}
+                  />
                   <span className="absolute bottom-3.5 right-3.5 bg-white/95 backdrop-blur-md text-amber-800 font-bold text-xs px-3 py-1 rounded-xl border border-slate-200/80 flex items-center gap-1 shadow-xs">
                     <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                     {hosp.rating}

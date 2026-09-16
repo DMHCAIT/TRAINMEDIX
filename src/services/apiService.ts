@@ -114,11 +114,23 @@ export const apiService = {
     return await res.json();
   },
 
-  async createBooking(bookingData: any) {
+  async createBooking(bookingData: any, degreeCertificate: File) {
+    const formData = new FormData();
+    formData.append('booking', JSON.stringify(bookingData));
+    formData.append('degreeCertificate', degreeCertificate);
+
     const res = await fetch('/api/bookings', {
       method: 'POST',
+      body: formData
+    });
+    return await res.json();
+  },
+
+  async updateBookingStatus(bookingId: string, status: string, rejectionReason?: string) {
+    const res = await fetch(`/api/bookings/${bookingId}`, {
+      method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(bookingData)
+      body: JSON.stringify({ status, rejectionReason })
     });
     return await res.json();
   },

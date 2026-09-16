@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 
@@ -34,12 +33,10 @@ import { SubCategoryModal } from './SubCategoryModal';
 import { CustomSelect } from '../common/CustomSelect';
 
 export const DepartmentCatalog: React.FC = () => {
-  const router = useRouter();
   const {
     departments,
     selectedCity,
     setActiveTab,
-    setSelectedDepartment,
     startBookingForDepartment,
     role
   } = useApp();
@@ -135,7 +132,10 @@ export const DepartmentCatalog: React.FC = () => {
   };
 
   return (
-    <section className="pt-2 sm:pt-4 pb-10 sm:pb-14 bg-gradient-to-b from-[#F0F8F4] via-[#EBF7F1]/50 to-slate-50 relative overflow-hidden">
+    <section
+      className="relative overflow-hidden pt-2 pb-10 sm:pt-4 sm:pb-14"
+      style={{ backgroundImage: 'linear-gradient(to bottom, #F0F8F4, rgb(235 247 241 / 0.5), #f8fafc)' }}
+    >
       {/* Background Ambient Mesh Gradient Orbs */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
@@ -255,7 +255,10 @@ export const DepartmentCatalog: React.FC = () => {
                       className="w-full h-full object-cover brightness-105 saturate-110 group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     {/* Subtle bottom-only gradient for title contrast without dulling the main photo */}
-                    <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-950/80 via-slate-950/35 to-transparent pointer-events-none" />
+                    <div
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+                      style={{ backgroundImage: 'linear-gradient(to top, rgb(2 6 23 / 0.8), rgb(2 6 23 / 0.35), transparent)' }}
+                    />
 
                     {/* Top Accreditation & Status Badges */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
@@ -335,8 +338,7 @@ export const DepartmentCatalog: React.FC = () => {
                       whileTap={{ scale: 0.97 }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedDepartment(dept);
-                        router.push('/booking');
+                        startBookingForDepartment(dept);
                       }}
                       className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-[#2F855A]/25 touch-target cursor-pointer"
                     >

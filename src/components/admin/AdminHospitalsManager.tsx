@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, Edit2, Search, Mail, Phone, MapPin, Globe, AlertCircle, Upload, X } from 'lucide-react';
 import { hospitalService } from '../../lib/supabase-db';
 import { ConfirmModal } from '../common/ConfirmModal';
+import { useApp } from '../../context/AppContext';
 
 interface Hospital {
   id: string;
@@ -22,6 +23,7 @@ interface Hospital {
 }
 
 export const AdminHospitalsManager: React.FC = () => {
+  const { refreshDataFromSupabase } = useApp();
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,9 +109,10 @@ export const AdminHospitalsManager: React.FC = () => {
       }
 
       const data = await response.json();
-      setFormData({ ...formData, image_url: data.publicUrl });
+      setFormData((current) => ({ ...current, image_url: data.publicUrl }));
       setImageFile(null);
-      setImagePreview('');
+      setImagePreview(data.publicUrl);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err: any) {
       setError('Failed to upload image: ' + err.message);
     } finally {
@@ -162,6 +165,7 @@ export const AdminHospitalsManager: React.FC = () => {
         
         await hospitalService.update(editingId, updateData);
         setHospitals(hospitals.map(h => h.id === editingId ? { ...h, ...updateData } : h));
+        await refreshDataFromSupabase();
         setShowForm(false);
         setEditingId(null);
       } else {
@@ -178,6 +182,7 @@ export const AdminHospitalsManager: React.FC = () => {
         });
         
         setHospitals([...hospitals, newHospital]);
+        await refreshDataFromSupabase();
         setShowForm(false);
       }
       
@@ -463,14 +468,15 @@ export const AdminHospitalsManager: React.FC = () => {
                         className="hidden"
                       />
                       {imagePreview ? (
-                        <div className="relative inline-block">
+                        <div className="inline-flex flex-col items-center gap-3">
                           <img src={imagePreview} alt="Preview" className="max-h-32 rounded" />
                           <button
                             type="button"
-                            onClick={() => { setImageFile(null); setImagePreview(''); }}
-                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200"
                           >
-                            <X size={16} />
+                            <Upload size={16} />
+                            Replace image
                           </button>
                         </div>
                       ) : (
@@ -481,14 +487,27 @@ export const AdminHospitalsManager: React.FC = () => {
                       )}
                     </div>
                     {imageFile && (
-                      <button
-                        type="button"
-                        onClick={handleUploadImage}
-                        disabled={uploadingImage}
-                        className="mt-2 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
-                      >
-                        {uploadingImage ? 'Uploading...' : 'Upload Image'}
-                      </button>
+                      <div className="mt-2 flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setImageFile(null);
+                            setImagePreview(formData.image_url);
+                            if (fileInputRef.current) fileInputRef.current.value = '';
+                          }}
+                          className="w-full rounded-lg border border-slate-300 px-4 py-2 hover:bg-slate-50"
+                        >
+                          Cancel replacement
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleUploadImage}
+                          disabled={uploadingImage}
+                          className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+                        >
+                          {uploadingImage ? 'Uploading...' : 'Upload replacement'}
+                        </button>
+                      </div>
                     )}
                     {formData.image_url && (
                       <p className="mt-2 text-sm text-green-600">✓ Image uploaded successfully</p>
@@ -535,7 +554,7 @@ export const AdminHospitalsManager: React.FC = () => {
               <div className="flex gap-4 p-4">
                 {/* Image */}
                 {(hospital.image_url || hospital.image) && (
-                  <div className="w-32 h-32 flex-shrink-0">
+                  <div className="shrink-0 w-32 h-32">
                     <img 
                       src={hospital.image_url || hospital.image} 
                       alt={hospital.name}
@@ -557,7 +576,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       </div>
                     )}
                     <div className="flex items-start gap-2">
-                      <MapPin size={16} className="mt-0.5 flex-shrink-0" /> 
+                      <MapPin size={16} className="shrink-0 mt-0.5" />
                       <div className="flex flex-wrap gap-1">
                         {(hospital.cities || [hospital.city]).map((city, idx) => (
                           <span key={idx} className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">

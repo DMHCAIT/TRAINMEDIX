@@ -1,14 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { bookingService, auditLogService } from '@/lib/supabase-db';
-import { authService } from '@/lib/supabase-auth';
+import { getSessionUser } from '@/lib/authSession';
+import { supabaseAdmin } from '@/lib/supabase';
+
+const STATUS_MAP: Record<string, string> = {
+  'Pending Approval': 'pending',
+  Approved: 'approved',
+  'In Rotation': 'in_rotation',
+  Completed: 'completed',
+  Rejected: 'rejected'
+};
 
 export async function PATCH(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const params = await context.params;
     const body = await request.json();
-    const user = await authService.getCurrentUser();
+    const user = await getSessionUser();
 
-    if (!user || user.role !== 'hospital') {
+    if (!user || !['admin', 'hospital'].includes(user.role)) {
       return NextResponse.json(
         { error: 'Unauthorized - Hospital role required' },
         { status: 401 }
@@ -25,21 +33,19 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
       );
     }
 
-    // Update booking status
-    const booking = await bookingService.updateStatus(
-      bookingId,
-      status,
-      status === 'approved' ? new Date().toISOString() : undefined,
-      status === 'rejected' ? rejectionReason : undefined
-    );
+    const databaseStatus = STATUS_MAP[status] || status;
+    const { data: booking, error } = await supabaseAdmin()
+      .from('bookings')
+      .update({
+        status: databaseStatus,
+        approval_date: databaseStatus === 'approved' ? new Date().toISOString() : null,
+        rejection_reason: databaseStatus === 'rejected' ? rejectionReason : null
+      })
+      .eq('id', bookingId)
+      .select()
+      .single();
 
-    // Log audit
-    await auditLogService.create({
-      userId: user.id,
-      action: `${status.toUpperCase()}_BOOKING`,
-      entityType: 'booking',
-      entityId: bookingId,
-    });
+    if (error) throw error;
 
     return NextResponse.json({ booking });
   } catch (error: any) {

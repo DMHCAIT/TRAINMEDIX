@@ -14,6 +14,7 @@ export const AdminBookingsManager: React.FC = () => {
   const [rejectingId, setRejectingId] = useState<string | null>(null);
   const [rejectionReason, setRejectionReason] = useState('');
   const [viewingBooking, setViewingBooking] = useState<Booking | null>(null);
+  const [actionError, setActionError] = useState('');
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
     action: 'approve' | 'reject';
@@ -24,17 +25,27 @@ export const AdminBookingsManager: React.FC = () => {
     id: ''
   });
 
-  const handleApprove = () => {
-    updateBookingStatus(confirmModal.id, 'Approved');
-    setConfirmModal({ isOpen: false, action: 'approve', id: '' });
+  const handleApprove = async () => {
+    try {
+      setActionError('');
+      await updateBookingStatus(confirmModal.id, 'Approved');
+      setConfirmModal({ isOpen: false, action: 'approve', id: '' });
+    } catch (error: any) {
+      setActionError(error.message || 'Failed to approve booking.');
+    }
   };
 
-  const handleReject = () => {
+  const handleReject = async () => {
     if (!rejectionReason.trim()) return;
-    updateBookingStatus(confirmModal.id, 'Rejected');
-    setConfirmModal({ isOpen: false, action: 'approve', id: '' });
-    setRejectingId(null);
-    setRejectionReason('');
+    try {
+      setActionError('');
+      await updateBookingStatus(confirmModal.id, 'Rejected', rejectionReason);
+      setConfirmModal({ isOpen: false, action: 'approve', id: '' });
+      setRejectingId(null);
+      setRejectionReason('');
+    } catch (error: any) {
+      setActionError(error.message || 'Failed to reject booking.');
+    }
   };
 
   const filteredBookings = bookings.filter((b) => {
@@ -63,6 +74,11 @@ export const AdminBookingsManager: React.FC = () => {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-slate-900">Booking Management</h2>
       <p className="text-sm text-slate-500 -mt-4">Full trainee booking submissions from Step 1 through Step 6, recorded after successful payment.</p>
+      {actionError && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+          {actionError}
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex gap-4 flex-wrap">
@@ -229,53 +245,72 @@ export const AdminBookingsManager: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><User size={13} /> Trainee</span>
-                  <p className="font-semibold text-slate-900">{viewingBooking.traineeName}</p>
-                  <p className="text-slate-600">{viewingBooking.traineeEmail}</p>
-                  <p className="text-slate-600">{viewingBooking.traineePhone}</p>
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Stethoscope size={13} /> Step 1 · Department</span>
+                  <p className="font-semibold text-slate-900">{viewingBooking.departmentName}</p>
                 </div>
 
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Stethoscope size={13} /> Qualification</span>
-                  <p className="font-semibold text-slate-900">{viewingBooking.medicalQualification}</p>
-                  <p className="text-slate-600">Council Reg No: {viewingBooking.councilRegistrationNumber}</p>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Building2 size={13} /> Hospital & Department</span>
-                  <p className="font-semibold text-slate-900">{viewingBooking.hospitalName}</p>
-                  <p className="text-slate-600">{viewingBooking.departmentName}{viewingBooking.subDepartment ? ` · ${viewingBooking.subDepartment}` : ''}</p>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><MapPin size={13} /> City</span>
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><MapPin size={13} /> Step 2 · City</span>
                   <p className="font-semibold text-slate-900">{viewingBooking.city}</p>
                 </div>
 
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Clock size={13} /> Duration & Start Date</span>
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Building2 size={13} /> Step 3 · Hospital</span>
+                  <p className="font-semibold text-slate-900">{viewingBooking.hospitalName}</p>
+                </div>
+
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Clock size={13} /> Step 4 · Duration</span>
                   <p className="font-semibold text-slate-900">{viewingBooking.duration}</p>
-                  <p className="text-slate-600">Starts: {viewingBooking.startDate}</p>
                 </div>
 
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><CreditCard size={13} /> Payment</span>
-                  <p className="font-semibold text-slate-900">₹{viewingBooking.amountPaid?.toLocaleString('en-IN')} · {viewingBooking.paymentMethod}</p>
-                  <p className="text-slate-600">Status: {viewingBooking.paymentStatus}</p>
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><Calendar size={13} /> Step 5 · Batch</span>
+                  <p className="font-semibold text-slate-900">{viewingBooking.startDate} to {viewingBooking.endDate || 'Not provided'}</p>
+                  {viewingBooking.slotId && <p className="text-xs text-slate-500">Batch ID: {viewingBooking.slotId}</p>}
                 </div>
 
-                <div className="space-y-1 sm:col-span-2">
-                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><FileText size={13} /> Documents Uploaded</span>
-                  <div className="flex flex-wrap gap-2">
-                    {Object.entries(viewingBooking.documents || {}).map(([key, value]) =>
-                      value ? (
-                        <span key={key} className="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200">
-                          {value}
-                        </span>
-                      ) : null
-                    )}
+                <div className="space-y-1 rounded-lg border border-slate-200 p-4">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><User size={13} /> Step 6 · Trainee</span>
+                  <p className="font-semibold text-slate-900">{viewingBooking.traineeName}</p>
+                  <p className="text-slate-600">{viewingBooking.traineeEmail}</p>
+                  <p className="text-slate-600">{viewingBooking.traineePhone}</p>
+                  <p className="text-slate-600">{viewingBooking.medicalQualification}</p>
+                  <p className="text-slate-600">Council Reg No: {viewingBooking.councilRegistrationNumber}</p>
+                </div>
+
+                <div className="space-y-2 rounded-lg border border-slate-200 p-4 sm:col-span-2">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><CreditCard size={13} /> Course Price & Payment</span>
+                  <div className="grid grid-cols-2 gap-2 text-slate-600 sm:grid-cols-4">
+                    <p>Course fee<br /><strong className="text-slate-900">₹{(viewingBooking.courseFee ?? viewingBooking.amountPaid)?.toLocaleString('en-IN')}</strong></p>
+                    <p>GST<br /><strong className="text-slate-900">₹{(viewingBooking.gstAmount ?? 0).toLocaleString('en-IN')}</strong></p>
+                    <p>Gateway fee<br /><strong className="text-slate-900">₹{(viewingBooking.gatewayFee ?? 0).toLocaleString('en-IN')}</strong></p>
+                    <p>Total paid<br /><strong className="text-green-700">₹{viewingBooking.amountPaid?.toLocaleString('en-IN')}</strong></p>
                   </div>
+                  <p className="text-xs text-slate-500">{viewingBooking.paymentMethod} · {viewingBooking.paymentStatus}</p>
+                </div>
+
+                <div className="space-y-2 rounded-lg border border-slate-200 p-4 sm:col-span-2">
+                  <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1.5"><FileText size={13} /> Uploaded Certificate</span>
+                  {viewingBooking.documents?.degreeCertificate ? (
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <p className="font-semibold text-slate-900">{viewingBooking.documents.degreeCertificateName || 'Degree certificate'}</p>
+                        <p className="text-xs text-slate-500">{viewingBooking.documents.degreeCertificateSize} {viewingBooking.documents.degreeCertificateType ? `· ${viewingBooking.documents.degreeCertificateType}` : ''}</p>
+                      </div>
+                      <a
+                        href={viewingBooking.documents.degreeCertificate}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-lg bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-700"
+                      >
+                        View document
+                      </a>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-slate-500">No document attached.</p>
+                  )}
                 </div>
 
                 <div className="space-y-1 sm:col-span-2">

@@ -16,12 +16,11 @@ import {
   AlertTriangle,
   Zap,
   Lock,
-  X,
   Stethoscope,
   FileText,
   Trash2
 } from 'lucide-react';
-import type { CityName, DurationOption, Booking, Department } from '../../types';
+import type { CityName, DurationOption, Booking } from '../../types';
 import { CITIES } from '../../data/mockData';
 import { PaymentModal } from '../payment/PaymentModal';
 import { CustomSelect } from '../common/CustomSelect';
@@ -32,6 +31,30 @@ const QUALIFICATION_OPTIONS = [
   'DM / MCh',
   'AYUSH Doctor',
   'Other Medical Qualification'
+];
+
+const ROTATION_DURATION_OPTIONS: Array<{
+  dur: DurationOption;
+  desc: string;
+  recommended?: boolean;
+}> = [
+  {
+    dur: '1 Month',
+    desc: 'Ideal for intensive specialty exposure, procedural observation, and clinical ward rounds.'
+  },
+  {
+    dur: '3 Months',
+    desc: 'Recommended for comprehensive practice, case presentation, and procedure assists.',
+    recommended: true
+  },
+  {
+    dur: '6 Months',
+    desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and DMHCA certification.'
+  },
+  {
+    dur: '12 Months',
+    desc: 'Full-year immersion with advanced procedural independence, research exposure, and complete DMHCA certification.'
+  }
 ];
 
 export const BookingWizard: React.FC = () => {
@@ -65,6 +88,7 @@ export const BookingWizard: React.FC = () => {
   const [traineePhone, setTraineePhone] = useState(userProfile?.phone || '');
   const [medicalQualification, setMedicalQualification] = useState((userProfile as any)?.qualification || 'MBBS');
   const [councilRegistrationNumber, setCouncilRegistrationNumber] = useState((userProfile as any)?.councilRegNo || 'MCI-2022-77142');
+  const [isPendingPaymentAfterLogin, setIsPendingPaymentAfterLogin] = useState(false);
 
   React.useEffect(() => {
     if (userProfile) {
@@ -75,12 +99,29 @@ export const BookingWizard: React.FC = () => {
     }
   }, [userProfile]);
 
+  // Auto-skip to Step 2 if department was already selected (e.g., from departments page)
+  React.useEffect(() => {
+    if (selectedDepartment && bookingStep === 1) {
+      setBookingStep(2);
+    }
+  }, [selectedDepartment, bookingStep, setBookingStep]);
+
+  // Auto-proceed to payment after user logs in from Step 6
+  React.useEffect(() => {
+    if (isLoggedIn && isPendingPaymentAfterLogin) {
+      setIsAuthModalOpen(false);
+      setIsPaymentModalOpen(true);
+      setIsPendingPaymentAfterLogin(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn, isPendingPaymentAfterLogin]);
+
   const [isOtherCity, setIsOtherCity] = useState(false);
   const [customCityText, setCustomCityText] = useState('');
 
   // Real File Upload State for MBBS / PG Degree Certificate
   const degreeFileInputRef = React.useRef<HTMLInputElement>(null);
-  const [uploadedDegreeFile, setUploadedDegreeFile] = useState<{ name: string; size: string } | null>(null);
+  const [uploadedDegreeFile, setUploadedDegreeFile] = useState<{ file: File; name: string; size: string } | null>(null);
   const [step6Error, setStep6Error] = useState('');
 
   const handleDegreeFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +129,7 @@ export const BookingWizard: React.FC = () => {
     if (file) {
       const sizeInMb = (file.size / (1024 * 1024)).toFixed(1);
       setUploadedDegreeFile({
+        file,
         name: file.name,
         size: `${sizeInMb} MB`
       });
@@ -101,10 +143,8 @@ export const BookingWizard: React.FC = () => {
     }
   };
 
-  const [selectedSlotId, setSelectedSlotId] = useState<string>('slot-101');
+  const [selectedSlotId, setSelectedSlotId] = useState<string>('');
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [specializationModalDept, setSpecializationModalDept] = useState<Department | null>(null);
-  const [selectedSpecialization, setSelectedSpecialization] = useState<string>('');
 
   // Expand hospitals with multiple cities into separate location-specific entries
   // Example: "Dharma Diabetic Centre (Delhi)" and "Dharma Diabetic Centre (Mumbai)"
@@ -130,7 +170,7 @@ export const BookingWizard: React.FC = () => {
 
   // Filter hospitals based on selected department & location
   const availableHospitals = locationSpecificHospitals.filter((hosp) => {
-    const matchesCity = selectedCity === 'All' || hosp.city === selectedCity || (Array.isArray((hosp as any).cities) && (hosp as any).cities.includes(selectedCity));
+    const matchesCity = selectedCity === 'All' || hosp.city === selectedCity;
     const matchesDept = !selectedDepartment || (hosp.departments && hosp.departments.includes(selectedDepartment.id));
     return matchesCity && matchesDept;
   });
@@ -155,22 +195,18 @@ export const BookingWizard: React.FC = () => {
     return Array.from(citiesSet);
   }, [selectedDepartment, locationSpecificHospitals]);
 
-  // Filter slots based on selected hospital, department, city & duration
-  const matchedSlots = slots.filter((s) => {
-    const matchesHosp = !selectedHospital || s.hospitalId === selectedHospital.id;
+  // Admin-configured batches for the exact hospital, department and city selection.
+  const configuredSlots = slots.filter((s) => {
+    const hospitalId = selectedHospital?.originalHospitalId || selectedHospital?.id;
+    const matchesHosp = !hospitalId || s.hospitalId === hospitalId;
     const matchesDept = !selectedDepartment || s.departmentId === selectedDepartment.id;
     const matchesCity = !selectedCity || selectedCity === 'All' || s.city === selectedCity;
-    const matchesDuration = !selectedDuration || s.duration === selectedDuration;
-    return matchesHosp && matchesDept && matchesCity && matchesDuration;
+    return matchesHosp && matchesDept && matchesCity;
   });
 
-  const filteredSlots = matchedSlots.length > 0 ? matchedSlots : slots.filter((s) => {
-    const matchesDept = !selectedDepartment || s.departmentId === selectedDepartment.id;
-    const matchesCity = !selectedCity || selectedCity === 'All' || s.city === selectedCity;
-    return matchesDept && matchesCity;
-  });
+  const availableDurations = new Set(configuredSlots.map((slot) => slot.duration));
 
-  const displaySlots = filteredSlots.length > 0 ? filteredSlots : slots;
+  const displaySlots = configuredSlots.filter((slot) => slot.duration === selectedDuration);
 
   const durationToMonths = (d: DurationOption) => parseInt(d, 10);
 
@@ -198,19 +234,18 @@ export const BookingWizard: React.FC = () => {
     return hosp?.availableSlotsCount ?? 0;
   };
 
-  // Guards against advancing to the next step without a valid selection made on the current step
   const canProceedFromStep = (step: number): boolean => {
     switch (step) {
       case 1:
-        return !!selectedDepartment && !!selectedSpecialization;
+        return !!selectedDepartment;
       case 2:
         return selectedCity !== 'All' && String(selectedCity).trim() !== '';
       case 3:
         return !!selectedHospital;
       case 4:
-        return !!selectedDuration;
+        return availableDurations.has(selectedDuration);
       case 5:
-        return !!selectedSlotId;
+        return displaySlots.some((slot) => slot.id === selectedSlotId);
       default:
         return true;
     }
@@ -249,7 +284,7 @@ export const BookingWizard: React.FC = () => {
     // Check if user is logged in
     if (!isLoggedIn) {
       setStep6Error('');
-      setIsBookingOpen(false);
+      setIsPendingPaymentAfterLogin(true);
       setIsAuthModalOpen(true);
       return;
     }
@@ -258,33 +293,57 @@ export const BookingWizard: React.FC = () => {
     setIsPaymentModalOpen(true);
   };
 
-  const handlePaymentSuccess = (method: Booking['paymentMethod']) => {
-    setIsPaymentModalOpen(false);
-
+  const handlePaymentSuccess = async (method: Booking['paymentMethod']) => {
     const baseFee = getPriceForDuration(selectedDuration);
+    const gstAmount = Math.round(baseFee * 0.18);
+    const gatewayFee = Math.round(baseFee * 0.04);
+    const totalAmount = baseFee + gstAmount + gatewayFee;
+    const selectedSlot = displaySlots.find((slot) => slot.id === selectedSlotId);
 
-    const newBooking = createBooking({
-      traineeName,
-      traineeEmail,
-      traineePhone,
-      medicalQualification,
-      councilRegistrationNumber,
-      departmentId: selectedDepartment?.id,
-      departmentName: selectedDepartment?.name || 'Emergency Medicine',
-      subDepartment: selectedSpecialization || selectedDepartment?.subDepartments?.[0] || selectedDepartment?.name,
-      hospitalId: selectedHospital?.id,
-      hospitalName: selectedHospital?.name || 'Apollo Super Speciality Hospital',
-      city: selectedCity !== 'All' ? selectedCity : 'Delhi',
-      duration: selectedDuration,
-      amountPaid: baseFee,
-      paymentMethod: method
-    });
+    if (!uploadedDegreeFile || !selectedSlot) {
+      setIsPaymentModalOpen(false);
+      setStep6Error('The selected batch or degree certificate is missing. Please review your booking details.');
+      return;
+    }
 
-    // Send booking confirmation email
-    sendBookingConfirmationEmail(newBooking, baseFee, method);
+    try {
+      const newBooking = await createBooking({
+        traineeName,
+        traineeEmail,
+        traineePhone,
+        medicalQualification,
+        councilRegistrationNumber,
+        departmentId: selectedDepartment?.id,
+        departmentName: selectedDepartment?.name || 'Emergency Medicine',
+        hospitalId: selectedHospital?.originalHospitalId || selectedHospital?.id,
+        hospitalName: selectedHospital?.name || 'Apollo Super Speciality Hospital',
+        city: selectedCity !== 'All' ? selectedCity : 'Delhi',
+        duration: selectedDuration,
+        slotId: selectedSlot.id,
+        startDate: selectedSlot.startDate,
+        endDate: selectedSlot.endDate,
+        courseFee: baseFee,
+        gstAmount,
+        gatewayFee,
+        amountPaid: totalAmount,
+        paymentMethod: method,
+        paymentStatus: 'Paid',
+        bookingStatus: 'Pending Approval',
+        documents: {
+          degreeCertificateName: uploadedDegreeFile.name,
+          degreeCertificateSize: uploadedDegreeFile.size
+        }
+      }, uploadedDegreeFile.file);
 
-    setIsBookingOpen(false);
-    setActiveTab('dashboard');
+      setIsPaymentModalOpen(false);
+      sendBookingConfirmationEmail(newBooking, totalAmount, method);
+
+      setIsBookingOpen(false);
+      setActiveTab('dashboard');
+    } catch (error: any) {
+      setIsPaymentModalOpen(false);
+      setStep6Error(error.message || 'Payment succeeded, but the booking could not be saved. Please contact support.');
+    }
   };
 
   const sendBookingConfirmationEmail = async (
@@ -424,8 +483,8 @@ export const BookingWizard: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Active Selection Banner if Specialization Chosen */}
-                {selectedDepartment && selectedSpecialization && (
+                {/* Active Department Selection */}
+                {selectedDepartment && (
                   <div className="bg-[#EBF7F1] border border-[#C5DED0] p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs">
                     <div className="flex items-center gap-2.5">
                       <CheckCircle2 className="w-5 h-5 text-[#2F855A] shrink-0" />
@@ -433,17 +492,11 @@ export const BookingWizard: React.FC = () => {
                         <span className="text-[10px] font-mono font-bold text-[#2F855A] bg-white px-2 py-0.5 rounded-md border border-[#C5DED0] mr-2">
                           {selectedDepartment.code}
                         </span>
-                        <span className="font-extrabold text-slate-900 text-sm font-heading">{selectedSpecialization}</span>
-                        <span className="text-slate-500 font-medium ml-1.5">({selectedDepartment.name})</span>
+                        <span className="font-extrabold text-slate-900 text-sm font-heading">
+                          {selectedDepartment.name}
+                        </span>
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setSpecializationModalDept(selectedDepartment)}
-                      className="text-xs font-extrabold text-[#2F855A] hover:underline cursor-pointer self-start sm:self-auto"
-                    >
-                      Change Specialization →
-                    </button>
                   </div>
                 )}
 
@@ -456,7 +509,9 @@ export const BookingWizard: React.FC = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
-                          setSpecializationModalDept(dept);
+                          // Select department and proceed directly to Step 2 (location selection)
+                          setSelectedDepartment(dept);
+                          setTimeout(() => setBookingStep(2), 150);
                         }}
                         className={`p-5 rounded-2xl border cursor-pointer transition flex flex-col justify-between touch-target ${selected
                           ? 'bg-blue-50/90 border-blue-600 text-blue-900 font-bold shadow-md ring-2 ring-blue-500/30'
@@ -478,7 +533,7 @@ export const BookingWizard: React.FC = () => {
                         <div className="mt-4 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
                           <span className="text-slate-500 font-medium">{dept.hospitalsCount} Hospitals</span>
                           <span className="text-blue-600 font-extrabold flex items-center gap-0.5">
-                            <span>Select Specialization</span>
+                            <span>Book Now</span>
                             <ChevronRight className="w-3.5 h-3.5" />
                           </span>
                         </div>
@@ -639,6 +694,7 @@ export const BookingWizard: React.FC = () => {
                             displayName: hosp.displayName,
                             listKey: hosp.listKey,
                           });
+                          setSelectedSlotId('');
                           setTimeout(() => setBookingStep(4), 150);
                         }}
                         className={`p-6 rounded-2xl border cursor-pointer transition flex flex-col justify-between touch-target ${selected
@@ -691,29 +747,7 @@ export const BookingWizard: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                  {[
-                    {
-                      dur: '1 Month',
-                      desc: 'Ideal for intensive specialty exposure, procedural observation, and clinical ward rounds.',
-                      multiplier: 1
-                    },
-                    {
-                      dur: '3 Months',
-                      desc: 'Recommended for comprehensive practice, case presentation, and procedure assists.',
-                      recommended: true,
-                      multiplier: 3
-                    },
-                    {
-                      dur: '6 Months',
-                      desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and DMHCA certification.',
-                      multiplier: 6
-                    },
-                    {
-                      dur: '12 Months',
-                      desc: 'Full-year immersion with advanced procedural independence, research exposure, and complete DMHCA certification.',
-                      multiplier: 12
-                    }
-                  ].map((opt) => {
+                  {ROTATION_DURATION_OPTIONS.filter((option) => availableDurations.has(option.dur)).map((opt) => {
                     const selected = selectedDuration === opt.dur;
                     const totalPrice = getPriceForDuration(opt.dur as DurationOption);
 
@@ -724,6 +758,7 @@ export const BookingWizard: React.FC = () => {
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
                           setSelectedDuration(opt.dur as DurationOption);
+                          setSelectedSlotId('');
                           setTimeout(() => setBookingStep(5), 150);
                         }}
                         className={`p-6 rounded-3xl border cursor-pointer transition flex flex-col justify-between relative touch-target ${selected
@@ -732,7 +767,10 @@ export const BookingWizard: React.FC = () => {
                           }`}
                       >
                         {opt.recommended && (
-                          <span className="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-extrabold px-3.5 py-1 rounded-bl-2xl uppercase tracking-wider shadow-xs">
+                          <span
+                            className="absolute top-0 right-0 px-3.5 py-1 text-[10px] font-extrabold text-white rounded-bl-2xl uppercase tracking-wider shadow-xs"
+                            style={{ backgroundImage: 'linear-gradient(to right, #2563eb, #4f46e5)' }}
+                          >
                             Most Popular
                           </span>
                         )}
@@ -755,6 +793,13 @@ export const BookingWizard: React.FC = () => {
                     );
                   })}
                 </div>
+                {availableDurations.size === 0 && (
+                  <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 text-center">
+                    <AlertTriangle className="mx-auto mb-3 h-10 w-10 text-amber-600" />
+                    <p className="font-bold text-slate-900">No batches are configured for this hospital and city.</p>
+                    <p className="mt-1 text-sm text-slate-600">Please select another hospital or city.</p>
+                  </div>
+                )}
               </div>
             )}
 
@@ -776,7 +821,7 @@ export const BookingWizard: React.FC = () => {
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-extrabold text-[#2F855A] uppercase tracking-wide">Active Filters:</span>
                     <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
-                      Specialty: {selectedSpecialization ? `${selectedSpecialization} (${selectedDepartment?.name || ''})` : selectedDepartment?.name || 'All Specialties'}
+                      {selectedDepartment?.name || 'Department'}
                     </span>
                     {selectedHospital && (
                       <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
@@ -805,9 +850,6 @@ export const BookingWizard: React.FC = () => {
                       const selected = selectedSlotId === s.id;
                       const slotHosp = hospitals.find((h) => h.id === s.hospitalId) || selectedHospital;
                       const slotDept = departments.find((d) => d.id === s.departmentId) || selectedDepartment;
-
-                      // Primary Specialization Name
-                      const specName = s.subDepartment || selectedSpecialization || (slotDept?.subDepartments?.[0] ?? slotDept?.name ?? 'Clinical Rotation');
 
                       const totalFee = getPriceForDuration(selectedDuration);
 
@@ -840,10 +882,10 @@ export const BookingWizard: React.FC = () => {
                               </span>
                             </div>
 
-                            {/* Primary Specialization Title */}
+                            {/* Primary Department Title */}
                             <div>
                               <h3 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading leading-tight flex items-center gap-2 flex-wrap">
-                                <span>{specName}</span>
+                                <span>{slotDept?.name || 'Clinical Rotation'}</span>
                                 {selected && (
                                   <span className="inline-flex items-center gap-1 bg-[#2F855A] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">
                                     <CheckCircle2 className="w-3 h-3 text-white" />
@@ -891,18 +933,16 @@ export const BookingWizard: React.FC = () => {
                       );
                     })
                   ) : (
-                    <div className="bg-slate-50/80 p-8 rounded-3xl text-center border border-slate-200/80 space-y-3">
+                    <div className="bg-amber-50 p-8 rounded-3xl text-center border border-amber-200 space-y-3">
                       <AlertTriangle className="w-10 h-10 text-amber-600 mx-auto" />
-                      <p className="text-base font-bold text-slate-900 font-heading">Live Batch Opening for {selectedDepartment?.name || 'Department'}</p>
-                      <p className="text-xs text-slate-600">Batch starting next month. Select slot to lock seat allocation.</p>
+                      <p className="text-base font-bold text-slate-900 font-heading">No batches found for this duration.</p>
+                      <p className="text-xs text-slate-600">Please select another duration or city.</p>
                       <button
-                        onClick={() => {
-                          setSelectedSlotId('slot-101');
-                          setTimeout(() => setBookingStep(6), 150);
-                        }}
+                        type="button"
+                        onClick={() => setBookingStep(4)}
                         className="mt-2 text-xs font-extrabold text-blue-600 underline cursor-pointer"
                       >
-                        Select Default Batch Slot (Aug 15 - Nov 15)
+                        Back to duration selection
                       </button>
                     </div>
                   )}
@@ -988,7 +1028,7 @@ export const BookingWizard: React.FC = () => {
                         type="file"
                         ref={degreeFileInputRef}
                         onChange={handleDegreeFileChange}
-                        accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                        accept=".pdf,.jpg,.jpeg,.png"
                         className="hidden"
                       />
 
@@ -1089,108 +1129,13 @@ export const BookingWizard: React.FC = () => {
           traineePhone,
           medicalQualification,
           councilRegistrationNumber,
-          departmentName: `${selectedSpecialization || selectedDepartment?.name} (${selectedDepartment?.name})`,
+          departmentName: selectedDepartment?.name || 'Emergency Medicine',
           hospitalName: selectedHospital?.name || 'Apollo Super Speciality Hospital',
           duration: selectedDuration,
           amountPaid: getPriceForDuration(selectedDuration)
         }}
         onPaymentSuccess={handlePaymentSuccess}
       />
-
-      {/* FLOATING SPECIALIZATION SELECTION MODAL */}
-      <AnimatePresence>
-        {specializationModalDept && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3.5 sm:p-4 bg-slate-900/60 backdrop-blur-md overflow-hidden">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 12 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="relative w-full max-w-xl bg-white border border-[#CBE5D7] rounded-3xl shadow-2xl p-4 sm:p-7 space-y-4 sm:space-y-5 overflow-hidden z-10 max-h-[88vh] flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between border-b border-slate-100 pb-3.5 sm:pb-4 shrink-0 gap-3">
-                <div className="space-y-1 min-w-0 pr-2">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[10px] font-mono font-extrabold text-[#2F855A] bg-[#E2F0EA] px-2.5 py-0.5 rounded-md border border-[#C5DED0]">
-                      {specializationModalDept.code}
-                    </span>
-                    <span className="text-[11px] font-bold text-slate-500">Clinical Department</span>
-                  </div>
-                  <h3 className="text-lg sm:text-2xl font-extrabold text-slate-900 font-heading leading-tight">
-                    Select Specialization in {specializationModalDept.name}
-                  </h3>
-                  <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                    Your clinical rotation certificate and procedure logbook will be issued under the specialization you select below:
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSpecializationModalDept(null)}
-                  className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 hover:bg-slate-200/80 flex items-center justify-center transition cursor-pointer shrink-0"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Specialization Options List */}
-              <div className="overflow-y-auto space-y-3 pr-1 no-scrollbar grow">
-                {(specializationModalDept.subDepartments && specializationModalDept.subDepartments.length > 0
-                  ? specializationModalDept.subDepartments
-                  : [specializationModalDept.name]
-                ).map((subName: string, sIdx: number) => {
-                  const isSubSelected = selectedDepartment?.id === specializationModalDept.id && selectedSpecialization === subName;
-                  return (
-                    <div
-                      key={sIdx}
-                      onClick={() => {
-                        setSelectedDepartment(specializationModalDept);
-                        setSelectedSpecialization(subName);
-                        setSpecializationModalDept(null);
-                        setTimeout(() => setBookingStep(2), 150);
-                      }}
-                      className={`p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 ${isSubSelected
-                        ? 'bg-[#EBF7F1] border-[#2F855A] shadow-md ring-2 ring-[#2F855A]/20'
-                        : 'bg-white border-slate-200/90 hover:border-[#2F855A] hover:bg-[#F4F9F6] hover:shadow-md'
-                        }`}
-                    >
-                      <div className="space-y-1.5 flex-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-sm sm:text-base font-extrabold text-slate-900 font-heading leading-tight">
-                            {subName}
-                          </span>
-                          {isSubSelected && (
-                            <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#2F855A] text-[10px] font-extrabold px-2 py-0.5 rounded-md border border-[#C5DED0]">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#2F855A]" />
-                              <span>Selected</span>
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                          Supervised Clinical Rotation • DMHCA-Certified Logbook • Hospital Mentorship
-                        </p>
-                        <div className="pt-0.5">
-                          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#2F855A] bg-[#E2F0EA] px-2.5 py-1 rounded-lg border border-[#C5DED0] whitespace-nowrap">
-                            Base Fee: ₹{specializationModalDept.baseFeePerMonth?.toLocaleString('en-IN')}/mo
-                          </span>
-                        </div>
-                      </div>
-
-                      <button
-                        type="button"
-                        className="w-full sm:w-auto bg-[#2F855A] hover:bg-[#276749] text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shrink-0 shadow-xs cursor-pointer"
-                      >
-                        <span>Select & Continue</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
     </div>
   );

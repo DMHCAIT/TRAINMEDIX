@@ -19,13 +19,12 @@ import {
 import { 
   DEPARTMENTS, 
   HOSPITALS, 
-  INITIAL_SLOTS, 
   INITIAL_BOOKINGS, 
   INITIAL_CERTIFICATES, 
   INITIAL_LOGBOOK, 
   INITIAL_NOTIFICATIONS 
 } from '../data/mockData';
-import { departmentService, hospitalDepartmentService, hospitalService, slotService, bookingService } from '../lib/supabase-db';
+import { departmentService, hospitalDepartmentService, hospitalService, slotService } from '../lib/supabase-db';
 import confetti from 'canvas-confetti';
 import { AuthModal } from '../components/auth/AuthModal';
 
@@ -79,9 +78,9 @@ interface AppContextType {
   notifications: NotificationItem[];
 
   // Actions
-  createBooking: (bookingData: Partial<Booking>) => Booking;
+  createBooking: (bookingData: Partial<Booking>, degreeCertificate: File) => Promise<Booking>;
   addLogbookEntry: (entry: Omit<LogbookEntry, 'id' | 'supervisorSignature'>) => void;
-  updateBookingStatus: (bookingId: string, status: Booking['bookingStatus']) => void;
+  updateBookingStatus: (bookingId: string, status: Booking['bookingStatus'], rejectionReason?: string) => Promise<void>;
   addSlot: (slot: Omit<TrainingSlot, 'id'>) => void;
   deleteSlot: (slotId: string) => void;
   updateSlotStatus: (slotId: string, status: TrainingSlot['status']) => void;
@@ -211,7 +210,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [offeringPricing, setOfferingPricing] = useState<OfferingPricingMap>({});
   const [offeringSlots, setOfferingSlots] = useState<Record<string, number>>({});
   const [activeHospital, setActiveHospital] = useState<Hospital | null>(null);
-  const [slots, setSlots] = useState<TrainingSlot[]>(INITIAL_SLOTS);
+  const [slots, setSlots] = useState<TrainingSlot[]>([]);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const [logbook, setLogbook] = useState<LogbookEntry[]>([]);
@@ -241,7 +240,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         // For hospital portal, this will be loaded per-hospital
         // For now, we'll try to get all and filter later
         console.log('[AppContext] Loading bookings...');
-        allBookings = await bookingService.getAll?.() || [];
+        const response = await apiService.getBookings();
+        allBookings = response.success ? response.data || [] : [];
         console.log('[AppContext] Bookings loaded:', allBookings?.length || 0);
         if (allBookings && allBookings.length > 0) {
           console.log('[AppContext] Sample booking:', allBookings[0]);
@@ -540,37 +540,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const startBookingForDepartment = (dept: Department) => {
     setSelectedDepartment(dept);
-    setActiveTab('departments');
+    setSelectedSpecialization('');
+    setSelectedCity('All');
+    setSelectedHospital(null);
+    setSelectedDuration('3 Months');
+    setBookingStep(2);
+    setActiveTab('booking');
   };
 
-  const createBooking = (bookingData: Partial<Booking>): Booking => {
-    const newRef = `TMX-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-    const newBooking: Booking = {
-      id: `bk-${Date.now()}`,
-      bookingRef: newRef,
-      traineeName: bookingData.traineeName || 'Dr. Medical Professional',
-      traineeEmail: bookingData.traineeEmail || 'doctor@hospital.org',
-      traineePhone: bookingData.traineePhone || '+91 98765 00000',
-      medicalQualification: bookingData.medicalQualification || 'MBBS',
-      councilRegistrationNumber: bookingData.councilRegistrationNumber || 'MCI-2026-99120',
-      departmentId: bookingData.departmentId || selectedDepartment?.id || 'dept-em',
-      departmentName: bookingData.departmentName || selectedDepartment?.name || 'Emergency Medicine',
-      hospitalId: bookingData.hospitalId || selectedHospital?.id || 'hosp-1',
-      hospitalName: bookingData.hospitalName || selectedHospital?.name || 'Apollo Super Speciality Hospital',
-      city: bookingData.city || (selectedCity !== 'All' ? selectedCity : 'Delhi'),
-      duration: bookingData.duration || selectedDuration,
-      startDate: bookingData.startDate || '2026-09-01',
-      amountPaid: bookingData.amountPaid || 45000,
-      paymentMethod: bookingData.paymentMethod || 'UPI',
-      paymentStatus: 'Paid',
-      bookingStatus: 'Approved',
-      documents: {
-        medicalLicense: 'medical_license_verified.pdf',
-        idProof: 'government_id.pdf',
-        degreeCertificate: 'degree_certificate.pdf'
-      },
-      createdAt: new Date().toISOString()
-    };
+  const createBooking = async (bookingData: Partial<Booking>, degreeCertificate: File): Promise<Booking> => {
+    const response = await apiService.createBooking(bookingData, degreeCertificate);
+    if (!response.success || !response.data) {
+      throw new Error(response.error || 'Failed to save booking.');
+    }
+
+    const newBooking = response.data as Booking;
 
     setBookings((prev) => [newBooking, ...prev]);
 
@@ -605,7 +589,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLogbook((prev) => [newEntry, ...prev]);
   };
 
-  const updateBookingStatus = (bookingId: string, status: Booking['bookingStatus']) => {
+  const updateBookingStatus = async (bookingId: string, status: Booking['bookingStatus'], rejectionReason?: string) => {
+    const response = await apiService.updateBookingStatus(bookingId, status, rejectionReason);
+    if (response.error) throw new Error(response.error);
     setBookings((prev) =>
       prev.map((b) => (b.id === bookingId ? { ...b, bookingStatus: status } : b))
     );

@@ -99,7 +99,12 @@ export interface Booking {
   hospitalName: string;
   city: CityName;
   duration: DurationOption;
+  slotId?: string;
   startDate: string;
+  endDate?: string;
+  courseFee?: number;
+  gstAmount?: number;
+  gatewayFee?: number;
   amountPaid: number;
   paymentMethod: 'UPI' | 'Debit Card' | 'Credit Card' | 'EMI' | 'International Payment';
   paymentStatus: 'Paid' | 'Pending' | 'Refunded';
@@ -108,6 +113,9 @@ export interface Booking {
     medicalLicense?: string;
     idProof?: string;
     degreeCertificate?: string;
+    degreeCertificateName?: string;
+    degreeCertificateSize?: string;
+    degreeCertificateType?: string;
   };
   createdAt: string;
 }

@@ -66,7 +66,10 @@ export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, 
           className="relative w-full max-w-2xl bg-[#F6F2EC] border border-[#CBE5D7] rounded-3xl shadow-2xl overflow-hidden z-50 max-h-[90vh] flex flex-col"
         >
           {/* Modal Header */}
-          <div className="relative bg-gradient-to-r from-[#2F855A] to-[#276749] text-white p-6 sm:p-7">
+          <div
+            className="relative p-6 text-white sm:p-7"
+            style={{ backgroundImage: 'linear-gradient(to right, #2F855A, #276749)' }}
+          >
             <button
               onClick={onClose}
               className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition cursor-pointer"

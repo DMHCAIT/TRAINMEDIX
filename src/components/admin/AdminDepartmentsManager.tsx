@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, Edit2, Search, AlertCircle, Upload, X } from 'lucide-react';
 import { departmentService, hospitalDepartmentService, hospitalService, slotService } from '../../lib/supabase-db';
@@ -77,6 +77,7 @@ export const AdminDepartmentsManager: React.FC = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
   const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [specializationsText, setSpecializationsText] = useState('');
   useEffect(() => {
     loadData();
@@ -129,9 +130,10 @@ export const AdminDepartmentsManager: React.FC = () => {
       }
 
       const data = await response.json();
-      setFormData({ ...formData, icon_url: data.publicUrl });
+      setFormData((current) => ({ ...current, icon_url: data.publicUrl }));
       setImageFile(null);
-      setImagePreview('');
+      setImagePreview(data.publicUrl);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err: any) {
       setError('Failed to upload image: ' + err.message);
     } finally {
@@ -372,6 +374,8 @@ Error details: ${err.message}`);
         batches
       });
       setSpecializationsText((dept.sub_departments || []).join(', '));
+      setImageFile(null);
+      setImagePreview(dept.icon_url || '');
       setEditingId(dept.id);
       setShowForm(true);
     } catch (err: any) {
@@ -638,45 +642,58 @@ Error details: ${err.message}`);
 
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Department Image</label>
-                  <div className="border-2 border-dashed border-slate-300 rounded-lg p-4">
+                  <div className="border-2 border-dashed border-slate-300 rounded-lg p-4 text-center">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="hidden"
+                    />
                     {imagePreview ? (
-                      <div className="relative inline-block">
+                      <div className="inline-flex flex-col items-center gap-3">
                         <img src={imagePreview} alt="Preview" className="max-h-40 rounded" />
                         <button
                           type="button"
-                          onClick={() => { setImagePreview(''); setImageFile(null); }}
-                          className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-200"
                         >
-                          <X size={16} />
+                          <Upload size={16} />
+                          Replace image
                         </button>
                       </div>
-                    ) : formData.icon_url ? (
-                      <div className="relative inline-block">
-                        <img src={formData.icon_url} alt="Current" className="max-h-40 rounded" />
-                      </div>
                     ) : (
-                      <label className="cursor-pointer">
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageChange}
-                          className="hidden"
-                        />
-                        <div className="flex flex-col items-center gap-2 py-6">
-                          <Upload size={24} className="text-slate-400" />
-                          <span className="text-sm text-slate-600">Click to upload or drag and drop</span>
-                        </div>
-                      </label>
-                    )}
-                    {imageFile && (
                       <button
                         type="button"
-                        onClick={handleUploadImage}
-                        disabled={uploadingImage}
-                        className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 disabled:opacity-50"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="flex w-full flex-col items-center gap-2 py-6"
                       >
-                        {uploadingImage ? 'Uploading...' : 'Upload Image'}
+                        <Upload size={24} className="text-slate-400" />
+                        <span className="text-sm text-slate-600">Click to upload an image</span>
                       </button>
+                    )}
+                    {imageFile && (
+                      <div className="mt-3 flex items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setImageFile(null);
+                            setImagePreview(formData.icon_url);
+                            if (fileInputRef.current) fileInputRef.current.value = '';
+                          }}
+                          className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
+                        >
+                          Cancel replacement
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleUploadImage}
+                          disabled={uploadingImage}
+                          className="rounded-lg bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700 disabled:opacity-50"
+                        >
+                          {uploadingImage ? 'Uploading...' : 'Upload replacement'}
+                        </button>
+                      </div>
                     )}
                   </div>
                 </div>

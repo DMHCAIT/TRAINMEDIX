@@ -18,7 +18,6 @@ export const CITIES: CityName[] = [
   'Mohali',
   'Dehradun',
   'Gurugram',
-  'Mumbai',
   'Chennai',
   'Kolkata',
   'Ahmedabad',

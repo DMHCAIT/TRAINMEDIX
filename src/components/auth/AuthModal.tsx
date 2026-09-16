@@ -518,7 +518,7 @@ export const AuthModal: React.FC = () => {
         >
 
           {/* Header Banner */}
-          <div className="relative bg-gradient-to-r from-[#2F855A] to-[#276749] text-white p-6 sm:p-7 rounded-t-3xl">
+          <div className="relative bg-linear-to-r from-[#2F855A] to-[#276749] text-white p-6 sm:p-7 rounded-t-3xl">
             <button
               onClick={handleClose}
               className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition cursor-pointer"
@@ -729,7 +729,7 @@ export const AuthModal: React.FC = () => {
                   </div>
                   <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-[#2F855A] to-[#3D7A5C] transition-all duration-500 rounded-full"
+                      className="h-full bg-linear-to-r from-[#2F855A] to-[#3D7A5C] transition-all duration-500 rounded-full"
                       style={{ width: `${(signupStep / 4) * 100}%` }}
                     />
                   </div>

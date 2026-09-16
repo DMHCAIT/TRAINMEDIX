@@ -102,7 +102,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[#2F855A] text-white flex items-center justify-center shadow-md">
-                <Plus className="w-6 h-6 stroke-[3]" />
+                <Plus className="w-6 h-6 stroke-3" />
               </div>
               <span className="font-extrabold text-2xl tracking-tight text-white font-heading">
                 Train<span className="text-[#2F855A]">Medix</span>
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
                   href="https://www.instagram.com/dmhca_official/"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-pink-600/25"
+                  className="w-9 h-9 rounded-xl bg-linear-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-pink-600/25"
                   aria-label="Instagram"
                 >
                   <InstagramIcon />

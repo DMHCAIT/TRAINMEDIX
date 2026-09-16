@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { findUserByEmailDb, recordLoginDb } from '../../../../src/lib/userStoreDb';
+import { setSessionCookie } from '../../../../src/lib/authSession';
 
 export async function POST(req: NextRequest) {
   try {
@@ -18,6 +19,20 @@ export async function POST(req: NextRequest) {
     }
 
     const updatedUser = await recordLoginDb(email);
+    if (!updatedUser) {
+      return NextResponse.json({ success: false, error: 'Unable to complete sign in.' }, { status: 500 });
+    }
+
+    await setSessionCookie({
+      id: updatedUser.id,
+      fullName: updatedUser.fullName,
+      email: updatedUser.email,
+      phone: updatedUser.phone || '',
+      role: updatedUser.role,
+      qualification: updatedUser.qualification,
+      interests: updatedUser.interests,
+      address: updatedUser.address
+    });
 
     return NextResponse.json({ success: true, user: updatedUser });
   } catch (error: any) {
