@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -62,7 +62,7 @@ export const AdminBookingsManager: React.FC = () => {
   const getStatusColor = (status: Booking['bookingStatus']) => {
     switch (status) {
       case 'Pending Approval': return 'bg-yellow-100 text-yellow-800';
-      case 'Approved': return 'bg-green-100 text-green-800';
+      case 'Approved': return 'bg-[#E6F4F6] text-[#3597A4]';
       case 'Rejected': return 'bg-red-100 text-red-800';
       case 'In Rotation': return 'bg-blue-100 text-blue-800';
       case 'Completed': return 'bg-slate-200 text-slate-800';
@@ -89,7 +89,7 @@ export const AdminBookingsManager: React.FC = () => {
             placeholder="Search by trainee, hospital, department, or booking ref..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
           />
         </div>
 
@@ -100,7 +100,7 @@ export const AdminBookingsManager: React.FC = () => {
               onClick={() => setFilterStatus(status)}
               className={`px-3 py-2 rounded-lg font-semibold text-sm transition ${
                 filterStatus === status
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-[#3597A4] text-white'
                   : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
               }`}
             >
@@ -191,7 +191,7 @@ export const AdminBookingsManager: React.FC = () => {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={() => setConfirmModal({ isOpen: true, action: 'approve', id: booking.id })}
-                              className="p-2 text-green-600 hover:bg-green-50 rounded-lg"
+                              className="p-2 text-[#3597A4] hover:bg-[#E6F4F6] rounded-lg"
                               title="Approve"
                             >
                               <Check size={18} />

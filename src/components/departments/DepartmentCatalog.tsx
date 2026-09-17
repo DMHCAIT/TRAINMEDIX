@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -137,8 +137,8 @@ export const DepartmentCatalog: React.FC = () => {
       style={{ backgroundImage: 'linear-gradient(to bottom, #F0F8F4, rgb(235 247 241 / 0.5), #f8fafc)' }}
     >
       {/* Background Ambient Mesh Gradient Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#2F855A]/8 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#3597A4]/8 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#3597A4]/8 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-10 z-10">
 
@@ -149,8 +149,8 @@ export const DepartmentCatalog: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
         >
-        <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#BBE2D1] text-[#2F855A] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
-          <Building2 className="w-4 h-4 text-[#2F855A] animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
+          <Building2 className="w-4 h-4 text-[#3597A4] animate-pulse" />
           <span>Department-Wise Clinical Rotations</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
@@ -176,7 +176,7 @@ export const DepartmentCatalog: React.FC = () => {
               placeholder="Search department (e.g. Emergency Medicine, Cardiology, Surgery...)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 placeholder-slate-400 focus:border-[#2F855A] focus:ring-2 focus:ring-[#2F855A]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
+              className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 placeholder-slate-400 focus:border-[#3597A4] focus:ring-2 focus:ring-[#3597A4]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
             />
           </div>
 
@@ -214,7 +214,7 @@ export const DepartmentCatalog: React.FC = () => {
                     setCustomCityText(e.target.value);
                     setFilterCity(e.target.value.trim() || 'Other');
                   }}
-                  className="w-full bg-white border border-[#2F855A] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-xs"
+                  className="w-full bg-white border border-[#3597A4] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-xs"
                 />
               </motion.div>
             )}
@@ -262,11 +262,11 @@ export const DepartmentCatalog: React.FC = () => {
 
                     {/* Top Accreditation & Status Badges */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                      <span className="bg-white/95 backdrop-blur-md text-[#2F855A] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-sm border border-white/40">
+                      <span className="bg-white/95 backdrop-blur-md text-[#3597A4] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-sm border border-white/40">
                         DMHCA Accredited
                       </span>
                       {dept.featured && (
-                        <span className="bg-[#2F855A] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                        <span className="bg-[#3597A4] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
                           <Zap className="w-3 h-3 fill-white" />
                           High Demand
                         </span>
@@ -304,14 +304,14 @@ export const DepartmentCatalog: React.FC = () => {
                       <div>
                         <span className="text-[10px] text-slate-500 block font-semibold uppercase">Partner Hospitals</span>
                         <span className="font-extrabold text-slate-900 flex items-center gap-1 mt-0.5 font-heading">
-                          <Building2 className="w-3.5 h-3.5 text-[#2F855A]" />
+                          <Building2 className="w-3.5 h-3.5 text-[#3597A4]" />
                           {dept.hospitalsCount} Available
                         </span>
                       </div>
                       <div>
                         <span className="text-[10px] text-slate-500 block font-semibold uppercase">Duration Options</span>
                         <span className="font-extrabold text-slate-900 flex items-center gap-1 mt-0.5 font-heading">
-                          <Clock className="w-3.5 h-3.5 text-[#2F855A]" />
+                          <Clock className="w-3.5 h-3.5 text-[#3597A4]" />
                           {dept.durationOptions?.map(opt => opt.split(' ')[0]).join('/') || '1/3/6'} Months
                         </span>
                       </div>
@@ -326,7 +326,7 @@ export const DepartmentCatalog: React.FC = () => {
                       e.stopPropagation();
                       handleOpenSubCategories(dept);
                     }}
-                    className="text-[#2F855A] hover:text-[#276749] font-extrabold text-xs flex items-center gap-1 transition cursor-pointer"
+                    className="text-[#3597A4] hover:text-[#1F6F76] font-extrabold text-xs flex items-center gap-1 transition cursor-pointer"
                   >
                     <span>View Specializations({dept.subDepartments?.length || 0})</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -340,7 +340,7 @@ export const DepartmentCatalog: React.FC = () => {
                         e.stopPropagation();
                         startBookingForDepartment(dept);
                       }}
-                      className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-[#2F855A]/25 touch-target cursor-pointer"
+                      className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-[#3597A4]/25 touch-target cursor-pointer"
                     >
                       <CalendarCheck className="w-4 h-4" />
                       <span>Book Training</span>
@@ -371,7 +371,7 @@ export const DepartmentCatalog: React.FC = () => {
           
           <div className="flex items-center gap-2">
             <span className="text-slate-600 font-medium text-sm">
-              Page <span className="font-bold text-[#2F855A]">{currentPage}</span> of <span className="font-bold text-[#2F855A]">{totalPages}</span>
+              Page <span className="font-bold text-[#3597A4]">{currentPage}</span> of <span className="font-bold text-[#3597A4]">{totalPages}</span>
             </span>
             <span className="text-slate-500 text-xs">({filteredDepartments.length} total)</span>
           </div>
@@ -379,7 +379,7 @@ export const DepartmentCatalog: React.FC = () => {
           <button
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            className="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 bg-[#2F855A] text-white hover:bg-[#276749] enabled:hover:shadow-md"
+            className="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 bg-[#3597A4] text-white hover:bg-[#1F6F76] enabled:hover:shadow-md"
           >
             Next →
           </button>

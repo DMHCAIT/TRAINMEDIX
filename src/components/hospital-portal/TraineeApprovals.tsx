@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import { 
@@ -55,9 +55,9 @@ export const TraineeApprovals: React.FC = () => {
     <div className="space-y-6 text-xs w-full max-w-full overflow-x-hidden">
       
       {/* Header & Search Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-3xl border border-[#CBE5D7] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-3xl border border-[#E6F4F6] shadow-xs">
         <div>
-          <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#2F855A] mb-1">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#3597A4] mb-1">
             <Building2 className="w-3.5 h-3.5" />
             <span>{activeHospital?.name || 'Hospital'} Approval Desk</span>
           </div>
@@ -76,7 +76,7 @@ export const TraineeApprovals: React.FC = () => {
             placeholder="Search trainee or department..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-900 focus:border-[#2F855A] focus:outline-none"
+            className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-slate-900 focus:border-[#3597A4] focus:outline-none"
           />
         </div>
       </div>
@@ -97,7 +97,7 @@ export const TraineeApprovals: React.FC = () => {
                 onClick={() => setSubTab(tab.key as any)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-2xl font-bold transition cursor-pointer shrink-0 text-xs ${
                   isActive
-                    ? 'bg-[#2F855A] text-white shadow-xs'
+                    ? 'bg-[#3597A4] text-white shadow-xs'
                     : 'bg-white/90 text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
@@ -141,14 +141,14 @@ export const TraineeApprovals: React.FC = () => {
                     Qualification: <span className="text-slate-900 font-bold">{b.medicalQualification}</span> · Reg: <span className="text-slate-900 font-mono">{b.councilRegistrationNumber}</span>
                   </p>
                   <p className="text-slate-500 text-[11px] font-medium leading-relaxed break-words">
-                    Specialization: <strong className="text-slate-900">{b.subDepartment || b.departmentName}</strong> <span className="bg-[#E2F0EA] text-[#2F855A] font-bold text-[10px] px-2 py-0.5 rounded border border-[#C5DED0] ml-1">{b.departmentName}</span> · Duration: <strong>{b.duration}</strong> (Start Date: {b.startDate})
+                    Specialization: <strong className="text-slate-900">{b.subDepartment || b.departmentName}</strong> <span className="bg-[#E6F4F6] text-[#3597A4] font-bold text-[10px] px-2 py-0.5 rounded border border-[#E6F4F6] ml-1">{b.departmentName}</span> · Duration: <strong>{b.duration}</strong> (Start Date: {b.startDate})
                   </p>
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0 self-start md:self-center">
                   <button
                     onClick={() => updateBookingStatus(b.id, 'Approved')}
-                    className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md cursor-pointer"
+                    className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md cursor-pointer"
                   >
                     <UserCheck className="w-4 h-4" />
                     Approve Request
@@ -180,11 +180,11 @@ export const TraineeApprovals: React.FC = () => {
               <motion.div
                 key={b.id}
                 whileHover={{ y: -2 }}
-                className="glass-card rounded-3xl p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border border-slate-200/80 hover:border-[#2F855A] transition shadow-xs w-full max-w-full"
+                className="glass-card rounded-3xl p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border border-slate-200/80 hover:border-[#3597A4] transition shadow-xs w-full max-w-full"
               >
                 <div className="space-y-2 flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="bg-[#E2F0EA] text-[#2F855A] border border-[#C5DED0] text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase flex items-center gap-1">
+                    <span className="bg-[#E6F4F6] text-[#3597A4] border border-[#E6F4F6] text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" /> {b.bookingStatus}
                     </span>
                     <span className="text-[10px] font-mono text-slate-500 font-bold">REF: {b.bookingRef}</span>
@@ -198,7 +198,7 @@ export const TraineeApprovals: React.FC = () => {
 
                 <button
                   onClick={() => updateBookingStatus(b.id, 'Completed')}
-                  className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md cursor-pointer shrink-0 self-start md:self-center"
+                  className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md cursor-pointer shrink-0 self-start md:self-center"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   Issue Rotation Signoff

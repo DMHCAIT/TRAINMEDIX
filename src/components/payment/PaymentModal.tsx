@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import {
@@ -89,7 +89,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
           email: bookingData.traineeEmail,
           contact: bookingData.traineePhone
         },
-        theme: { color: '#2F855A' },
+        theme: { color: '#3597A4' },
         handler: async (response: any) => {
           try {
             const verifyRes = await fetch('/api/payments/verify', {
@@ -184,7 +184,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               </div>
               <div className="border-t border-blue-200 pt-2 flex items-center justify-between font-bold text-sm text-slate-900">
                 <span>Total Amount Payable:</span>
-                <span className="text-[#2F855A] text-lg font-extrabold">₹{totalAmount.toLocaleString('en-IN')}</span>
+                <span className="text-[#3597A4] text-lg font-extrabold">₹{totalAmount.toLocaleString('en-IN')}</span>
               </div>
             </div>
 
@@ -203,7 +203,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               type="button"
               onClick={handlePayWithRazorpay}
               disabled={isProcessing}
-              className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-sm py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/20 touch-target cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-sm py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/20 touch-target cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <Lock className="w-4 h-4" />
               <span>{isProcessing ? 'Opening Secure Checkout...' : `Pay ₹${totalAmount.toLocaleString('en-IN')} with Razorpay`}</span>

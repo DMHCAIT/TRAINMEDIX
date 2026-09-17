@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -73,7 +73,7 @@ export default function DepartmentSubCategoryDetailPage() {
         <p className="text-xs text-slate-500 font-medium">The requested clinical specialization program could not be located.</p>
         <button
           onClick={() => router.push('/departments')}
-          className="bg-[#2F855A] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
+          className="bg-[#3597A4] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
         >
           Return to All Clinical Departments
         </button>
@@ -118,7 +118,7 @@ export default function DepartmentSubCategoryDetailPage() {
       <div>
         <button
           onClick={() => router.push('/departments')}
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#2F855A] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#CBE5D7] shadow-2xs"
+          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#3597A4] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#E6F4F6] shadow-2xs"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Clinical Departments</span>
@@ -129,7 +129,7 @@ export default function DepartmentSubCategoryDetailPage() {
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative bg-gradient-to-br from-[#2F855A] via-[#276749] to-[#1E4D36] text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden"
+        className="relative bg-gradient-to-br from-[#3597A4] via-[#1F6F76] to-[#1F6F76] text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full filter blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full filter blur-2xl pointer-events-none" />
@@ -148,7 +148,7 @@ export default function DepartmentSubCategoryDetailPage() {
               {subCategory.name} Clinical Rotation
             </h1>
 
-            <p className="text-sm sm:text-base text-emerald-100 font-medium leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-[#E6F4F6] font-medium leading-relaxed max-w-3xl">
               Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
             </p>
 
@@ -170,7 +170,7 @@ export default function DepartmentSubCategoryDetailPage() {
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block font-heading">Program Fee</span>
               <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-3xl font-black text-[#2F855A] font-heading">
+                <span className="text-3xl font-black text-[#3597A4] font-heading">
                   ₹{parentDept.baseFeePerMonth.toLocaleString('en-IN')}
                 </span>
                 <span className="text-xs font-bold text-slate-500">/ Month</span>
@@ -182,7 +182,7 @@ export default function DepartmentSubCategoryDetailPage() {
 
             <button
               onClick={handleStartBooking}
-              className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer"
+              className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4" />
               <span>Book {subCategory.name} Rotation</span>
@@ -196,17 +196,17 @@ export default function DepartmentSubCategoryDetailPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#CBE5D7] shadow-xs space-y-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6F4F6] shadow-xs space-y-4">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#2F855A]" />
+              <Sparkles className="w-5 h-5 text-[#3597A4]" />
               <h2 className="text-lg font-bold text-slate-900 font-heading">
                 Core Speciality Competencies Covered
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               {parentDept.clinicalHighlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#EBF7F1] border border-[#CBE5D7]">
-                  <CheckCircle2 className="w-4 h-4 text-[#2F855A] shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#E6F4F6] border border-[#E6F4F6]">
+                  <CheckCircle2 className="w-4 h-4 text-[#3597A4] shrink-0 mt-0.5" />
                   <span className="text-xs font-extrabold text-slate-800 font-medium">{highlight}</span>
                 </div>
               ))}
@@ -215,9 +215,9 @@ export default function DepartmentSubCategoryDetailPage() {
         </div>
 
         {/* Certification Badge Box */}
-        <div className="bg-[#EBF7F1] rounded-3xl p-6 border border-[#CBE5D7] space-y-4 self-start shadow-xs">
+        <div className="bg-[#E6F4F6] rounded-3xl p-6 border border-[#E6F4F6] space-y-4 self-start shadow-xs">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#2F855A] text-white flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-[#3597A4] text-white flex items-center justify-center shrink-0">
               <Award className="w-5 h-5" />
             </div>
             <div>
@@ -238,7 +238,7 @@ export default function DepartmentSubCategoryDetailPage() {
           <h2 className="text-xl font-extrabold text-slate-900 font-heading">
             Hospitals Offering {subCategory.name} Rotation
           </h2>
-          <span className="text-xs font-bold text-[#2F855A]">{affiliatedHospitals.length} Centers Available</span>
+          <span className="text-xs font-bold text-[#3597A4]">{affiliatedHospitals.length} Centers Available</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -246,7 +246,7 @@ export default function DepartmentSubCategoryDetailPage() {
             <motion.div
               key={hosp.id}
               whileHover={{ y: -4, scale: 1.01 }}
-              className="bg-white rounded-3xl overflow-hidden border border-[#CBE5D7] shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between"
+              className="bg-white rounded-3xl overflow-hidden border border-[#E6F4F6] shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between"
               onClick={() => router.push(`/hospitals/${toSlug(hosp.name)}`)}
             >
               <div>
@@ -259,15 +259,15 @@ export default function DepartmentSubCategoryDetailPage() {
                 </div>
                 <div className="p-5 space-y-3">
                   <div>
-                    <h3 className="text-base font-extrabold text-slate-900 hover:text-[#2F855A] transition font-heading">{hosp.name}</h3>
+                    <h3 className="text-base font-extrabold text-slate-900 hover:text-[#3597A4] transition font-heading">{hosp.name}</h3>
                     <p className="text-xs text-slate-600 flex items-center gap-1 mt-1 font-medium">
-                      <MapPin className="w-3.5 h-3.5 text-[#2F855A] shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 text-[#3597A4] shrink-0" />
                       {hosp.city} · {hosp.address}
                     </p>
                   </div>
-                  <div className="bg-[#EBF7F1] p-3 rounded-xl border border-[#CBE5D7] flex items-center justify-between">
+                  <div className="bg-[#E6F4F6] p-3 rounded-xl border border-[#E6F4F6] flex items-center justify-between">
                     <span className="text-[10px] text-slate-500 font-bold uppercase">Open Slots</span>
-                    <span className="font-extrabold text-[#2F855A] font-heading text-xs">{hosp.availableSlotsCount} Open Slots</span>
+                    <span className="font-extrabold text-[#3597A4] font-heading text-xs">{hosp.availableSlotsCount} Open Slots</span>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function DepartmentSubCategoryDetailPage() {
                     e.stopPropagation();
                     router.push('/departments');
                   }}
-                  className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs py-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+                  className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs py-3 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
                 >
                   <CalendarCheck className="w-3.5 h-3.5" />
                   <span>Book Rotation</span>

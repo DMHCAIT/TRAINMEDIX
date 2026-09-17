@@ -123,6 +123,7 @@ export const hospitalService = {
     available_slots?: number;
     image_url?: string;
     website?: string;
+    rating?: number;
   }) {
     // Determine primary city
     const primaryCity = hospitalData.cities && hospitalData.cities.length > 0 ? hospitalData.cities[0] : 'Unknown';
@@ -136,6 +137,7 @@ export const hospitalService = {
       address: `${primaryCity}, India`,  // Default address based on primary city
       city: primaryCity,
       state: primaryCity,  // Use city as state for now (admin panel doesn't collect state separately)
+      rating: hospitalData.rating || 4.5,  // Default rating if not provided
     };
 
     // Try to add cities array - it will be ignored if column doesn't exist yet
@@ -164,10 +166,10 @@ export const hospitalService = {
   // Get all hospitals
   async getAll() {
     try {
-      // Try to fetch with all columns including cities
+      // Try to fetch with all columns including cities and rating
       const { data, error } = await supabase
         .from('hospitals')
-        .select('id, user_id, name, email, phone, cities, is_active, created_at, updated_at, available_slots, image_url, website')
+        .select('id, user_id, name, email, phone, cities, is_active, created_at, updated_at, available_slots, image_url, website, rating')
         .eq('is_active', true);
       
       // If error about missing column, fall back to basic columns
@@ -180,7 +182,7 @@ export const hospitalService = {
         console.log('⚠️  Cities column not available yet, using fallback...');
         const { data: fallbackData, error: fallbackError } = await supabase
           .from('hospitals')
-          .select('id, user_id, name, email, phone, city, state, address, is_active, created_at, updated_at, available_slots, image_url, website')
+          .select('id, user_id, name, email, phone, city, state, address, is_active, created_at, updated_at, available_slots, image_url, website, rating')
           .eq('is_active', true);
         
         if (fallbackError) throw fallbackError;
@@ -209,10 +211,10 @@ export const hospitalService = {
   // Get hospital by ID
   async getById(id: string) {
     try {
-      // Try to fetch with all columns including cities
+      // Try to fetch with all columns including cities and rating
       const { data, error } = await supabase
         .from('hospitals')
-        .select('id, user_id, name, email, phone, cities, is_active, created_at, updated_at, available_slots, image_url, website')
+        .select('id, user_id, name, email, phone, cities, is_active, created_at, updated_at, available_slots, image_url, website, rating')
         .eq('id', id)
         .single();
       
@@ -226,7 +228,7 @@ export const hospitalService = {
         console.log('⚠️  Cities column not available yet, using fallback...');
         const { data: fallbackData, error: fallbackError } = await supabase
           .from('hospitals')
-          .select('id, user_id, name, email, phone, city, state, address, is_active, created_at, updated_at, available_slots, image_url, website')
+          .select('id, user_id, name, email, phone, city, state, address, is_active, created_at, updated_at, available_slots, image_url, website, rating')
           .eq('id', id)
           .single();
         

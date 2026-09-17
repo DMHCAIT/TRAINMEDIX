@@ -53,7 +53,7 @@ export interface Hospital {
   displayName?: string;
   originalHospitalId?: string;
   listKey?: string;
-  rating: number;
+  rating?: number; // Made optional as it may not exist in older databases
   departments: string[]; // department IDs
   availableSlotsCount: number;
   image: string;

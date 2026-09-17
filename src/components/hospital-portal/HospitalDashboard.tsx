@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -613,9 +613,9 @@ export const HospitalDashboard: React.FC = () => {
   if (!isLoggedIn || !isHospitalPartner) {
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
-        <div className="bg-[#EBF7F1] border border-[#CBE5D7] p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
+        <div className="bg-[#E6F4F6] border border-[#E6F4F6] p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
           <div className="flex items-center gap-3">
-            <Building2 className="w-5 h-5 text-[#2F855A] shrink-0" />
+            <Building2 className="w-5 h-5 text-[#3597A4] shrink-0" />
             <div>
               <h4 className="text-xs font-extrabold text-slate-900">Hospital Partner Dedicated Login Required</h4>
               <p className="text-[11px] text-slate-600">You are currently logged in as a Trainee Doctor. Please sign in with your Hospital Partner Account to access clinical management.</p>
@@ -638,7 +638,7 @@ export const HospitalDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 w-full overflow-x-hidden">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 w-full overflow-x-hidden mt-6 sm:mt-8 lg:mt-10">
 
       {/* Approval Pending Modal - Hospital Partner Not Yet Approved */}
       {!isHospitalApproved && (
@@ -684,12 +684,12 @@ export const HospitalDashboard: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="glass-panel rounded-3xl p-5 sm:p-8 shadow-xl border border-[#CBE5D7] flex flex-col lg:flex-row lg:items-center justify-between gap-5 w-full max-w-full"
+            className="glass-panel rounded-3xl p-5 sm:p-8 shadow-xl border border-[#E6F4F6] flex flex-col lg:flex-row lg:items-center justify-between gap-5 w-full max-w-full"
           >
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider shadow-2xs">
-                  <CheckCircle className="w-3.5 h-3.5 text-green-600" />
+                <span className="inline-flex items-center gap-1.5 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-[11px] px-3 py-1 rounded-full uppercase tracking-wider shadow-2xs">
+                  <CheckCircle className="w-3.5 h-3.5 text-[#3597A4]" />
                   <span>Verified Hospital Account</span>
                 </span>
               </div>
@@ -697,7 +697,7 @@ export const HospitalDashboard: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading leading-tight flex items-center gap-2">
                   {hospitalDisplayName}
-                  <CheckCircle className="w-7 h-7 text-green-600 flex-shrink-0" />
+                  <CheckCircle className="w-7 h-7 text-[#3597A4] flex-shrink-0" />
                 </h1>
               </div>
 
@@ -707,9 +707,9 @@ export const HospitalDashboard: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3 shrink-0 self-start lg:self-center">
-              <div className="bg-[#E2F0EA] border border-[#C5DED0] px-4 py-2.5 rounded-2xl text-center shadow-2xs">
+              <div className="bg-[#E6F4F6] border border-[#E6F4F6] px-4 py-2.5 rounded-2xl text-center shadow-2xs">
                 <span className="text-[10px] text-slate-500 font-semibold block uppercase">Pending Trainee Requests</span>
-                <span className="text-base sm:text-lg font-black text-[#2F855A] font-heading">{pendingBookings} Applications</span>
+                <span className="text-base sm:text-lg font-black text-[#3597A4] font-heading">{pendingBookings} Applications</span>
               </div>
             </div>
           </motion.div>
@@ -740,7 +740,7 @@ export const HospitalDashboard: React.FC = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute inset-0 bg-[#2F855A] rounded-2xl"
+                        className="absolute inset-0 bg-[#3597A4] rounded-2xl"
                       />
                     )}
                     <span className="relative z-10 flex items-center gap-1.5">
@@ -779,9 +779,9 @@ export const HospitalDashboard: React.FC = () => {
                     </div>
                   </div>
                   {/* Open Slots - Count from Slot Management */}
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-2xl border border-green-200">
-                    <div className="text-sm text-green-600 font-semibold">Open Slots</div>
-                    <div className="text-3xl font-bold text-green-900 mt-2">
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-2xl border border-[#E6F4F6]">
+                    <div className="text-sm text-[#3597A4] font-semibold">Open Slots</div>
+                    <div className="text-3xl font-bold text-[#1F6F76] mt-2">
                       {slots.filter((s: any) => s.status === 'Open' || s.status === 'Filling Fast').length}
                     </div>
                   </div>
@@ -809,7 +809,7 @@ export const HospitalDashboard: React.FC = () => {
                   <h2 className="text-xl font-bold text-slate-900">Department Management</h2>
                   <button 
                     onClick={() => setShowAddDepartmentModal(true)}
-                    className="bg-[#2F855A] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-[#276749]">
+                    className="bg-[#3597A4] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-[#1F6F76]">
                     + Add Department
                   </button>
                 </div>
@@ -817,7 +817,7 @@ export const HospitalDashboard: React.FC = () => {
                 {loadingDepts ? (
                   <div className="text-center py-12 bg-slate-50 rounded-2xl">
                     <div className="inline-block animate-spin">
-                      <Clock className="w-8 h-8 text-[#2F855A]" />
+                      <Clock className="w-8 h-8 text-[#3597A4]" />
                     </div>
                     <p className="text-slate-500 font-medium mt-3">Loading departments...</p>
                   </div>
@@ -849,13 +849,13 @@ export const HospitalDashboard: React.FC = () => {
                       <motion.div
                         key={dept.id}
                         whileHover={{ y: -4, boxShadow: '0 12px 24px rgba(47, 133, 90, 0.15)' }}
-                        className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-6 border border-[#CBE5D7] shadow-md hover:shadow-lg transition-all duration-300 space-y-4 flex flex-col"
+                        className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-6 border border-[#E6F4F6] shadow-md hover:shadow-lg transition-all duration-300 space-y-4 flex flex-col"
                       >
                         {/* Header with action buttons */}
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="bg-[#2F855A] text-white font-mono font-bold text-[11px] px-3 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+                              <span className="bg-[#3597A4] text-white font-mono font-bold text-[11px] px-3 py-1 rounded-lg uppercase tracking-wider shadow-sm">
                                 {dept.department_code}
                               </span>
                             </div>
@@ -874,7 +874,7 @@ export const HospitalDashboard: React.FC = () => {
                                 });
                                 setShowEditDepartmentModal(true);
                               }}
-                              className="p-2 text-slate-500 hover:text-[#2F855A] hover:bg-[#EBF7F1] rounded-lg transition"
+                              className="p-2 text-slate-500 hover:text-[#3597A4] hover:bg-[#E6F4F6] rounded-lg transition"
                               title="Edit department"
                             >
                               <Edit2 className="w-4 h-4" />
@@ -888,10 +888,10 @@ export const HospitalDashboard: React.FC = () => {
                         )}
 
                         {/* Base Price - Enhanced styling */}
-                        <div className="bg-gradient-to-r from-[#EBF7F1] to-slate-50 border border-[#CBE5D7] px-4 py-2.5 rounded-xl">
+                        <div className="bg-gradient-to-r from-[#E6F4F6] to-slate-50 border border-[#E6F4F6] px-4 py-2.5 rounded-xl">
                           <div className="flex items-baseline justify-between">
                             <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Base Fee</span>
-                            <span className="text-lg font-extrabold text-[#2F855A]">₹{dept.base_fee_per_month?.toLocaleString('en-IN') || '0'}</span>
+                            <span className="text-lg font-extrabold text-[#3597A4]">₹{dept.base_fee_per_month?.toLocaleString('en-IN') || '0'}</span>
                           </div>
                         </div>
 
@@ -903,7 +903,7 @@ export const HospitalDashboard: React.FC = () => {
                             </span>
                             <div className="flex flex-wrap gap-2">
                               {dept.available_cities.map((city: string) => (
-                                <span key={city} className="bg-white border border-[#CBE5D7] text-[#2F855A] text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs hover:bg-[#EBF7F1] transition">
+                                <span key={city} className="bg-white border border-[#E6F4F6] text-[#3597A4] text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs hover:bg-[#E6F4F6] transition">
                                   <MapPin className="w-3 h-3" />
                                   {city}
                                 </span>
@@ -924,7 +924,7 @@ export const HospitalDashboard: React.FC = () => {
                   <h2 className="text-xl font-bold text-slate-900">Slot Management</h2>
                   <button 
                     onClick={() => setShowAddSlotModal(true)}
-                    className="bg-[#2F855A] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-[#276749]">
+                    className="bg-[#3597A4] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-[#1F6F76]">
                     + Add Slot
                   </button>
                 </div>
@@ -932,7 +932,7 @@ export const HospitalDashboard: React.FC = () => {
                 {loadingSlots ? (
                   <div className="text-center py-12 bg-slate-50 rounded-2xl">
                     <div className="inline-block animate-spin">
-                      <Clock className="w-8 h-8 text-[#2F855A]" />
+                      <Clock className="w-8 h-8 text-[#3597A4]" />
                     </div>
                     <p className="text-slate-500 font-medium mt-3">Loading slots...</p>
                   </div>
@@ -948,13 +948,13 @@ export const HospitalDashboard: React.FC = () => {
                       <motion.div
                         key={slot.id}
                         whileHover={{ y: -2 }}
-                        className="bg-white rounded-3xl p-5 border border-[#CBE5D7] shadow-xs hover:border-[#2F855A] transition space-y-3"
+                        className="bg-white rounded-3xl p-5 border border-[#3597A4] shadow-xs hover:border-[#3597A4] transition space-y-3"
                       >
                         {/* Header with action buttons */}
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="bg-[#2F855A] text-white font-mono font-bold text-[11px] px-3 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+                              <span className="bg-[#3597A4] text-white font-mono font-bold text-[11px] px-3 py-1 rounded-lg uppercase tracking-wider shadow-sm">
                                 {slot.department_name || 'N/A'}
                               </span>
                             </div>
@@ -976,7 +976,7 @@ export const HospitalDashboard: React.FC = () => {
                                 });
                                 setShowEditSlotModal(true);
                               }}
-                              className="p-2 text-slate-500 hover:text-[#2F855A] hover:bg-[#EBF7F1] rounded-lg transition"
+                              className="p-2 text-slate-500 hover:text-[#3597A4] hover:bg-[#E6F4F6] rounded-lg transition"
                               title="Edit slot"
                             >
                               <Edit2 className="w-4 h-4" />
@@ -986,15 +986,15 @@ export const HospitalDashboard: React.FC = () => {
 
                         {/* Seats & Status */}
                         <div className="grid grid-cols-2 gap-3">
-                          <div className="bg-[#EBF7F1] border border-[#CBE5D7] rounded-xl p-3">
+                          <div className="bg-[#E6F4F6] border border-[#E6F4F6] rounded-xl p-3">
                             <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider mb-1">Seats</div>
-                            <div className="text-xl font-extrabold text-[#2F855A]">{slot.total_seats}</div>
+                            <div className="text-xl font-extrabold text-[#3597A4]">{slot.total_seats}</div>
                             <div className="text-[10px] text-slate-500 mt-1">{slot.available_seats} available</div>
                           </div>
-                          <div className="bg-[#EBF7F1] border border-[#CBE5D7] rounded-xl p-3 flex flex-col justify-center items-center">
+                          <div className="bg-[#E6F4F6] border border-[#E6F4F6] rounded-xl p-3 flex flex-col justify-center items-center">
                             <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider mb-1">Status</div>
                             <span className={`text-xs font-bold px-2 py-1 rounded-full ${
-                              slot.status === 'Open' ? 'bg-green-100 text-green-700' :
+                              slot.status === 'Open' ? 'bg-[#E6F4F6] text-green-700' :
                               slot.status === 'Filling Fast' ? 'bg-yellow-100 text-yellow-700' :
                               slot.status === 'Closed' ? 'bg-red-100 text-red-700' :
                               'bg-slate-100 text-slate-700'
@@ -1005,10 +1005,10 @@ export const HospitalDashboard: React.FC = () => {
                         </div>
 
                         {/* Fee - Enhanced styling */}
-                        <div className="bg-gradient-to-r from-[#EBF7F1] to-slate-50 border border-[#CBE5D7] px-4 py-3 rounded-xl mt-auto">
+                        <div className="bg-gradient-to-r from-[#E6F4F6] to-slate-50 border border-[#E6F4F6] px-4 py-3 rounded-xl mt-auto">
                           <div className="flex items-baseline justify-between">
                             <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">Monthly Fee</span>
-                            <span className="text-lg font-extrabold text-[#2F855A]">₹{slot.fee_per_month?.toLocaleString('en-IN') || '0'}</span>
+                            <span className="text-lg font-extrabold text-[#3597A4]">₹{slot.fee_per_month?.toLocaleString('en-IN') || '0'}</span>
                           </div>
                         </div>
                       </motion.div>
@@ -1039,7 +1039,7 @@ export const HospitalDashboard: React.FC = () => {
                             <h3 className="font-bold text-slate-900">{trainee.trainee_name}</h3>
                             <p className="text-sm text-slate-500">{trainee.trainee_email}</p>
                           </div>
-                          <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${trainee.status === 'Approved' ? 'bg-green-100 text-green-700' : trainee.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>{trainee.status}</span>
+                          <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${trainee.status === 'Approved' ? 'bg-[#E6F4F6] text-green-700' : trainee.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>{trainee.status}</span>
                         </div>
                         <dl className="grid grid-cols-2 gap-3 text-sm">
                           <div><dt className="text-xs text-slate-500">Qualification</dt><dd className="font-semibold">{trainee.qualification}</dd></div>
@@ -1049,7 +1049,7 @@ export const HospitalDashboard: React.FC = () => {
                           <div className="col-span-2"><dt className="text-xs text-slate-500">Training Period</dt><dd>{new Date(trainee.start_date).toLocaleDateString()} - {new Date(trainee.end_date).toLocaleDateString()}</dd></div>
                         </dl>
                         {trainee.certificate_url ? (
-                          <a href={trainee.certificate_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-[#2F855A] hover:underline"><FileText size={16} /> View qualification certificate</a>
+                          <a href={trainee.certificate_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-[#3597A4] hover:underline"><FileText size={16} /> View qualification certificate</a>
                         ) : (
                           <span className="inline-flex items-center gap-2 text-sm text-slate-400"><FileText size={16} /> Certificate not uploaded</span>
                         )}
@@ -1063,11 +1063,11 @@ export const HospitalDashboard: React.FC = () => {
                                 value={traineeDecisionNotes[trainee.id] || ''}
                                 onChange={event => setTraineeDecisionNotes(current => ({ ...current, [trainee.id]: event.target.value }))}
                                 placeholder="Add approval or rejection notes"
-                                className="mt-1.5 w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 focus:border-[#2F855A] focus:outline-none"
+                                className="mt-1.5 w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 focus:border-[#3597A4] focus:outline-none"
                               />
                             </label>
                             <div className="flex gap-3">
-                              <button disabled={decidingTraineeId === trainee.id} onClick={() => handleTraineeDecision(trainee.id, 'Approved')} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#2F855A] text-white rounded-lg font-semibold disabled:opacity-50"><UserCheck size={16} /> Approve</button>
+                              <button disabled={decidingTraineeId === trainee.id} onClick={() => handleTraineeDecision(trainee.id, 'Approved')} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#3597A4] text-white rounded-lg font-semibold disabled:opacity-50"><UserCheck size={16} /> Approve</button>
                               <button disabled={decidingTraineeId === trainee.id} onClick={() => handleTraineeDecision(trainee.id, 'Rejected')} className="flex-1 px-4 py-2 bg-red-50 text-red-700 border border-red-200 rounded-lg font-semibold disabled:opacity-50">Reject</button>
                             </div>
                           </div>
@@ -1088,11 +1088,11 @@ export const HospitalDashboard: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="bg-white border border-[#CBE5D7] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
+            className="bg-white border border-[#E6F4F6] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
           >
             <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
               <div className="flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-[#2F855A]" />
+                <Building2 className="w-5 h-5 text-[#3597A4]" />
                 <h3 className="text-lg font-extrabold text-slate-900">Add New Department</h3>
               </div>
               <button
@@ -1104,7 +1104,7 @@ export const HospitalDashboard: React.FC = () => {
             </div>
 
             {error && <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg text-sm">{error}</div>}
-            {success && <div className="bg-green-100 border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
+            {success && <div className="bg-[#E6F4F6] border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
 
             <form onSubmit={handleAddDepartment} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -1116,7 +1116,7 @@ export const HospitalDashboard: React.FC = () => {
                     placeholder="e.g. Neurology, Nephrology, Oncology"
                     value={deptFormData.name}
                     onChange={(e) => setDeptFormData({ ...deptFormData, name: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
                 <div>
@@ -1127,7 +1127,7 @@ export const HospitalDashboard: React.FC = () => {
                     placeholder="e.g. NEURO"
                     value={deptFormData.code}
                     onChange={(e) => setDeptFormData({ ...deptFormData, code: e.target.value.toUpperCase() })}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
               </div>
@@ -1140,7 +1140,7 @@ export const HospitalDashboard: React.FC = () => {
                   placeholder="Clinical overview of rotations, ward rounds, OPD and ICU management..."
                   value={deptFormData.description}
                   onChange={(e) => setDeptFormData({ ...deptFormData, description: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                 />
               </div>
 
@@ -1153,7 +1153,7 @@ export const HospitalDashboard: React.FC = () => {
                   step={1000}
                   value={deptFormData.basePrice}
                   onChange={(e) => setDeptFormData({ ...deptFormData, basePrice: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                 />
               </div>
 
@@ -1175,8 +1175,8 @@ export const HospitalDashboard: React.FC = () => {
                         }}
                         className={`px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1 cursor-pointer ${
                           isSelected 
-                            ? 'bg-[#2F855A] text-white shadow-2xs' 
-                            : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-slate-300'
+                            ? 'bg-[#3597A4] text-white shadow-2xs' 
+                            : 'bg-slate-100 text-slate-700 border border-slate-300'
                         }`}
                       >
                         {isSelected ? <CheckCircle className="w-3 h-3" /> : <MapPin className="w-3 h-3" />}
@@ -1198,7 +1198,7 @@ export const HospitalDashboard: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2.5 bg-[#2F855A] hover:bg-[#276749] text-white font-bold rounded-xl shadow-md cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2.5 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold rounded-xl shadow-md cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? 'Creating...' : 'Create Department'}
                 </button>
@@ -1228,7 +1228,7 @@ export const HospitalDashboard: React.FC = () => {
             </div>
 
             {error && <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg text-sm">{error}</div>}
-            {success && <div className="bg-green-100 border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
+            {success && <div className="bg-[#E6F4F6] border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
 
             <form onSubmit={handleAddSlot} className="space-y-2 max-h-96 overflow-y-auto">
               <div>
@@ -1239,7 +1239,7 @@ export const HospitalDashboard: React.FC = () => {
                     console.log('[slot form] Department selected:', e.target.value);
                     setSlotFormData({ ...slotFormData, departmentId: e.target.value });
                   }}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                 >
                   <option value="">Choose a department...</option>
                   {departments && departments.length > 0 ? (
@@ -1261,7 +1261,7 @@ export const HospitalDashboard: React.FC = () => {
                     type="date"
                     value={slotFormData.startDate}
                     onChange={(e) => setSlotFormData({ ...slotFormData, startDate: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -1270,7 +1270,7 @@ export const HospitalDashboard: React.FC = () => {
                     type="date"
                     value={slotFormData.endDate}
                     onChange={(e) => setSlotFormData({ ...slotFormData, endDate: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1284,7 +1284,7 @@ export const HospitalDashboard: React.FC = () => {
                     onChange={(e) => setSlotFormData({ ...slotFormData, capacity: e.target.value })}
                     placeholder="e.g., 5"
                     min="1"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -1295,7 +1295,7 @@ export const HospitalDashboard: React.FC = () => {
                     onChange={(e) => setSlotFormData({ ...slotFormData, feePerMonth: e.target.value })}
                     placeholder="e.g., 45000"
                     min="0"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1305,7 +1305,7 @@ export const HospitalDashboard: React.FC = () => {
                 <select
                   value={slotFormData.initialStatus}
                   onChange={(e) => setSlotFormData({ ...slotFormData, initialStatus: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                 >
                   <option value="Open">Open</option>
                   <option value="Closed">Closed</option>
@@ -1323,7 +1323,7 @@ export const HospitalDashboard: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 px-3 py-1.5 text-sm bg-[#2F855A] text-white rounded-lg font-semibold hover:bg-[#276749] disabled:opacity-50"
+                  className="flex-1 px-3 py-1.5 text-sm bg-[#3597A4] text-white rounded-lg font-semibold hover:bg-[#1F6F76] disabled:opacity-50"
                 >
                   {isSubmitting ? 'Adding...' : 'Add Slot'}
                 </button>
@@ -1339,11 +1339,11 @@ export const HospitalDashboard: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="bg-white border border-[#CBE5D7] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
+            className="bg-white border border-[#E6F4F6] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
           >
             <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
               <div className="flex items-center gap-2">
-                <Edit2 className="w-5 h-5 text-[#2F855A]" />
+                <Edit2 className="w-5 h-5 text-[#3597A4]" />
                 <h3 className="text-lg font-extrabold text-slate-900">Edit Department</h3>
               </div>
               <button
@@ -1355,7 +1355,7 @@ export const HospitalDashboard: React.FC = () => {
             </div>
 
             {error && <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-2 rounded-lg text-sm">{error}</div>}
-            {success && <div className="bg-green-100 border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
+            {success && <div className="bg-[#E6F4F6] border border-green-300 text-green-700 px-4 py-2 rounded-lg text-sm">{success}</div>}
 
             <form onSubmit={handleEditDepartment} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -1366,7 +1366,7 @@ export const HospitalDashboard: React.FC = () => {
                     placeholder="e.g., Cardiology"
                     value={deptFormData.name}
                     onChange={(e) => setDeptFormData({ ...deptFormData, name: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
                 <div>
@@ -1376,7 +1376,7 @@ export const HospitalDashboard: React.FC = () => {
                     placeholder="e.g. NEURO"
                     value={deptFormData.code}
                     onChange={(e) => setDeptFormData({ ...deptFormData, code: e.target.value.toUpperCase() })}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
               </div>
@@ -1388,7 +1388,7 @@ export const HospitalDashboard: React.FC = () => {
                   placeholder="Clinical overview of rotations..."
                   value={deptFormData.description}
                   onChange={(e) => setDeptFormData({ ...deptFormData, description: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                 />
               </div>
 
@@ -1400,7 +1400,7 @@ export const HospitalDashboard: React.FC = () => {
                   step={1000}
                   value={deptFormData.basePrice}
                   onChange={(e) => setDeptFormData({ ...deptFormData, basePrice: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                 />
               </div>
 
@@ -1415,7 +1415,7 @@ export const HospitalDashboard: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2.5 bg-[#2F855A] hover:bg-[#276749] text-white font-bold rounded-xl shadow-md cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2.5 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold rounded-xl shadow-md cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? 'Updating...' : 'Update Department'}
                 </button>
@@ -1445,7 +1445,7 @@ export const HospitalDashboard: React.FC = () => {
             </div>
 
             {error && <div className="bg-red-100 border border-red-300 text-red-700 px-3 py-2 rounded-lg text-sm">{error}</div>}
-            {success && <div className="bg-green-100 border border-green-300 text-green-700 px-3 py-2 rounded-lg text-sm">{success}</div>}
+            {success && <div className="bg-[#E6F4F6] border border-green-300 text-green-700 px-3 py-2 rounded-lg text-sm">{success}</div>}
 
             <form onSubmit={handleEditSlot} className="space-y-2 text-xs">
               <div>
@@ -1453,7 +1453,7 @@ export const HospitalDashboard: React.FC = () => {
                 <select
                   value={slotFormData.departmentId}
                   onChange={(e) => setSlotFormData({ ...slotFormData, departmentId: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                 >
                   <option value="">Select a department</option>
                   {departments.map((dept: any) => (
@@ -1471,7 +1471,7 @@ export const HospitalDashboard: React.FC = () => {
                     type="date"
                     value={slotFormData.startDate}
                     onChange={(e) => setSlotFormData({ ...slotFormData, startDate: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -1480,7 +1480,7 @@ export const HospitalDashboard: React.FC = () => {
                     type="date"
                     value={slotFormData.endDate}
                     onChange={(e) => setSlotFormData({ ...slotFormData, endDate: e.target.value })}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1494,7 +1494,7 @@ export const HospitalDashboard: React.FC = () => {
                     onChange={(e) => setSlotFormData({ ...slotFormData, capacity: e.target.value })}
                     placeholder="e.g., 5"
                     min="1"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -1505,7 +1505,7 @@ export const HospitalDashboard: React.FC = () => {
                     onChange={(e) => setSlotFormData({ ...slotFormData, feePerMonth: e.target.value })}
                     placeholder="e.g., 45000"
                     min="0"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -1515,7 +1515,7 @@ export const HospitalDashboard: React.FC = () => {
                 <select
                   value={slotFormData.initialStatus}
                   onChange={(e) => setSlotFormData({ ...slotFormData, initialStatus: e.target.value })}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#2F855A] focus:border-transparent"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
                 >
                   <option value="Open">Open</option>
                   <option value="Closed">Closed</option>
@@ -1533,7 +1533,7 @@ export const HospitalDashboard: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 px-3 py-1.5 text-sm bg-[#2F855A] text-white rounded-lg font-semibold hover:bg-[#276749] disabled:opacity-50"
+                  className="flex-1 px-3 py-1.5 text-sm bg-[#3597A4] text-white rounded-lg font-semibold hover:bg-[#1F6F76] disabled:opacity-50"
                 >
                   {isSubmitting ? 'Updating...' : 'Update Slot'}
                 </button>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,6 +20,7 @@ interface Hospital {
   image_url?: string;
   available_slots?: number;
   description?: string;
+  rating?: number; // Hospital rating (0-5)
 }
 
 export const AdminHospitalsManager: React.FC = () => {
@@ -50,7 +51,8 @@ export const AdminHospitalsManager: React.FC = () => {
     accreditation: '',
     description: '',
     available_slots: 0,
-    image_url: ''
+    image_url: '',
+    rating: 4.5
   });
 
   // Load hospitals
@@ -150,6 +152,7 @@ export const AdminHospitalsManager: React.FC = () => {
           email: formData.email,
           phone: formData.phone,
           cities: formData.cities, // Store all cities
+          rating: formData.rating || 4.5,
         };
         
         // Include optional fields if they have values
@@ -179,6 +182,7 @@ export const AdminHospitalsManager: React.FC = () => {
           available_slots: parseInt(String(formData.available_slots)) || 0,
           image_url: formData.image_url,
           website: formData.website,
+          rating: formData.rating || 4.5,
         });
         
         setHospitals([...hospitals, newHospital]);
@@ -224,7 +228,8 @@ export const AdminHospitalsManager: React.FC = () => {
       accreditation: hospital.accreditation || '',
       description: hospital.description || '',
       available_slots: hospital.available_slots || 0,
-      image_url: hospital.image_url || hospital.image || ''
+      image_url: hospital.image_url || hospital.image || '',
+      rating: hospital.rating || 4.5
     });
     setImagePreview(hospital.image_url || hospital.image || '');
     setEditingId(hospital.id);
@@ -242,7 +247,8 @@ export const AdminHospitalsManager: React.FC = () => {
       accreditation: '',
       description: '',
       available_slots: 0,
-      image_url: ''
+      image_url: '',
+      rating: 4.5
     });
     setImageFile(null);
     setImagePreview('');
@@ -289,7 +295,7 @@ export const AdminHospitalsManager: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { resetForm(); setShowForm(true); }}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-700"
+          className="bg-[#3597A4] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#3597A4]"
         >
           <Plus size={18} /> Add Hospital
         </motion.button>
@@ -316,7 +322,7 @@ export const AdminHospitalsManager: React.FC = () => {
           placeholder="Search hospitals..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] focus:border-transparent"
         />
       </div>
 
@@ -349,7 +355,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                       required
                     />
                   </div>
@@ -359,7 +365,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                       required
                     />
                   </div>
@@ -369,7 +375,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     />
                   </div>
                   <div>
@@ -378,9 +384,28 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="number"
                       value={formData.available_slots}
                       onChange={(e) => setFormData({ ...formData, available_slots: parseInt(e.target.value) || 0 })}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                       min="0"
                     />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Hospital Rating</label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={formData.rating}
+                      onChange={(e) => {
+                        const val = parseFloat(e.target.value);
+                        if (val >= 0 && val <= 5) {
+                          setFormData({ ...formData, rating: val });
+                        }
+                      }}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
+                      min="0"
+                      max="5"
+                      placeholder="e.g., 4.5"
+                    />
+                    <p className="text-xs text-slate-500 mt-1">Enter rating between 0 and 5 (e.g., 4.5, 4.8)</p>
                   </div>
                   <div className="col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Hospital Cities/Locations *</label>
@@ -392,7 +417,7 @@ export const AdminHospitalsManager: React.FC = () => {
                           value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                           onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddCity())}
-                          className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                          className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                         />
                         <button
                           type="button"
@@ -410,13 +435,13 @@ export const AdminHospitalsManager: React.FC = () => {
                           {formData.cities.map((city, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-2 bg-green-100 border border-green-300 rounded-lg px-3 py-1 text-sm font-medium text-green-800"
+                              className="flex items-center gap-2 bg-[#E6F4F6] border border-green-300 rounded-lg px-3 py-1 text-sm font-medium text-[#3597A4]"
                             >
                               {city}
                               <button
                                 type="button"
                                 onClick={() => handleRemoveCity(city)}
-                                className="text-green-600 hover:text-red-600 font-bold"
+                                className="text-[#3597A4] hover:text-red-600 font-bold"
                               >
                                 ×
                               </button>
@@ -432,7 +457,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="url"
                       value={formData.website}
                       onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     />
                   </div>
                   <div>
@@ -442,7 +467,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       value={formData.accreditation}
                       onChange={(e) => setFormData({ ...formData, accreditation: e.target.value })}
                       placeholder="e.g., DMHCA Certified"
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     />
                   </div>
                   <div className="col-span-2">
@@ -452,14 +477,14 @@ export const AdminHospitalsManager: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       placeholder="Hospital details, specialties, facilities, etc."
                       rows={3}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     />
                   </div>
 
                   {/* Image Upload Section */}
                   <div className="col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Hospital Image</label>
-                    <div className="border-2 border-dashed border-slate-300 rounded-lg p-4 text-center cursor-pointer hover:border-green-500 transition">
+                    <div className="border-2 border-dashed border-slate-300 rounded-lg p-4 text-center cursor-pointer hover:border-[#3597A4] transition">
                       <input
                         type="file"
                         ref={fileInputRef}
@@ -510,7 +535,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       </div>
                     )}
                     {formData.image_url && (
-                      <p className="mt-2 text-sm text-green-600">✓ Image uploaded successfully</p>
+                      <p className="mt-2 text-sm text-[#3597A4]">✓ Image uploaded successfully</p>
                     )}
                   </div>
                 </div>
@@ -526,7 +551,7 @@ export const AdminHospitalsManager: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                    className="px-4 py-2 bg-[#3597A4] text-white rounded-lg hover:bg-[#3597A4] disabled:opacity-50"
                   >
                     {isLoading ? 'Saving...' : 'Save'}
                   </button>
@@ -590,13 +615,18 @@ export const AdminHospitalsManager: React.FC = () => {
                         Available Slots: {hospital.available_slots}
                       </div>
                     )}
+                    {hospital.rating !== undefined && (
+                      <div className="flex items-center gap-2 text-amber-600 font-semibold">
+                        <span>⭐ Rating: {hospital.rating.toFixed(1)} / 5.0</span>
+                      </div>
+                    )}
                     {hospital.description && (
                       <p className="mt-2 text-slate-700">{hospital.description}</p>
                     )}
                     {hospital.website && (
                       <div className="flex items-center gap-2">
                         <Globe size={16} />
-                        <a href={hospital.website} target="_blank" className="text-green-600 hover:underline">
+                        <a href={hospital.website} target="_blank" className="text-[#3597A4] hover:underline">
                           {hospital.website}
                         </a>
                       </div>

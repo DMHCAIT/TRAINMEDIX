@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import { 
@@ -105,7 +105,7 @@ export const DepartmentManagement: React.FC = () => {
     <div className="space-y-6 text-xs">
       
       {/* Utility Top Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] shadow-xs">
         <div>
           <h2 className="text-xl font-extrabold text-slate-900 font-heading">Department Utility Controller</h2>
           <p className="text-xs text-slate-600 font-medium mt-1">
@@ -117,7 +117,7 @@ export const DepartmentManagement: React.FC = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setShowAddModal(true)}
-          className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/20 cursor-pointer shrink-0"
+          className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/20 cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Department</span>
@@ -133,7 +133,7 @@ export const DepartmentManagement: React.FC = () => {
             placeholder="Search departments by name or code (e.g. Cardiology, CARD, Emergency...)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3 text-xs text-slate-900 focus:border-[#2F855A] focus:ring-2 focus:ring-[#2F855A]/20 focus:outline-none transition shadow-2xs font-medium"
+            className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3 text-xs text-slate-900 focus:border-[#3597A4] focus:ring-2 focus:ring-[#3597A4]/20 focus:outline-none transition shadow-2xs font-medium"
           />
         </div>
 
@@ -169,7 +169,7 @@ export const DepartmentManagement: React.FC = () => {
                   setCustomCityFilterText(e.target.value);
                   setSelectedCityFilter(e.target.value.trim() || 'Other');
                 }}
-                className="w-full bg-white border border-[#2F855A] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-xs"
+                className="w-full bg-white border border-[#3597A4] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-xs"
               />
             </motion.div>
           )}
@@ -185,13 +185,13 @@ export const DepartmentManagement: React.FC = () => {
             <motion.div
               key={dept.id}
               whileHover={{ y: -2 }}
-              className="bg-white rounded-3xl p-6 border border-[#CBE5D7] shadow-xs flex flex-col justify-between space-y-4 hover:border-[#2F855A] transition"
+              className="bg-white rounded-3xl p-6 border border-[#E6F4F6] shadow-xs flex flex-col justify-between space-y-4 hover:border-[#3597A4] transition"
             >
               <div className="space-y-3">
                 {/* Header Row */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="bg-[#2F855A] text-white font-mono font-bold text-[10px] px-2.5 py-0.5 rounded-lg uppercase tracking-wider">
+                    <span className="bg-[#3597A4] text-white font-mono font-bold text-[10px] px-2.5 py-0.5 rounded-lg uppercase tracking-wider">
                       {dept.code}
                     </span>
                     <h3 className="text-base font-extrabold text-slate-900 font-heading">{dept.name}</h3>
@@ -211,22 +211,22 @@ export const DepartmentManagement: React.FC = () => {
                 {/* Base Fee Tag */}
                 <div className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200/80 px-3 py-1 rounded-xl text-xs font-extrabold text-slate-900">
                   <span>Monthly Base Fee:</span>
-                  <span className="text-[#2F855A]">₹{dept.baseFeePerMonth.toLocaleString('en-IN')}/mo</span>
+                  <span className="text-[#3597A4]">₹{dept.baseFeePerMonth.toLocaleString('en-IN')}/mo</span>
                 </div>
 
                 {/* Slot Metrics Grid */}
-                <div className="grid grid-cols-2 gap-2 bg-[#E2F0EA]/50 p-3 rounded-2xl border border-[#C5DED0]">
+                <div className="grid grid-cols-2 gap-2 bg-[#E6F4F6]/50 p-3 rounded-2xl border border-[#E6F4F6]">
                   <div>
                     <span className="text-[10px] text-slate-500 font-semibold block uppercase">Total Slots</span>
                     <span className="font-extrabold text-slate-900 flex items-center gap-1 font-heading text-xs mt-0.5">
-                      <Layers className="w-3.5 h-3.5 text-[#2F855A]" />
+                      <Layers className="w-3.5 h-3.5 text-[#3597A4]" />
                       {stats.totalSlots} Slots
                     </span>
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-500 font-semibold block uppercase">Active Open Slots</span>
-                    <span className="font-extrabold text-[#2F855A] flex items-center gap-1 font-heading text-xs mt-0.5">
-                      <Clock className="w-3.5 h-3.5 text-[#2F855A]" />
+                    <span className="font-extrabold text-[#3597A4] flex items-center gap-1 font-heading text-xs mt-0.5">
+                      <Clock className="w-3.5 h-3.5 text-[#3597A4]" />
                       {stats.activeSlots} Active
                     </span>
                   </div>
@@ -240,8 +240,8 @@ export const DepartmentManagement: React.FC = () => {
                     </span>
                     <div className="flex flex-wrap gap-1">
                       {dept.subDepartments.map((sub, sIdx) => (
-                        <span key={sIdx} className="bg-[#EBF7F1] border border-[#CBE5D7] text-[#2F855A] text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
-                          <Layers className="w-2.5 h-2.5 text-[#2F855A]" />
+                        <span key={sIdx} className="bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
+                          <Layers className="w-2.5 h-2.5 text-[#3597A4]" />
                           {sub}
                         </span>
                       ))}
@@ -257,7 +257,7 @@ export const DepartmentManagement: React.FC = () => {
                   <div className="flex flex-wrap gap-1">
                     {dept.availableCities.map((city) => (
                       <span key={city} className="bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
-                        <MapPin className="w-2.5 h-2.5 text-[#2F855A]" />
+                        <MapPin className="w-2.5 h-2.5 text-[#3597A4]" />
                         {city}
                       </span>
                     ))}
@@ -269,7 +269,7 @@ export const DepartmentManagement: React.FC = () => {
               {/* Card Bottom Capacity Counter */}
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-slate-500">
                 <span>Seats Availability:</span>
-                <span className="font-extrabold text-[#2F855A] font-heading">{stats.totalSeats} Total Open Seats</span>
+                <span className="font-extrabold text-[#3597A4] font-heading">{stats.totalSeats} Total Open Seats</span>
               </div>
 
             </motion.div>
@@ -285,11 +285,11 @@ export const DepartmentManagement: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white border border-[#CBE5D7] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
+              className="bg-white border border-[#E6F4F6] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-5 shadow-2xl text-slate-900 relative my-8"
             >
               <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-[#2F855A]" />
+                  <Building2 className="w-5 h-5 text-[#3597A4]" />
                   <h3 className="text-lg font-extrabold text-slate-900 font-heading">Add New Department</h3>
                 </div>
                 <button
@@ -310,7 +310,7 @@ export const DepartmentManagement: React.FC = () => {
                       placeholder="e.g. Neurology, Nephrology, Oncology"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                     />
                   </div>
                   <div>
@@ -321,7 +321,7 @@ export const DepartmentManagement: React.FC = () => {
                       placeholder="e.g. NEURO"
                       value={code}
                       onChange={(e) => setCode(e.target.value.toUpperCase())}
-                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-mono font-bold uppercase focus:border-[#3597A4] focus:bg-white focus:outline-none"
                     />
                   </div>
                 </div>
@@ -334,7 +334,7 @@ export const DepartmentManagement: React.FC = () => {
                     placeholder="Clinical overview of rotations, ward rounds, OPD and ICU management..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl p-3.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
 
@@ -345,7 +345,7 @@ export const DepartmentManagement: React.FC = () => {
                     placeholder="e.g. Emergency Medicine, ICU / Critical Care, Trauma Care"
                     value={subDepartmentsText}
                     onChange={(e) => setSubDepartmentsText(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-medium focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
 
@@ -358,7 +358,7 @@ export const DepartmentManagement: React.FC = () => {
                     step={1000}
                     value={baseFeePerMonth}
                     onChange={(e) => setBaseFeePerMonth(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                   />
                 </div>
 
@@ -375,8 +375,8 @@ export const DepartmentManagement: React.FC = () => {
                           onClick={() => toggleCity(city)}
                           className={`px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1 cursor-pointer ${
                             isSelected 
-                              ? 'bg-[#2F855A] text-white shadow-2xs' 
-                              : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-slate-300'
+                              ? 'bg-[#3597A4] text-white shadow-2xs' 
+                              : 'bg-slate-100 text-slate-700 border border-slate-300'
                           }`}
                         >
                           {isSelected ? <Check className="w-3 h-3" /> : <MapPin className="w-3 h-3" />}
@@ -391,7 +391,7 @@ export const DepartmentManagement: React.FC = () => {
                         key={customCity}
                         type="button"
                         onClick={() => toggleCity(customCity)}
-                        className="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1 bg-[#2F855A] text-white shadow-2xs cursor-pointer"
+                        className="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1 bg-[#3597A4] text-white shadow-2xs cursor-pointer"
                       >
                         <Check className="w-3 h-3" />
                         <span>{customCity}</span>
@@ -404,11 +404,11 @@ export const DepartmentManagement: React.FC = () => {
                       onClick={() => setShowCustomCityInput(!showCustomCityInput)}
                       className={`px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1 cursor-pointer ${
                         showCustomCityInput 
-                          ? 'bg-[#E2F0EA] text-[#2F855A] border border-[#2F855A]' 
+                          ? 'bg-[#E6F4F6] text-[#3597A4] border border-[#3597A4]' 
                           : 'bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200/60'
                       }`}
                     >
-                      <Plus className="w-3 h-3 text-[#2F855A]" />
+                      <Plus className="w-3 h-3 text-[#3597A4]" />
                       <span>Other (Specify)</span>
                     </button>
                   </div>
@@ -432,12 +432,12 @@ export const DepartmentManagement: React.FC = () => {
                           }
                         }}
                         autoFocus
-                        className="w-full bg-white border border-[#2F855A] rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                        className="w-full bg-white border border-[#3597A4] rounded-xl px-3 py-1.5 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                       />
                       <button
                         type="button"
                         onClick={handleAddCustomCity}
-                        className="bg-[#2F855A] hover:bg-[#276749] text-white text-xs font-bold px-3 py-1.5 rounded-xl transition cursor-pointer shrink-0"
+                        className="bg-[#3597A4] hover:bg-[#1F6F76] text-white text-xs font-bold px-3 py-1.5 rounded-xl transition cursor-pointer shrink-0"
                       >
                         Add
                       </button>
@@ -455,7 +455,7 @@ export const DepartmentManagement: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 bg-[#2F855A] hover:bg-[#276749] text-white font-bold rounded-xl shadow-md cursor-pointer"
+                    className="px-5 py-2.5 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold rounded-xl shadow-md cursor-pointer"
                   >
                     Create Department
                   </button>

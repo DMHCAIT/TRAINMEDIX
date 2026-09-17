@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -76,8 +76,8 @@ export const HospitalExplorer: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center max-w-3xl mx-auto space-y-4"
       >
-        <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
-          <Building2 className="w-4 h-4 text-[#2F855A] animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
+          <Building2 className="w-4 h-4 text-[#3597A4] animate-pulse" />
           <span>Training Partner Hospital Network</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
@@ -104,7 +104,7 @@ export const HospitalExplorer: React.FC = () => {
               placeholder="Search by hospital name or location (e.g. Apollo, Fortis, Max...)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 placeholder-slate-400 focus:border-[#2F855A] focus:ring-2 focus:ring-[#2F855A]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
+              className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 placeholder-slate-400 focus:border-[#3597A4] focus:ring-2 focus:ring-[#3597A4]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
             />
           </div>
           <div className="relative">
@@ -140,7 +140,7 @@ export const HospitalExplorer: React.FC = () => {
                     setCustomCityText(e.target.value);
                     setSelectedCity(e.target.value.trim() || 'Other');
                   }}
-                  className="w-full bg-white border border-[#2F855A] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-xs"
+                  className="w-full bg-white border border-[#3597A4] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-xs"
                 />
               </motion.div>
             )}
@@ -189,9 +189,9 @@ export const HospitalExplorer: React.FC = () => {
                 {/* Body */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#2F855A] transition font-heading">{hosp.name}</h3>
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#3597A4] transition font-heading">{hosp.name}</h3>
                     <p className="text-xs text-slate-600 flex items-center gap-1.5 mt-1 font-medium">
-                      <MapPin className="w-3.5 h-3.5 text-[#2F855A] shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 text-[#3597A4] shrink-0" />
                       {hosp.address}
                     </p>
                   </div>
@@ -216,7 +216,7 @@ export const HospitalExplorer: React.FC = () => {
                     e.stopPropagation();
                     router.push('/departments');
                   }}
-                  className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer"
+                  className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer"
                 >
                   <CalendarCheck className="w-4 h-4" />
                   <span>Book Rotation</span>

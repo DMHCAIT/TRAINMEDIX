@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -226,7 +226,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-slate-900 flex items-center gap-3">
-            <Building2 className="text-[#2F855A]" size={32} />
+            <Building2 className="text-[#3597A4]" size={32} />
             Hospital Partners
           </h1>
           <p className="text-slate-600 mt-1">Manage approved hospital partners and their departments/slots</p>
@@ -235,7 +235,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
           {selectedHospital && (
             <button
               onClick={() => setShowAddTraineeModal(true)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#2F855A] text-white rounded-lg font-semibold hover:bg-[#276749]"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#3597A4] text-white rounded-lg font-semibold hover:bg-[#1F6F76]"
             >
               <Plus size={17} /> Add Trainee
             </button>
@@ -243,7 +243,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
           <button
             onClick={loadData}
             disabled={isLoading}
-            className="px-4 py-2 bg-[#2F855A] text-white rounded-lg font-semibold hover:bg-[#276749] disabled:opacity-50"
+            className="px-4 py-2 bg-[#3597A4] text-white rounded-lg font-semibold hover:bg-[#1F6F76] disabled:opacity-50"
           >
             Refresh
           </button>
@@ -263,9 +263,9 @@ export const AdminHospitalPartnersManager: React.FC = () => {
           <div className="text-sm text-blue-600 font-semibold">Total Partners</div>
           <div className="text-3xl font-bold text-blue-900 mt-2">{stats.totalPartners}</div>
         </div>
-        <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-green-200">
-          <div className="text-sm text-green-600 font-semibold">Departments</div>
-          <div className="text-3xl font-bold text-green-900 mt-2">{stats.totalDepartments}</div>
+        <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl border border-[#E6F4F6]">
+          <div className="text-sm text-[#3597A4] font-semibold">Departments</div>
+          <div className="text-3xl font-bold text-[#1F6F76] mt-2">{stats.totalDepartments}</div>
         </div>
         <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-xl border border-purple-200">
           <div className="text-sm text-purple-600 font-semibold">Slots</div>
@@ -280,7 +280,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
       {isLoading ? (
         <div className="text-center py-12">
           <div className="inline-block animate-spin">
-            <Building2 className="w-8 h-8 text-[#2F855A]" />
+            <Building2 className="w-8 h-8 text-[#3597A4]" />
           </div>
           <p className="text-slate-600 mt-3">Loading hospital partner data...</p>
         </div>
@@ -290,7 +290,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
           <div className="lg:col-span-1 bg-white rounded-xl border border-slate-200 shadow-sm">
             <div className="p-4 border-b border-slate-200">
               <h2 className="font-bold text-slate-900 flex items-center gap-2">
-                <Users size={20} className="text-[#2F855A]" />
+                <Users size={20} className="text-[#3597A4]" />
                 Hospital Partners ({filteredPartners.length})
               </h2>
               <input
@@ -309,7 +309,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                   onClick={() => setSelectedHospital(partner.id)}
                   className={`w-full text-left px-4 py-3 transition ${
                     selectedHospital === partner.id
-                      ? 'bg-[#EBF7F1] border-l-4 border-l-[#2F855A]'
+                      ? 'bg-[#E6F4F6] border-l-4 border-l-[#3597A4]'
                       : 'hover:bg-slate-50'
                   }`}
                 >
@@ -319,7 +319,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                     <span
                       className={`text-[10px] px-2 py-1 rounded-full font-bold ${
                         partner.isApproved
-                          ? 'bg-green-100 text-green-700'
+                          ? 'bg-[#E6F4F6] text-green-700'
                           : 'bg-yellow-100 text-yellow-700'
                       }`}
                     >
@@ -338,7 +338,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                 {/* Departments Section */}
                 <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
                   <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <Layers size={20} className="text-[#2F855A]" />
+                    <Layers size={20} className="text-[#3597A4]" />
                     Departments ({partnerDepartments.length})
                   </h3>
 
@@ -354,7 +354,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-2">
-                                <span className="bg-[#2F855A] text-white text-[10px] font-bold px-2 py-1 rounded">
+                                <span className="bg-[#3597A4] text-white text-[10px] font-bold px-2 py-1 rounded">
                                   {dept.department_code}
                                 </span>
                                 <span className="font-semibold text-slate-900">{dept.department_name}</span>
@@ -362,11 +362,11 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                               <p className="text-xs text-slate-600 mt-1">{dept.description}</p>
                               <div className="flex items-center gap-4 mt-2 text-xs">
                                 <span className="flex items-center gap-1">
-                                  <DollarSign size={14} className="text-[#2F855A]" />
+                                  <DollarSign size={14} className="text-[#3597A4]" />
                                   ₹{dept.base_fee_per_month?.toLocaleString()}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <MapPin size={14} className="text-[#2F855A]" />
+                                  <MapPin size={14} className="text-[#3597A4]" />
                                   {dept.available_cities?.length
                                     ? dept.available_cities.join(', ')
                                     : 'No cities added'}
@@ -383,12 +383,12 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                 <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                      <Users size={20} className="text-[#2F855A]" />
+                      <Users size={20} className="text-[#3597A4]" />
                       Trainees ({partnerTrainees.length})
                     </h3>
                     <button
                       onClick={() => setShowAddTraineeModal(true)}
-                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#2F855A] text-white rounded-lg text-sm font-semibold hover:bg-[#276749]"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#3597A4] text-white rounded-lg text-sm font-semibold hover:bg-[#1F6F76]"
                     >
                       <Plus size={16} /> Add Trainee
                     </button>
@@ -404,7 +404,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                               <div className="font-bold text-slate-900 truncate">{trainee.trainee_name}</div>
                               <div className="text-xs text-slate-500 truncate">{trainee.trainee_email}</div>
                             </div>
-                            <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold ${trainee.status === 'Approved' ? 'bg-green-100 text-green-700' : trainee.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>{trainee.status}</span>
+                            <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold ${trainee.status === 'Approved' ? 'bg-[#E6F4F6] text-green-700' : trainee.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>{trainee.status}</span>
                           </div>
                           <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
                             <div><div className="text-[11px] font-semibold uppercase text-slate-400">Qualification</div><div className="font-medium text-slate-800">{trainee.qualification || 'Not provided'}</div></div>
@@ -414,7 +414,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                           </div>
                           <div className="flex items-center justify-between gap-3 border-t border-slate-200 pt-3">
                             {trainee.certificate_url ? (
-                              <a href={trainee.certificate_url} target="_blank" rel="noreferrer" className="text-[#2F855A] hover:underline inline-flex items-center gap-1.5 text-sm font-semibold"><FileText size={15} /> View Certificate</a>
+                              <a href={trainee.certificate_url} target="_blank" rel="noreferrer" className="text-[#3597A4] hover:underline inline-flex items-center gap-1.5 text-sm font-semibold"><FileText size={15} /> View Certificate</a>
                             ) : (
                               <span className="text-xs text-slate-400">Certificate not uploaded</span>
                             )}
@@ -429,7 +429,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                 {/* Slots Section */}
                 <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
                   <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <CalendarRange size={20} className="text-[#2F855A]" />
+                    <CalendarRange size={20} className="text-[#3597A4]" />
                     Slots ({partnerSlots.length})
                   </h3>
 
@@ -445,7 +445,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-2">
-                                <span className="bg-[#2F855A] text-white text-[10px] font-bold px-2 py-1 rounded">
+                                <span className="bg-[#3597A4] text-white text-[10px] font-bold px-2 py-1 rounded">
                                   {slot.department_name}
                                 </span>
                                 <span className="font-semibold text-slate-900">
@@ -454,18 +454,18 @@ export const AdminHospitalPartnersManager: React.FC = () => {
                               </div>
                               <div className="flex items-center gap-4 mt-2 text-xs">
                                 <span className="flex items-center gap-1">
-                                  <Users size={14} className="text-[#2F855A]" />
+                                  <Users size={14} className="text-[#3597A4]" />
                                   {slot.available_seats} / {slot.total_seats} available
                                 </span>
                                 <span className={`text-[10px] px-2 py-1 rounded-full font-bold ${
-                                  slot.status === 'Open' ? 'bg-green-100 text-green-700' :
+                                  slot.status === 'Open' ? 'bg-[#E6F4F6] text-green-700' :
                                   slot.status === 'Closed' ? 'bg-red-100 text-red-700' :
                                   'bg-yellow-100 text-yellow-700'
                                 }`}>
                                   {slot.status}
                                 </span>
                                 <span className="flex items-center gap-1">
-                                  <DollarSign size={14} className="text-[#2F855A]" />
+                                  <DollarSign size={14} className="text-[#3597A4]" />
                                   ₹{slot.fee_per_month?.toLocaleString()}
                                 </span>
                               </div>
@@ -507,7 +507,7 @@ export const AdminHospitalPartnersManager: React.FC = () => {
               {error && <div className="sm:col-span-2 bg-red-50 text-red-700 p-3 rounded-lg text-sm">{error}</div>}
               <div className="sm:col-span-2 flex justify-end gap-3 pt-2">
                 <button type="button" onClick={() => setShowAddTraineeModal(false)} className="px-4 py-2 border border-slate-300 rounded-lg font-semibold">Cancel</button>
-                <button type="submit" disabled={isSubmittingTrainee} className="px-4 py-2 bg-[#2F855A] text-white rounded-lg font-semibold disabled:opacity-50">{isSubmittingTrainee ? 'Submitting...' : 'Send for Approval'}</button>
+                <button type="submit" disabled={isSubmittingTrainee} className="px-4 py-2 bg-[#3597A4] text-white rounded-lg font-semibold disabled:opacity-50">{isSubmittingTrainee ? 'Submitting...' : 'Send for Approval'}</button>
               </div>
             </form>
           </div>

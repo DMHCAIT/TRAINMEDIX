@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -405,7 +405,7 @@ export const BookingWizard: React.FC = () => {
         <div className="mb-8 pb-5 border-b border-slate-100 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="bg-[#E2F0EA] text-[#2F855A] text-xs font-mono font-extrabold px-3 py-1 rounded-lg border border-[#C5DED0]">
+              <span className="bg-[#E6F4F6] text-[#3597A4] text-xs font-mono font-extrabold px-3 py-1 rounded-lg border border-[#E6F4F6]">
                 Step {bookingStep} of 6
               </span>
               <span className="text-sm sm:text-base font-extrabold text-slate-900 font-heading">
@@ -434,7 +434,7 @@ export const BookingWizard: React.FC = () => {
                   onClick={handleNextStep}
                   disabled={!canProceed}
                   className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-extrabold transition flex items-center gap-1.5 shadow-md ${canProceed
-                    ? 'bg-[#2F855A] hover:bg-[#276749] text-white shadow-[#2F855A]/20 cursor-pointer'
+                    ? 'bg-[#3597A4] hover:bg-[#1F6F76] text-white shadow-[#3597A4]/20 cursor-pointer'
                     : 'bg-slate-100 text-slate-400 shadow-none cursor-not-allowed opacity-60'
                     }`}
                 >
@@ -451,7 +451,7 @@ export const BookingWizard: React.FC = () => {
                 key={st}
                 initial={false}
                 animate={{
-                  backgroundColor: st <= bookingStep ? '#2F855A' : '#e2e8f0',
+                  backgroundColor: st <= bookingStep ? '#3597A4' : '#e2e8f0',
                   scale: st === bookingStep ? 1.02 : 1
                 }}
                 transition={{ duration: 0.3 }}
@@ -485,11 +485,11 @@ export const BookingWizard: React.FC = () => {
 
                 {/* Active Department Selection */}
                 {selectedDepartment && (
-                  <div className="bg-[#EBF7F1] border border-[#C5DED0] p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs">
+                  <div className="bg-[#E6F4F6] border border-[#E6F4F6] p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs">
                     <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-[#2F855A] shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#3597A4] shrink-0" />
                       <div>
-                        <span className="text-[10px] font-mono font-bold text-[#2F855A] bg-white px-2 py-0.5 rounded-md border border-[#C5DED0] mr-2">
+                        <span className="text-[10px] font-mono font-bold text-[#3597A4] bg-white px-2 py-0.5 rounded-md border border-[#E6F4F6] mr-2">
                           {selectedDepartment.code}
                         </span>
                         <span className="font-extrabold text-slate-900 text-sm font-heading">
@@ -817,28 +817,28 @@ export const BookingWizard: React.FC = () => {
                 </div>
 
                 {/* Search Filter Banner */}
-                <div className="bg-[#EBF7F1] border border-[#C5DED0] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs">
+                <div className="bg-[#E6F4F6] border border-[#E6F4F6] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs shadow-xs">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-extrabold text-[#2F855A] uppercase tracking-wide">Active Filters:</span>
-                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
+                    <span className="font-extrabold text-[#3597A4] uppercase tracking-wide">Active Filters:</span>
+                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#E6F4F6]">
                       {selectedDepartment?.name || 'Department'}
                     </span>
                     {selectedHospital && (
-                      <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
+                      <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#E6F4F6]">
                         Hospital: {selectedHospital.name}
                       </span>
                     )}
-                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
+                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#E6F4F6]">
                       City: {selectedCity !== 'All' ? selectedCity : (selectedHospital?.city || 'All Cities')}
                     </span>
-                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#C5DED0]">
+                    <span className="bg-white text-slate-900 font-bold px-2.5 py-1 rounded-lg border border-[#E6F4F6]">
                       Duration: {selectedDuration}
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setBookingStep(1)}
-                    className="text-xs font-bold text-[#2F855A] hover:underline cursor-pointer"
+                    className="text-xs font-bold text-[#3597A4] hover:underline cursor-pointer"
                   >
                     Modify Search →
                   </button>
@@ -861,8 +861,8 @@ export const BookingWizard: React.FC = () => {
                             setTimeout(() => setBookingStep(6), 150);
                           }}
                           className={`p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${selected
-                            ? 'bg-[#EBF7F1] border-[#2F855A] shadow-md ring-2 ring-[#2F855A]/20'
-                            : 'bg-white border-slate-200/90 hover:border-[#2F855A] hover:bg-[#F4F9F6] hover:shadow-md'
+                            ? 'bg-[#E6F4F6] border-[#3597A4] shadow-md ring-2 ring-[#3597A4]/20'
+                            : 'bg-white border-slate-200/90 hover:border-[#3597A4] hover:bg-[#F4F9F6] hover:shadow-md'
                             }`}
                         >
                           <div className="space-y-2 flex-1 min-w-0">
@@ -870,7 +870,7 @@ export const BookingWizard: React.FC = () => {
                             <div className="flex items-center gap-2 flex-wrap">
                               {/* Category Badge */}
                               {slotDept && (
-                                <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#2F855A] text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-[#C5DED0]">
+                                <span className="inline-flex items-center gap-1 bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-[#E6F4F6]">
                                   <Stethoscope className="w-3 h-3" />
                                   <span>Category: {slotDept.name}</span>
                                 </span>
@@ -887,7 +887,7 @@ export const BookingWizard: React.FC = () => {
                               <h3 className="text-base sm:text-lg font-extrabold text-slate-900 font-heading leading-tight flex items-center gap-2 flex-wrap">
                                 <span>{slotDept?.name || 'Clinical Rotation'}</span>
                                 {selected && (
-                                  <span className="inline-flex items-center gap-1 bg-[#2F855A] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">
+                                  <span className="inline-flex items-center gap-1 bg-[#3597A4] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md">
                                     <CheckCircle2 className="w-3 h-3 text-white" />
                                     <span>Selected</span>
                                   </span>
@@ -900,11 +900,11 @@ export const BookingWizard: React.FC = () => {
 
                             {/* Batch Start & End Dates */}
                             <div className="flex items-center gap-2 text-xs font-bold text-slate-700 bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 flex-wrap">
-                              <CalendarCheck className="w-4 h-4 text-[#2F855A] shrink-0" />
+                              <CalendarCheck className="w-4 h-4 text-[#3597A4] shrink-0" />
                               <span>Batch Rotation:</span>
-                              <span className="text-[#2F855A] font-extrabold">{s.startDate}</span>
+                              <span className="text-[#3597A4] font-extrabold">{s.startDate}</span>
                               <span className="text-slate-400">to</span>
-                              <span className="text-[#2F855A] font-extrabold">{s.endDate}</span>
+                              <span className="text-[#3597A4] font-extrabold">{s.endDate}</span>
                               <span className="text-slate-400">({selectedDuration})</span>
                             </div>
                           </div>
@@ -921,8 +921,8 @@ export const BookingWizard: React.FC = () => {
                             <button
                               type="button"
                               className={`w-auto px-4 py-2.5 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${selected
-                                ? 'bg-[#2F855A] text-white'
-                                : 'bg-slate-100 hover:bg-[#2F855A] text-slate-700 hover:text-white'
+                                ? 'bg-[#3597A4] text-white'
+                                : 'bg-slate-100 hover:bg-[#3597A4] text-slate-700 hover:text-white'
                                 }`}
                             >
                               <span>{selected ? 'Selected' : 'Select Slot'}</span>
@@ -1105,7 +1105,7 @@ export const BookingWizard: React.FC = () => {
                   whileTap={isStep6Valid() ? { scale: 0.98 } : undefined}
                   type="submit"
                   className={`w-full font-bold text-base py-4 rounded-2xl transition flex items-center justify-center gap-2 touch-target ${isStep6Valid()
-                    ? 'bg-[#2F855A] hover:bg-[#276749] text-white shadow-lg shadow-[#2F855A]/30 cursor-pointer'
+                    ? 'bg-[#3597A4] hover:bg-[#1F6F76] text-white shadow-lg shadow-[#3597A4]/30 cursor-pointer'
                     : 'bg-slate-200 text-slate-500 cursor-not-allowed opacity-70'
                     }`}
                 >

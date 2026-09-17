@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -45,7 +45,7 @@ export default function SubCategoryDetailPage() {
         <p className="text-xs text-slate-500 font-medium">The requested specialization program could not be located.</p>
         <button
           onClick={() => router.push('/departments')}
-          className="bg-[#2F855A] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
+          className="bg-[#3597A4] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
         >
           Return to All Departments
         </button>
@@ -92,7 +92,7 @@ export default function SubCategoryDetailPage() {
       <div>
         <button
           onClick={() => router.push('/departments')}
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#2F855A] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#CBE5D7] shadow-2xs"
+          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#3597A4] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#E6F4F6] shadow-2xs"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Clinical Departments</span>
@@ -103,7 +103,7 @@ export default function SubCategoryDetailPage() {
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative bg-gradient-to-br from-[#2F855A] via-[#276749] to-[#1E4D36] text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden"
+        className="relative bg-gradient-to-br from-[#3597A4] via-[#1F6F76] to-[#1F6F76] text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden"
       >
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full filter blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full filter blur-2xl pointer-events-none" />
@@ -122,7 +122,7 @@ export default function SubCategoryDetailPage() {
               {subCategory.name} Clinical Rotation
             </h1>
 
-            <p className="text-sm sm:text-base text-emerald-100 font-medium leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-[#E6F4F6] font-medium leading-relaxed max-w-3xl">
               Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
             </p>
 
@@ -139,13 +139,13 @@ export default function SubCategoryDetailPage() {
           </div>
 
           {/* Pricing & Booking Card */}
-          <div className="lg:col-span-4 bg-white/95 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] text-slate-900 shadow-xl space-y-4">
+          <div className="lg:col-span-4 bg-white/95 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] text-slate-900 shadow-xl space-y-4">
             <div>
               <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block font-heading">
                 Program Fee
               </span>
               <div className="flex items-baseline gap-1 mt-0.5">
-                <span className="text-3xl font-black text-[#2F855A] font-heading">
+                <span className="text-3xl font-black text-[#3597A4] font-heading">
                   ₹{parentDept.baseFeePerMonth.toLocaleString('en-IN')}
                 </span>
                 <span className="text-xs text-slate-500 font-bold">/ Month</span>
@@ -158,7 +158,7 @@ export default function SubCategoryDetailPage() {
 
             <button
               onClick={handleStartBooking}
-              className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer"
+              className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4" />
               <span>Book {subCategory.name} Rotation</span>
@@ -176,10 +176,10 @@ export default function SubCategoryDetailPage() {
         <div className="lg:col-span-8 flex flex-col space-y-8">
 
           {/* 1. Clinical Competencies (Highlights) - Mobile Order 1 */}
-          <div className="order-1 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-5">
+          <div className="order-1 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-5">
             <div className="border-b border-slate-100 pb-4">
               <h3 className="text-lg font-extrabold text-slate-900 font-heading flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-[#2F855A]" />
+                <CheckCircle2 className="w-5 h-5 text-[#3597A4]" />
                 Specialized Procedural Skills in {subCategory.name}
               </h3>
               <p className="text-xs text-slate-600 font-medium mt-0.5">
@@ -190,7 +190,7 @@ export default function SubCategoryDetailPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {parentDept.clinicalHighlights.map((hl, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 bg-slate-50 p-3 rounded-2xl border border-slate-200/80">
-                  <div className="w-5 h-5 rounded-full bg-[#E2F0EA] text-[#2F855A] flex items-center justify-center text-xs shrink-0 mt-0.5 font-bold">
+                  <div className="w-5 h-5 rounded-full bg-[#E6F4F6] text-[#3597A4] flex items-center justify-center text-xs shrink-0 mt-0.5 font-bold">
                     ✓
                   </div>
                   <span className="text-xs font-bold text-slate-800">{hl}</span>
@@ -201,16 +201,16 @@ export default function SubCategoryDetailPage() {
 
 
           {/* 2. Available Cities (Mobile Insert: Order 2 on Mobile, Hidden on Desktop) */}
-          <div className="order-2 lg:hidden bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
+          <div className="order-2 lg:hidden bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#2F855A]" />
+              <MapPin className="w-4 h-4 text-[#3597A4]" />
               Available Cities ({displayCities.length})
             </h4>
             <div className="flex flex-wrap gap-2">
               {displayCities.map((city) => (
                 <span
                   key={city}
-                  className="bg-[#EBF7F1] text-[#2F855A] border border-[#CBE5D7] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"
+                  className="bg-[#E6F4F6] text-[#3597A4] border border-[#E6F4F6] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"
                 >
                   <MapPin className="w-3 h-3" />
                   <span>{city}</span>
@@ -221,9 +221,9 @@ export default function SubCategoryDetailPage() {
 
 
           {/* 3. Active Slots (Mobile Insert: Order 3 on Mobile, Hidden on Desktop) */}
-          <div className="order-3 lg:hidden bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
+          <div className="order-3 lg:hidden bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-[#2F855A]" />
+              <CalendarCheck className="w-4 h-4 text-[#3597A4]" />
               Active Slots ({categorySlots.length})
             </h4>
 
@@ -239,17 +239,17 @@ export default function SubCategoryDetailPage() {
                     <div key={slot.id} className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-extrabold text-slate-900">{parentHosp?.name || 'Partner Hospital'}</span>
-                        <span className="text-[10px] font-extrabold bg-[#2F855A] text-white px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-extrabold bg-[#3597A4] text-white px-2 py-0.5 rounded-full">
                           {slot.duration}
                         </span>
                       </div>
                       <div className="text-[11px] text-slate-600 font-medium flex items-center justify-between">
                         <span>{slot.city}</span>
-                        <span className="text-[#2F855A] font-bold">{slot.availableSeats} Seats Left</span>
+                        <span className="text-[#3597A4] font-bold">{slot.availableSeats} Seats Left</span>
                       </div>
                       <button
                         onClick={handleStartBooking}
-                        className="w-full bg-[#2F855A] text-white font-bold text-xs py-2 rounded-xl transition hover:bg-[#276749] cursor-pointer"
+                        className="w-full bg-[#3597A4] text-white font-bold text-xs py-2 rounded-xl transition hover:bg-[#1F6F76] cursor-pointer"
                       >
                         Book {subCategory.name} Slot
                       </button>
@@ -262,10 +262,10 @@ export default function SubCategoryDetailPage() {
 
 
           {/* 4. Affiliated Hospitals - Mobile Order 4 */}
-          <div className="order-4 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-5">
+          <div className="order-4 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-5">
             <div className="border-b border-slate-100 pb-4">
               <h3 className="text-lg font-extrabold text-slate-900 font-heading flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-[#2F855A]" />
+                <Building2 className="w-5 h-5 text-[#3597A4]" />
                 Affiliated Hospitals for {subCategory.name} ({affiliatedHospitals.length})
               </h3>
               <p className="text-xs text-slate-600 font-medium mt-0.5">
@@ -275,9 +275,9 @@ export default function SubCategoryDetailPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {affiliatedHospitals.map((hosp) => (
-                <div key={hosp.id} className="bg-slate-50 rounded-2xl border border-[#CBE5D7] p-4 flex flex-col justify-between space-y-3">
+                <div key={hosp.id} className="bg-slate-50 rounded-2xl border border-[#E6F4F6] p-4 flex flex-col justify-between space-y-3">
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-extrabold text-[#2F855A] bg-[#E2F0EA] px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-extrabold text-[#3597A4] bg-[#E6F4F6] px-2.5 py-0.5 rounded-full">
                       {hosp.city}
                     </span>
                     <h4 className="text-sm font-black text-slate-900 font-heading leading-tight">{hosp.name}</h4>
@@ -289,7 +289,7 @@ export default function SubCategoryDetailPage() {
 
                   <button
                     onClick={handleStartBooking}
-                    className="w-full bg-white hover:bg-[#2F855A] text-slate-900 hover:text-white border border-[#2F855A] font-extrabold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1 cursor-pointer"
+                    className="w-full bg-white hover:bg-[#3597A4] text-slate-900 hover:text-white border border-[#3597A4] font-extrabold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1 cursor-pointer"
                   >
                     <span>Check Open Slots</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -306,16 +306,16 @@ export default function SubCategoryDetailPage() {
         <div className="hidden lg:block lg:col-span-4 space-y-8">
 
           {/* Available Cities (Desktop) */}
-          <div className="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
+          <div className="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#2F855A]" />
+              <MapPin className="w-4 h-4 text-[#3597A4]" />
               Available Cities ({displayCities.length})
             </h4>
             <div className="flex flex-wrap gap-2">
               {displayCities.map((city) => (
                 <span
                   key={city}
-                  className="bg-[#EBF7F1] text-[#2F855A] border border-[#CBE5D7] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"
+                  className="bg-[#E6F4F6] text-[#3597A4] border border-[#E6F4F6] text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1"
                 >
                   <MapPin className="w-3 h-3" />
                   <span>{city}</span>
@@ -326,9 +326,9 @@ export default function SubCategoryDetailPage() {
 
 
           {/* Active Slots (Desktop) */}
-          <div className="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#CBE5D7] shadow-sm space-y-4">
+          <div className="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#E6F4F6] shadow-sm space-y-4">
             <h4 className="text-sm font-extrabold text-slate-900 font-heading flex items-center gap-2">
-              <CalendarCheck className="w-4 h-4 text-[#2F855A]" />
+              <CalendarCheck className="w-4 h-4 text-[#3597A4]" />
               Active Slots ({categorySlots.length})
             </h4>
 
@@ -344,17 +344,17 @@ export default function SubCategoryDetailPage() {
                     <div key={slot.id} className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-extrabold text-slate-900">{parentHosp?.name || 'Partner Hospital'}</span>
-                        <span className="text-[10px] font-extrabold bg-[#2F855A] text-white px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-extrabold bg-[#3597A4] text-white px-2 py-0.5 rounded-full">
                           {slot.duration}
                         </span>
                       </div>
                       <div className="text-[11px] text-slate-600 font-medium flex items-center justify-between">
                         <span>{slot.city}</span>
-                        <span className="text-[#2F855A] font-bold">{slot.availableSeats} Seats Left</span>
+                        <span className="text-[#3597A4] font-bold">{slot.availableSeats} Seats Left</span>
                       </div>
                       <button
                         onClick={handleStartBooking}
-                        className="w-full bg-[#2F855A] text-white font-bold text-xs py-2 rounded-xl transition hover:bg-[#276749] cursor-pointer"
+                        className="w-full bg-[#3597A4] text-white font-bold text-xs py-2 rounded-xl transition hover:bg-[#1F6F76] cursor-pointer"
                       >
                         Book {subCategory.name} Slot
                       </button>

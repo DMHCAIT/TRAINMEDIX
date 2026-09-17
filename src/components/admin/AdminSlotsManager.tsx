@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -143,7 +143,7 @@ export const AdminSlotsManager: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'available': return 'bg-green-100 text-green-800';
+      case 'available': return 'bg-[#E6F4F6] text-[#3597A4]';
       case 'full': return 'bg-orange-100 text-orange-800';
       case 'completed': return 'bg-blue-100 text-blue-800';
       case 'cancelled': return 'bg-red-100 text-red-800';
@@ -159,7 +159,7 @@ export const AdminSlotsManager: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { resetForm(); setShowForm(true); }}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-700"
+          className="bg-[#3597A4] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#3597A4]"
         >
           <Plus size={18} /> Add Slot
         </motion.button>
@@ -184,7 +184,7 @@ export const AdminSlotsManager: React.FC = () => {
           placeholder="Search slots..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
         />
       </div>
 
@@ -215,7 +215,7 @@ export const AdminSlotsManager: React.FC = () => {
                   <select
                     value={formData.hospital_department_id}
                     onChange={(e) => setFormData({ ...formData, hospital_department_id: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     required
                   >
                     <option value="">Select department...</option>
@@ -231,7 +231,7 @@ export const AdminSlotsManager: React.FC = () => {
                     type="date"
                     value={formData.start_date}
                     onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     required
                   />
                 </div>
@@ -242,7 +242,7 @@ export const AdminSlotsManager: React.FC = () => {
                     type="date"
                     value={formData.end_date}
                     onChange={(e) => setFormData({ ...formData, end_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     required
                   />
                 </div>
@@ -254,7 +254,7 @@ export const AdminSlotsManager: React.FC = () => {
                     value={formData.available_seats}
                     onChange={(e) => setFormData({ ...formData, available_seats: parseInt(e.target.value) })}
                     min="1"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     required
                   />
                 </div>
@@ -264,7 +264,7 @@ export const AdminSlotsManager: React.FC = () => {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                   >
                     <option value="available">Available</option>
                     <option value="full">Full</option>
@@ -284,7 +284,7 @@ export const AdminSlotsManager: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                    className="px-4 py-2 bg-[#3597A4] text-white rounded-lg hover:bg-[#3597A4] disabled:opacity-50"
                   >
                     {isLoading ? 'Saving...' : 'Save'}
                   </button>

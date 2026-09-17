@@ -1,6 +1,7 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { apiService } from '../../services/apiService';
@@ -141,9 +142,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-[#EBF7F1]/90 backdrop-blur-xl border-b border-[#CBE5D7] shadow-xs py-0'
-        : 'bg-transparent border-b border-transparent shadow-none py-1'
+      className={`sticky top-0 z-50 transition-all duration-300 bg-[#E6F4F6]/95 backdrop-blur-xl border-b ${isScrolled
+        ? 'border-[#7BC0D4]/40 shadow-sm py-0'
+        : 'border-[#7BC0D4]/30 shadow-sm py-1'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,17 +162,24 @@ export const Navbar: React.FC = () => {
                 setActiveTab('home');
               }
             }}
-            className="flex items-center gap-3 cursor-pointer select-none"
+            className="flex items-center gap-0.5 cursor-pointer select-none"
           >
-            <div className="w-10 h-10 rounded-2xl bg-[#2F855A] text-white flex items-center justify-center shadow-md shadow-[#2F855A]/25">
-              <Plus className="w-6 h-6 stroke-[3]" />
+            <div className="w-14 h-14 flex items-center justify-center overflow-hidden shrink-0">
+              <Image
+                src="/logo.png"
+                alt="TrainMedix logo"
+                width={56}
+                height={56}
+                priority
+                className="h-12 w-12 object-contain"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-black text-xl tracking-tight text-[#1F1C18] font-heading">
-                  Train<span className="text-[#2F855A]">Medix</span>
+                <span className="font-black text-3xl tracking-tight text-[#1F1C18] font-heading">
+                  Train<span className="text-[#3597A4]">Medix</span>
                 </span>
-                <span className="bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
+                <span className="bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
                   DMHCA
                 </span>
               </div>
@@ -189,7 +197,7 @@ export const Navbar: React.FC = () => {
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${isActive
-                    ? 'bg-[#2F855A] text-white font-extrabold shadow-xs'
+                    ? 'bg-[#3597A4] text-white font-extrabold shadow-xs'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100/80'
                     }`}
                 >
@@ -210,13 +218,13 @@ export const Navbar: React.FC = () => {
             <div ref={profileDropdownRef} className="relative">
               <button
                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                className="w-9 h-9 rounded-full bg-[#E2F0EA] hover:bg-[#D5EBE1] text-[#2F855A] flex items-center justify-center font-extrabold text-xs border border-[#CBE5D7] hover:border-[#2F855A] shadow-2xs cursor-pointer transition select-none"
+                className="w-9 h-9 rounded-full bg-[#E6F4F6] hover:bg-[#E6F4F6] text-[#3597A4] flex items-center justify-center font-extrabold text-xs border border-[#3597A4] hover:border-[#3597A4] shadow-2xs cursor-pointer transition select-none"
                 title={!isLoggedIn || role === 'admin' ? 'Not Signed In' : (userProfile?.fullName || (role === 'trainee' ? 'Dr. Ananya Roy' : 'Max Hospital'))}
               >
                 {isLoggedIn && role !== 'admin' ? (
                   getProfileInitials(userProfile?.fullName || (role === 'trainee' ? 'Dr. Ananya Roy' : 'Max Hospital'))
                 ) : (
-                  <User className="w-4 h-4 text-[#2F855A]" />
+                  <User className="w-4 h-4 text-[#3597A4]" />
                 )}
               </button>
 
@@ -230,16 +238,16 @@ export const Navbar: React.FC = () => {
                   >
                     {/* Profile Header: Empty Profile when logged out vs Doctor Details when logged in */}
                     {isLoggedIn ? (
-                      <div className="bg-[#EBF7F1] p-3 rounded-2xl border border-[#CBE5D7]">
+                      <div className="bg-[#E6F4F6] p-3 rounded-2xl border border-[#E6F4F6]">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-9 h-9 rounded-full bg-[#2F855A] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                          <div className="w-9 h-9 rounded-full bg-[#3597A4] text-white flex items-center justify-center font-bold text-sm shadow-xs">
                             {getProfileInitials(userProfile?.fullName || (role === 'trainee' ? 'Dr. Ananya Roy' : role === 'hospital' ? 'Max Hospital' : 'System Admin'))}
                           </div>
                           <div>
                             <h4 className="text-xs font-extrabold text-slate-900 font-heading">
                               {userProfile?.fullName || (role === 'trainee' ? 'Dr. Ananya Roy' : role === 'hospital' ? 'Max Super Speciality' : 'System Administrator')}
                             </h4>
-                            <p className="text-[10px] text-[#2F855A] font-bold">
+                            <p className="text-[10px] text-[#3597A4] font-bold">
                               {userProfile?.email || (role === 'trainee' ? 'MBBS • MCI-2022-77142' : role === 'hospital' ? 'Certified Partner Training Hospital' : 'DMHCA Platform Coordinator')}
                             </p>
                           </div>
@@ -269,23 +277,23 @@ export const Navbar: React.FC = () => {
                         <>
                           <button
                             onClick={() => { setActiveTab('dashboard'); setProfileDropdownOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'dashboard' ? 'bg-[#E2F0EA] text-[#2F855A]' : 'text-slate-700 hover:bg-slate-50'}`}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'dashboard' ? 'bg-[#E6F4F6] text-[#3597A4]' : 'text-slate-700 hover:bg-slate-50'}`}
                           >
-                            <LayoutDashboard className="w-4 h-4 text-[#2F855A]" />
+                            <LayoutDashboard className="w-4 h-4 text-[#3597A4]" />
                             <span>My Trainee Dashboard</span>
                           </button>
                           <button
                             onClick={() => { setActiveTab('certification'); setProfileDropdownOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'certification' ? 'bg-[#E2F0EA] text-[#2F855A]' : 'text-slate-700 hover:bg-slate-50'}`}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'certification' ? 'bg-[#E6F4F6] text-[#3597A4]' : 'text-slate-700 hover:bg-slate-50'}`}
                           >
-                            <Award className="w-4 h-4 text-[#2F855A]" />
+                            <Award className="w-4 h-4 text-[#3597A4]" />
                             <span>Verification & Certificates</span>
                           </button>
                           <button
                             onClick={() => { setProfileDropdownOpen(false); router.push('/departments'); }}
                             className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-50 transition text-left"
                           >
-                            <CalendarCheck className="w-4 h-4 text-[#2F855A]" />
+                            <CalendarCheck className="w-4 h-4 text-[#3597A4]" />
                             <span>Book New Rotation</span>
                           </button>
                         </>
@@ -295,9 +303,9 @@ export const Navbar: React.FC = () => {
                         <>
                           <button
                             onClick={() => { setActiveTab('hospital-portal'); setProfileDropdownOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'hospital-portal' ? 'bg-[#E2F0EA] text-[#2F855A]' : 'text-slate-700 hover:bg-slate-50'}`}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'hospital-portal' ? 'bg-[#E6F4F6] text-[#3597A4]' : 'text-slate-700 hover:bg-slate-50'}`}
                           >
-                            <Building2 className="w-4 h-4 text-[#2F855A]" />
+                            <Building2 className="w-4 h-4 text-[#3597A4]" />
                             <span>Hospital Portal Dashboard</span>
                           </button>
                         </>
@@ -307,16 +315,16 @@ export const Navbar: React.FC = () => {
                         <>
                           <button
                             onClick={() => { setActiveTab('admin'); setProfileDropdownOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'admin' ? 'bg-[#E2F0EA] text-[#2F855A]' : 'text-slate-700 hover:bg-slate-50'}`}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'admin' ? 'bg-[#E6F4F6] text-[#3597A4]' : 'text-slate-700 hover:bg-slate-50'}`}
                           >
-                            <ShieldCheck className="w-4 h-4 text-[#2F855A]" />
+                            <ShieldCheck className="w-4 h-4 text-[#3597A4]" />
                             <span>Admin Control Panel</span>
                           </button>
                           <button
                             onClick={() => { setActiveTab('automation'); setProfileDropdownOpen(false); }}
-                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'automation' ? 'bg-[#E2F0EA] text-[#2F855A]' : 'text-slate-700 hover:bg-slate-50'}`}
+                            className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold transition text-left ${activeTab === 'automation' ? 'bg-[#E6F4F6] text-[#3597A4]' : 'text-slate-700 hover:bg-slate-50'}`}
                           >
-                            <Zap className="w-4 h-4 text-[#2F855A]" />
+                            <Zap className="w-4 h-4 text-[#3597A4]" />
                             <span>Automation Center</span>
                           </button>
                         </>
@@ -326,9 +334,9 @@ export const Navbar: React.FC = () => {
                       {!isLoggedIn ? (
                         <button
                           onClick={() => { openAuthModal('login'); setProfileDropdownOpen(false); }}
-                          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-extrabold text-[#2F855A] bg-[#EBF7F1] hover:bg-[#E2F0EA] transition text-left cursor-pointer"
+                          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-extrabold text-[#3597A4] bg-[#E6F4F6] hover:bg-[#E6F4F6] transition text-left cursor-pointer"
                         >
-                          <User className="w-4 h-4 text-[#2F855A]" />
+                          <User className="w-4 h-4 text-[#3597A4]" />
                           <span>Sign In / Sign Up</span>
                         </button>
                       ) : (
@@ -346,7 +354,7 @@ export const Navbar: React.FC = () => {
                     {isLoggedIn && (
                       <div className="pt-2 border-t border-slate-100">
                         <span className="px-1 text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
-                          Account Type: <strong className="text-[#2F855A]">{role === 'trainee' ? 'Trainee Doctor' : role === 'hospital' ? 'Hospital Partner' : 'System Admin'}</strong>
+                          Account Type: <strong className="text-[#3597A4]">{role === 'trainee' ? 'Trainee Doctor' : role === 'hospital' ? 'Hospital Partner' : 'System Admin'}</strong>
                         </span>
                       </div>
                     )}
@@ -359,7 +367,7 @@ export const Navbar: React.FC = () => {
             {(!isLoggedIn || role === 'trainee') && (
               <button
                 onClick={() => router.push('/departments')}
-                className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-4 py-2 rounded-full flex items-center gap-1.5 shadow-md shadow-[#2F855A]/25 cursor-pointer transition"
+                className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-4 py-2 rounded-full flex items-center gap-1.5 shadow-md shadow-[#3597A4]/25 cursor-pointer transition"
               >
                 <CalendarCheck className="w-3.5 h-3.5" />
                 <span>Book Rotation</span>
@@ -391,9 +399,9 @@ export const Navbar: React.FC = () => {
             className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-[#EBE4DB] px-4 py-4 space-y-4 shadow-xl"
           >
             {/* Active Account Indicator in Mobile */}
-            <div className="bg-[#EBF7F1] p-3 rounded-2xl border border-[#CBE5D7]">
+            <div className="bg-[#E6F4F6] p-3 rounded-2xl border border-[#E6F4F6]">
               {isLoggedIn && (
-                <span className="text-[10px] font-extrabold text-[#2F855A] uppercase tracking-wider block">
+                <span className="text-[10px] font-extrabold text-[#3597A4] uppercase tracking-wider block">
                   {role === 'trainee' ? 'Trainee Doctor Account' : role === 'hospital' ? 'Hospital Partner Account' : 'System Admin Account'}
                 </span>
               )}
@@ -410,7 +418,7 @@ export const Navbar: React.FC = () => {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`p-3 rounded-xl text-xs font-bold text-left ${activeTab === item.id ? 'bg-[#E2F0EA] text-[#3D7A5C]' : 'bg-[#EBF7F1] text-slate-700'
+                  className={`p-3 rounded-xl text-xs font-bold text-left ${activeTab === item.id ? 'bg-[#E6F4F6] text-[#3597A4]' : 'bg-[#E6F4F6] text-slate-700'
                     }`}
                 >
                   {item.label}
@@ -437,7 +445,7 @@ export const Navbar: React.FC = () => {
               {!isLoggedIn ? (
                 <button
                   onClick={() => { openAuthModal('login'); setMobileMenuOpen(false); }}
-                  className="col-span-2 p-3.5 rounded-xl text-xs font-extrabold text-white bg-[#2F855A] hover:bg-[#276749] flex items-center justify-center gap-2 shadow-md cursor-pointer mt-1"
+                  className="col-span-2 p-3.5 rounded-xl text-xs font-extrabold text-white bg-[#3597A4] hover:bg-[#1F6F76] flex items-center justify-center gap-2 shadow-md cursor-pointer mt-1"
                 >
                   <User className="w-4 h-4 text-white" />
                   <span>Sign In / Sign Up</span>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -74,7 +74,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialTab = 'dashboard'
         {/* Logo Section */}
         <div className="p-6 border-b border-slate-700">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center font-bold">TM</div>
+            <div className="w-10 h-10 rounded-lg bg-[#3597A4] flex items-center justify-center font-bold">TM</div>
             <div>
               <h1 className="text-lg font-bold">TrainMedix Admin</h1>
               <p className="text-xs text-slate-400">Management System</p>
@@ -95,7 +95,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ initialTab = 'dashboard'
               }}
               className={`w-full text-left px-4 py-3 rounded-lg font-semibold text-sm transition flex items-center justify-between ${
                 activeTab === item.id
-                  ? 'bg-green-600 text-white shadow-lg'
+                  ? 'bg-[#3597A4] text-white shadow-lg'
                   : 'text-slate-300 hover:bg-slate-700 hover:text-white'
               }`}
             >
@@ -207,7 +207,7 @@ const DashboardView: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: 'Total Users', value: 'Loading...', icon: Users, color: 'bg-blue-100 text-blue-600' },
-          { label: 'Total Hospitals', value: 'Loading...', icon: Building2, color: 'bg-green-100 text-green-600' },
+          { label: 'Total Hospitals', value: 'Loading...', icon: Building2, color: 'bg-[#E6F4F6] text-[#3597A4]' },
           { label: 'Total Departments', value: 'Loading...', icon: BookOpen, color: 'bg-purple-100 text-purple-600' },
           { label: 'Pending Bookings', value: 'Loading...', icon: ClipboardList, color: 'bg-orange-100 text-orange-600' }
         ].map((card, idx) => (
@@ -276,7 +276,7 @@ const DashboardView: React.FC = () => {
             >
               <h4 className="font-semibold text-slate-900 mb-2">{item.name}</h4>
               <p className="text-sm text-slate-600 mb-3">{item.description}</p>
-              <button className="text-sm font-semibold text-green-600 hover:text-green-700">
+              <button className="text-sm font-semibold text-[#3597A4] hover:text-green-700">
                 {item.action} →
               </button>
             </div>

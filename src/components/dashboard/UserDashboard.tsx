@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -90,7 +90,7 @@ export const UserDashboard: React.FC = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setActiveTab('certification')}
-              className="w-full md:w-auto bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-6 py-3.5 rounded-2xl transition shadow-md shadow-[#2F855A]/25 flex items-center justify-center gap-2 touch-target cursor-pointer"
+              className="w-full md:w-auto bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-6 py-3.5 rounded-2xl transition shadow-md shadow-[#3597A4]/25 flex items-center justify-center gap-2 touch-target cursor-pointer"
             >
               <Award className="w-4 h-4" />
               <span>Claim / View DMHCA Certificate</span>
@@ -123,7 +123,7 @@ export const UserDashboard: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute inset-0 bg-[#2F855A] rounded-2xl shadow-xs"
+                  className="absolute inset-0 bg-[#3597A4] rounded-2xl shadow-xs"
                 />
               )}
               <span className="relative z-10 flex items-center gap-2">
@@ -149,7 +149,7 @@ export const UserDashboard: React.FC = () => {
             <div className="lg:col-span-2 space-y-4">
               {bookings.length === 0 ? (
                 <div className="glass-card rounded-3xl p-8 border border-slate-200/80 text-center space-y-4 shadow-xs">
-                  <div className="w-12 h-12 rounded-2xl bg-[#E2F0EA] text-[#2F855A] flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-2xl bg-[#E6F4F6] text-[#3597A4] flex items-center justify-center mx-auto">
                     <Calendar className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
@@ -160,7 +160,7 @@ export const UserDashboard: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setActiveTab('hospitals')}
-                    className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md cursor-pointer"
+                    className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md cursor-pointer"
                   >
                     Explore Training Slots
                   </button>
@@ -180,7 +180,7 @@ export const UserDashboard: React.FC = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                            <span className="text-[10px] font-mono font-bold text-[#3D7A5C] bg-[#E2F0EA] px-2.5 py-1 rounded-md border border-[#C5DED0]">
+                            <span className="text-[10px] font-mono font-bold text-[#3597A4] bg-[#E6F4F6] px-2.5 py-1 rounded-md border border-[#E6F4F6]">
                               REF: {bk.bookingRef}
                             </span>
                             <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
@@ -219,7 +219,7 @@ export const UserDashboard: React.FC = () => {
                       {/* Supervisor Details */}
                       <div className="p-4.5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex items-center justify-between text-xs">
                         <div className="flex items-center gap-3.5">
-                          <div className="w-10 h-10 rounded-2xl bg-[#E2F0EA] border border-[#C5DED0] flex items-center justify-center text-[#2F855A] font-bold font-heading">
+                          <div className="w-10 h-10 rounded-2xl bg-[#E6F4F6] border border-[#E6F4F6] flex items-center justify-center text-[#3597A4] font-bold font-heading">
                             DR
                           </div>
                           <div>
@@ -244,19 +244,19 @@ export const UserDashboard: React.FC = () => {
             {/* Quick Stats Sidebar */}
             <div className="space-y-4">
               <div className="glass-card rounded-3xl p-6 border border-slate-200/80 space-y-4 shadow-xs">
-                <h4 className="text-xs font-extrabold text-[#2F855A] uppercase tracking-wider font-heading">Rotation Completion</h4>
+                <h4 className="text-xs font-extrabold text-[#3597A4] uppercase tracking-wider font-heading">Rotation Completion</h4>
 
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-bold text-slate-700">
                     <span>Clinical Rotation Progress</span>
-                    <span className="text-[#2F855A] font-heading">{bookings.length > 0 ? '65%' : '0%'}</span>
+                    <span className="text-[#3597A4] font-heading">{bookings.length > 0 ? '65%' : '0%'}</span>
                   </div>
                   <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80 p-0.5">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: bookings.length > 0 ? '65%' : '0%' }}
                       transition={{ duration: 1, ease: 'easeOut' }}
-                      className="h-full bg-[#2F855A] rounded-full shadow-2xs"
+                      className="h-full bg-[#3597A4] rounded-full shadow-2xs"
                     />
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export const UserDashboard: React.FC = () => {
                 <div className="space-y-2.5 pt-2 text-xs text-slate-600">
                   <div className="flex justify-between"><span>Cases Logged:</span> <span className="font-bold text-slate-900">{logbook.length} Procedures</span></div>
                   <div className="flex justify-between"><span>Shift Attendance:</span> <span className="font-extrabold text-emerald-700">{bookings.length > 0 ? '100% Present' : '0%'}</span></div>
-                  <div className="flex justify-between"><span>DMHCA QR Verification:</span> <span className="font-bold text-[#2F855A]">{isLoggedIn ? 'Verified' : 'Pending'}</span></div>
+                  <div className="flex justify-between"><span>DMHCA QR Verification:</span> <span className="font-bold text-[#3597A4]">{isLoggedIn ? 'Verified' : 'Pending'}</span></div>
                 </div>
               </div>
             </div>
@@ -290,7 +290,7 @@ export const UserDashboard: React.FC = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setShowAddLogModal(true)}
-              className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-1.5 shadow-md shadow-[#2F855A]/25 touch-target cursor-pointer"
+              className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-1.5 shadow-md shadow-[#3597A4]/25 touch-target cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>Log New Procedure</span>
@@ -320,8 +320,8 @@ export const UserDashboard: React.FC = () => {
                     </tr>
                   ) : (
                     logbook.map((entry) => (
-                      <tr key={entry.id} className="hover:bg-[#E2F0EA]/50 transition">
-                        <td className="p-4.5 font-mono text-[#2F855A] font-bold">{entry.date}</td>
+                      <tr key={entry.id} className="hover:bg-[#E6F4F6]/50 transition">
+                        <td className="p-4.5 font-mono text-[#3597A4] font-bold">{entry.date}</td>
                         <td className="p-4.5 font-bold text-slate-900 font-heading">{entry.procedureName}</td>
                         <td className="p-4.5 text-center font-bold">{entry.casesObserved}</td>
                         <td className="p-4.5 text-center font-bold text-emerald-700">{entry.casesAssisted}</td>
@@ -359,7 +359,7 @@ export const UserDashboard: React.FC = () => {
               ].map((doc, idx) => (
                 <div key={idx} className="p-4 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-2">
                   <div className="flex items-center justify-between">
-                    <FileText className="w-5 h-5 text-[#2F855A]" />
+                    <FileText className="w-5 h-5 text-[#3597A4]" />
                     <span className="bg-emerald-50 text-emerald-700 border border-emerald-200/80 text-[10px] font-bold px-2 py-0.5 rounded-md">
                       {doc.status}
                     </span>
@@ -386,17 +386,17 @@ export const UserDashboard: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-1">
-                <p className="text-[10px] font-extrabold text-[#2F855A] uppercase font-heading">Morning Shift</p>
+                <p className="text-[10px] font-extrabold text-[#3597A4] uppercase font-heading">Morning Shift</p>
                 <p className="text-base font-bold text-slate-900 font-heading">08:00 AM – 02:00 PM</p>
                 <p className="text-xs text-slate-600 font-medium">Trauma Bay & Resuscitation Room</p>
               </div>
               <div className="p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-1">
-                <p className="text-[10px] font-extrabold text-[#2F855A] uppercase font-heading">Evening Shift</p>
+                <p className="text-[10px] font-extrabold text-[#3597A4] uppercase font-heading">Evening Shift</p>
                 <p className="text-base font-bold text-slate-900 font-heading">02:00 PM – 08:00 PM</p>
                 <p className="text-xs text-slate-600 font-medium">Acute OPD Triage & Procedure OT</p>
               </div>
               <div className="p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 space-y-1">
-                <p className="text-[10px] font-extrabold text-[#2F855A] uppercase font-heading">Night Call (Optional)</p>
+                <p className="text-[10px] font-extrabold text-[#3597A4] uppercase font-heading">Night Call (Optional)</p>
                 <p className="text-base font-bold text-slate-900 font-heading">08:00 PM – 08:00 AM</p>
                 <p className="text-xs text-slate-600 font-medium">Trauma ICU & Mass Casualty Rotations</p>
               </div>
@@ -474,7 +474,7 @@ export const UserDashboard: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 bg-[#2F855A] hover:bg-[#276749] text-white font-bold rounded-xl shadow-md cursor-pointer"
+                    className="px-5 py-2.5 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold rounded-xl shadow-md cursor-pointer"
                   >
                     Save Log Entry
                   </button>

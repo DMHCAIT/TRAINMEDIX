@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -135,7 +135,7 @@ const SeamlessOTPInput: React.FC<SeamlessOTPInputProps> = ({ otp, setOtp, idPref
           onChange={(e) => handleChange(e, idx)}
           onKeyDown={(e) => handleKeyDown(e, idx)}
           onPaste={handlePaste}
-          className="w-12 h-12 sm:w-14 sm:h-14 text-center bg-white border-2 border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl text-xl font-black text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs transition-all duration-200"
+          className="w-12 h-12 sm:w-14 sm:h-14 text-center bg-white border-2 border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl text-xl font-black text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs transition-all duration-200"
         />
       ))}
     </div>
@@ -514,11 +514,11 @@ export const AuthModal: React.FC = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full max-w-lg bg-[#F6F2EC] border border-[#CBE5D7] rounded-3xl shadow-2xl z-10 my-auto"
+          className="relative w-full max-w-lg bg-[#F6F2EC] border border-[#E6F4F6] rounded-3xl shadow-2xl z-10 my-auto"
         >
 
           {/* Header Banner */}
-          <div className="relative bg-linear-to-r from-[#2F855A] to-[#276749] text-white p-6 sm:p-7 rounded-t-3xl">
+          <div className="relative bg-linear-to-r from-[#3597A4] to-[#1F6F76] text-white p-6 sm:p-7 rounded-t-3xl">
             <button
               onClick={handleClose}
               className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition cursor-pointer"
@@ -545,7 +545,7 @@ export const AuthModal: React.FC = () => {
               <button
                 onClick={() => { setActiveTabMode('login'); resetFormState(); }}
                 className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${activeTab === 'login'
-                  ? 'bg-white text-[#2F855A] shadow-md'
+                  ? 'bg-white text-[#3597A4] shadow-md'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
               >
@@ -554,7 +554,7 @@ export const AuthModal: React.FC = () => {
               <button
                 onClick={() => { setActiveTabMode('signup'); resetFormState(); }}
                 className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${activeTab === 'signup'
-                  ? 'bg-white text-[#2F855A] shadow-md'
+                  ? 'bg-white text-[#3597A4] shadow-md'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
               >
@@ -590,12 +590,12 @@ export const AuthModal: React.FC = () => {
                           type="button"
                           onClick={() => handleLoginRoleSwitch('trainee')}
                           className={`p-3 rounded-2xl border text-left transition flex items-center gap-3 cursor-pointer ${loginRole === 'trainee'
-                            ? 'bg-[#EBF7F1] border-[#2F855A] text-[#2F855A] font-bold shadow-2xs'
+                            ? 'bg-[#E6F4F6] border-[#3597A4] text-[#3597A4] font-bold shadow-2xs'
                             : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                             }`}
                         >
-                          <div className="w-8 h-8 rounded-xl bg-white border border-[#CBE5D7] flex items-center justify-center shrink-0">
-                            <User className="w-4 h-4 text-[#2F855A]" />
+                          <div className="w-8 h-8 rounded-xl bg-white border border-[#E6F4F6] flex items-center justify-center shrink-0">
+                            <User className="w-4 h-4 text-[#3597A4]" />
                           </div>
                           <div>
                             <span className="text-xs font-extrabold block">Trainee Doctor</span>
@@ -606,12 +606,12 @@ export const AuthModal: React.FC = () => {
                           type="button"
                           onClick={() => handleLoginRoleSwitch('hospital')}
                           className={`p-3 rounded-2xl border text-left transition flex items-center gap-3 cursor-pointer ${loginRole === 'hospital'
-                            ? 'bg-[#EBF7F1] border-[#2F855A] text-[#2F855A] font-bold shadow-2xs'
+                            ? 'bg-[#E6F4F6] border-[#3597A4] text-[#3597A4] font-bold shadow-2xs'
                             : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                             }`}
                         >
-                          <div className="w-8 h-8 rounded-xl bg-white border border-[#CBE5D7] flex items-center justify-center shrink-0">
-                            <Building2 className="w-4 h-4 text-[#2F855A]" />
+                          <div className="w-8 h-8 rounded-xl bg-white border border-[#E6F4F6] flex items-center justify-center shrink-0">
+                            <Building2 className="w-4 h-4 text-[#3597A4]" />
                           </div>
                           <div>
                             <span className="text-xs font-extrabold block">Hospital Partner</span>
@@ -627,7 +627,7 @@ export const AuthModal: React.FC = () => {
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                          <Mail className="w-4 h-4 text-[#2F855A]" />
+                          <Mail className="w-4 h-4 text-[#3597A4]" />
                         </div>
                         <input
                           type="email"
@@ -635,7 +635,7 @@ export const AuthModal: React.FC = () => {
                           placeholder={loginRole === 'trainee' ? 'e.g. dr.ananya@gmail.com' : loginRole === 'hospital' ? 'e.g. partner@maxhealthcare.in' : 'e.g. admin@trainmedix.com'}
                           value={loginInput}
                           onChange={(e) => setLoginInput(e.target.value)}
-                          className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                          className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                         />
                       </div>
                     </div>
@@ -649,7 +649,7 @@ export const AuthModal: React.FC = () => {
                     <button
                       type="submit"
                       disabled={loginBusy}
-                      className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       <span>{loginBusy ? 'Sending OTP...' : 'Get OTP'}</span>
                       <ArrowRight className="w-4 h-4" />
@@ -658,7 +658,7 @@ export const AuthModal: React.FC = () => {
                 ) : (
                   <form onSubmit={handleVerifyLogin} className="space-y-6">
                     <div className="text-center space-y-1">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E2F0EA] text-[#2F855A] mb-2 border border-[#BBE2D1]">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E6F4F6] text-[#3597A4] mb-2 border border-[#E6F4F6]">
                         <KeyRound className="w-6 h-6" />
                       </div>
                       <h4 className="text-base font-extrabold text-slate-900 font-heading">
@@ -683,7 +683,7 @@ export const AuthModal: React.FC = () => {
                         type="button"
                         onClick={handleResendLoginOtp}
                         disabled={loginBusy}
-                        className="text-[#2F855A] font-bold hover:underline cursor-pointer flex items-center gap-1 disabled:opacity-60"
+                        className="text-[#3597A4] font-bold hover:underline cursor-pointer flex items-center gap-1 disabled:opacity-60"
                       >
                         <RefreshCw className="w-3 h-3" />
                         <span>Resend OTP</span>
@@ -693,7 +693,7 @@ export const AuthModal: React.FC = () => {
                     <button
                       type="submit"
                       disabled={loginBusy}
-                      className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>{loginBusy ? 'Verifying...' : 'Verify'}</span>
@@ -702,7 +702,7 @@ export const AuthModal: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => { setLoginStep('input'); setLoginError(''); }}
-                      className="w-full text-center text-xs font-bold text-slate-500 hover:text-[#2F855A] transition"
+                      className="w-full text-center text-xs font-bold text-slate-500 hover:text-[#3597A4] transition"
                     >
                       ← Change Email Address
                     </button>
@@ -720,7 +720,7 @@ export const AuthModal: React.FC = () => {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-[11px] font-extrabold text-slate-600 uppercase tracking-wider">
                     <span>Step {signupStep} of 4</span>
-                    <span className="text-[#2F855A]">
+                    <span className="text-[#3597A4]">
                       {signupStep === 1 && 'Full Name'}
                       {signupStep === 2 && (signupRole === 'hospital' ? 'Contact & Capacity' : 'Email ID & Phone')}
                       {signupStep === 3 && (signupRole === 'hospital' ? 'Departments & Address' : 'Interest Selection & Authenticate')}
@@ -729,7 +729,7 @@ export const AuthModal: React.FC = () => {
                   </div>
                   <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-linear-to-r from-[#2F855A] to-[#3D7A5C] transition-all duration-500 rounded-full"
+                      className="h-full bg-linear-to-r from-[#3597A4] to-[#3597A4] transition-all duration-500 rounded-full"
                       style={{ width: `${(signupStep / 4) * 100}%` }}
                     />
                   </div>
@@ -753,12 +753,12 @@ export const AuthModal: React.FC = () => {
                           type="button"
                           onClick={() => handleSignupRoleSwitch('trainee')}
                           className={`p-3 rounded-2xl border text-left transition flex items-center gap-3 cursor-pointer ${signupRole === 'trainee'
-                            ? 'bg-[#EBF7F1] border-[#2F855A] text-[#2F855A] font-bold shadow-2xs'
+                            ? 'bg-[#E6F4F6] border-[#3597A4] text-[#3597A4] font-bold shadow-2xs'
                             : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                             }`}
                         >
-                          <div className="w-8 h-8 rounded-xl bg-white border border-[#CBE5D7] flex items-center justify-center shrink-0">
-                            <User className="w-4 h-4 text-[#2F855A]" />
+                          <div className="w-8 h-8 rounded-xl bg-white border border-[#E6F4F6] flex items-center justify-center shrink-0">
+                            <User className="w-4 h-4 text-[#3597A4]" />
                           </div>
                           <div>
                             <span className="text-xs font-extrabold block">Trainee Doctor</span>
@@ -769,12 +769,12 @@ export const AuthModal: React.FC = () => {
                           type="button"
                           onClick={() => handleSignupRoleSwitch('hospital')}
                           className={`p-3 rounded-2xl border text-left transition flex items-center gap-3 cursor-pointer ${signupRole === 'hospital'
-                            ? 'bg-[#EBF7F1] border-[#2F855A] text-[#2F855A] font-bold shadow-2xs'
+                            ? 'bg-[#E6F4F6] border-[#3597A4] text-[#3597A4] font-bold shadow-2xs'
                             : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                             }`}
                         >
-                          <div className="w-8 h-8 rounded-xl bg-white border border-[#CBE5D7] flex items-center justify-center shrink-0">
-                            <Building2 className="w-4 h-4 text-[#2F855A]" />
+                          <div className="w-8 h-8 rounded-xl bg-white border border-[#E6F4F6] flex items-center justify-center shrink-0">
+                            <Building2 className="w-4 h-4 text-[#3597A4]" />
                           </div>
                           <div>
                             <span className="text-xs font-extrabold block">Hospital Partner</span>
@@ -805,7 +805,7 @@ export const AuthModal: React.FC = () => {
                           placeholder={signupRole === 'hospital' ? 'e.g. Max Super Speciality Hospital' : 'e.g. Dr. Ananya Roy'}
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
-                          className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                          className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                         />
                       </div>
                     </div>
@@ -843,7 +843,7 @@ export const AuthModal: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer mt-2"
+                      className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer mt-2"
                     >
                       <span>Next: Email ID</span>
                       <ArrowRight className="w-4 h-4" />
@@ -883,7 +883,7 @@ export const AuthModal: React.FC = () => {
                                 value={emailId}
                                 onChange={(e) => { setEmailId(e.target.value); setSignupError(''); }}
                                 placeholder="e.g. admin@maxhospital.in"
-                                className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                                className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                               />
                             </span>
                           </label>
@@ -896,7 +896,7 @@ export const AuthModal: React.FC = () => {
                                 value={phoneNumber}
                                 onChange={(e) => { setPhoneNumber(e.target.value); setSignupError(''); }}
                                 placeholder="e.g. +91 98765 43210"
-                                className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                                className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                               />
                             </span>
                           </label>
@@ -929,7 +929,7 @@ export const AuthModal: React.FC = () => {
                               placeholder="e.g. ananya.roy@example.com"
                               value={emailId}
                               onChange={(e) => setEmailId(e.target.value)}
-                              className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                              className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                             />
                           </div>
                         </div>
@@ -944,7 +944,7 @@ export const AuthModal: React.FC = () => {
                               placeholder="e.g. +91 98765 43210"
                               value={phoneNumber}
                               onChange={(e) => setPhoneNumber(e.target.value)}
-                              className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                              className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                             />
                           </div>
                         </div>
@@ -961,7 +961,7 @@ export const AuthModal: React.FC = () => {
                       </button>
                       <button
                         type="submit"
-                        className="flex-1 bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer"
+                        className="flex-1 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer"
                       >
                         <span>{signupRole === 'hospital' ? 'Next: Select Departments' : 'Next: Select Specialties'}</span>
                         <ArrowRight className="w-4 h-4" />
@@ -996,10 +996,10 @@ export const AuthModal: React.FC = () => {
                           <label className="block text-xs font-bold text-slate-700">
                             Clinical Departments Offered
                             {selectedDepartments.length > 0 && (
-                              <span className="ml-1.5 text-[#2F855A]">({selectedDepartments.length} selected)</span>
+                              <span className="ml-1.5 text-[#3597A4]">({selectedDepartments.length} selected)</span>
                             )}
                           </label>
-                          <div className="flex flex-wrap gap-2 max-h-44 overflow-y-auto p-2.5 bg-white rounded-2xl border border-[#CBE5D7] no-scrollbar">
+                          <div className="flex flex-wrap gap-2 max-h-44 overflow-y-auto p-2.5 bg-white rounded-2xl border border-[#E6F4F6] no-scrollbar">
                             {DEPARTMENTS.map((dept) => {
                               const isSelected = selectedDepartments.includes(dept.id);
                               return (
@@ -1008,8 +1008,8 @@ export const AuthModal: React.FC = () => {
                                   type="button"
                                   onClick={() => toggleDepartment(dept.id)}
                                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border ${isSelected
-                                    ? 'bg-[#2F855A] text-white border-[#2F855A] shadow-2xs'
-                                    : 'bg-[#EBF7F1] text-[#3D7A5C] border-[#CBE5D7] hover:bg-[#E2F0EA]'
+                                    ? 'bg-[#3597A4] text-white border-[#3597A4] shadow-2xs'
+                                    : 'bg-[#E6F4F6] text-[#3597A4] border-[#E6F4F6] hover:bg-[#E6F4F6]'
                                     }`}
                                 >
                                   {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
@@ -1031,7 +1031,7 @@ export const AuthModal: React.FC = () => {
                               placeholder="e.g. 1, Press Enclave Road, Saket, New Delhi"
                               value={hospitalAddress}
                               onChange={(e) => setHospitalAddress(e.target.value)}
-                              className="w-full bg-white border border-[#CBE5D7] focus:border-[#2F855A] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#2F855A]/20 shadow-2xs"
+                              className="w-full bg-white border border-[#E6F4F6] focus:border-[#3597A4] rounded-2xl pl-10 pr-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#3597A4]/20 shadow-2xs"
                             />
                           </div>
                         </div>
@@ -1051,7 +1051,7 @@ export const AuthModal: React.FC = () => {
                         {/* Multi-Select Specialties Grid */}
                         <div className="space-y-1.5">
                           <label className="block text-xs font-bold text-slate-700">Specialty Interests (Select Multiple)</label>
-                          <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-2 bg-white rounded-2xl border border-[#CBE5D7] no-scrollbar">
+                          <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-2 bg-white rounded-2xl border border-[#E6F4F6] no-scrollbar">
                             {CLINICAL_SPECIALTIES.map((spec) => {
                               const isSelected = selectedInterests.includes(spec);
                               return (
@@ -1060,8 +1060,8 @@ export const AuthModal: React.FC = () => {
                                   type="button"
                                   onClick={() => toggleInterest(spec)}
                                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${isSelected
-                                    ? 'bg-[#2F855A] text-white shadow-2xs'
-                                    : 'bg-[#EBF7F1] text-slate-700 hover:bg-slate-100'
+                                    ? 'bg-[#3597A4] text-white shadow-2xs'
+                                    : 'bg-[#E6F4F6] text-slate-700 hover:bg-slate-100'
                                     }`}
                                 >
                                   {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
@@ -1101,7 +1101,7 @@ export const AuthModal: React.FC = () => {
                       <button
                         type="submit"
                         disabled={signupBusy}
-                        className="flex-1 bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="flex-1 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         <ShieldCheck className="w-4 h-4 text-emerald-200" />
                         <span>{signupBusy ? 'Sending OTP...' : 'Authenticate Account'}</span>
@@ -1120,7 +1120,7 @@ export const AuthModal: React.FC = () => {
                     className="space-y-6"
                   >
                     <div className="text-center space-y-1">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E2F0EA] text-[#2F855A] mb-2 border border-[#BBE2D1]">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E6F4F6] text-[#3597A4] mb-2 border border-[#E6F4F6]">
                         <Lock className="w-6 h-6" />
                       </div>
                       <h4 className="text-base font-extrabold text-slate-900 font-heading">
@@ -1145,7 +1145,7 @@ export const AuthModal: React.FC = () => {
                         type="button"
                         onClick={handleResendSignupOtp}
                         disabled={signupBusy}
-                        className="text-[#2F855A] font-bold hover:underline cursor-pointer flex items-center gap-1 disabled:opacity-60"
+                        className="text-[#3597A4] font-bold hover:underline cursor-pointer flex items-center gap-1 disabled:opacity-60"
                       >
                         <RefreshCw className="w-3 h-3" />
                         <span>Resend OTP</span>
@@ -1163,7 +1163,7 @@ export const AuthModal: React.FC = () => {
                       <button
                         type="submit"
                         disabled={signupBusy}
-                        className="flex-1 bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="flex-1 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         <span>{signupBusy ? 'Verifying...' : 'Verify'}</span>
                       </button>

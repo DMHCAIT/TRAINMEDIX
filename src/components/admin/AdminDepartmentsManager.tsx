@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -495,7 +495,7 @@ Error details: ${err.message}`);
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { resetForm(); setShowForm(true); }}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-700"
+          className="bg-[#3597A4] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#3597A4]"
         >
           <Plus size={18} /> Add Department
         </motion.button>
@@ -514,7 +514,7 @@ Error details: ${err.message}`);
       )}
 
       {successMessage && (
-        <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+        <div className="bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] px-4 py-3 rounded-lg">
           {successMessage}
         </div>
       )}
@@ -526,7 +526,7 @@ Error details: ${err.message}`);
           placeholder="Search departments..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
         />
       </div>
 
@@ -560,7 +560,7 @@ Error details: ${err.message}`);
                       value={formData.code}
                       onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })}
                       placeholder="e.g., CARD"
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                       required
                     />
                   </div>
@@ -572,7 +572,7 @@ Error details: ${err.message}`);
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g., Cardiology"
-                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                       required
                     />
                   </div>
@@ -584,7 +584,7 @@ Error details: ${err.message}`);
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="Department description..."
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 h-20"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4] h-20"
                   />
                 </div>
 
@@ -602,7 +602,7 @@ Error details: ${err.message}`);
                       setFormData({ ...formData, subDepartments: specs });
                     }}
                     placeholder="e.g., General Surgery, Laparoscopy, Orthopaedics, Urology"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                   />
                   <p className="text-xs text-slate-500 mt-1">Enter specializations separated by commas. These will display as sub-options on the website.</p>
                 </div>
@@ -614,7 +614,7 @@ Error details: ${err.message}`);
                     value={formData.duration_days}
                     onChange={(e) => setFormData({ ...formData, duration_days: parseInt(e.target.value) })}
                     min="1"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                   />
                 </div>
 
@@ -765,7 +765,7 @@ Error details: ${err.message}`);
                                       <button
                                         type="button"
                                         onClick={() => addBatch(compositeKey)}
-                                        className="text-[11px] font-semibold text-green-700 hover:text-green-800"
+                                        className="text-[11px] font-semibold text-green-700 hover:text-[#3597A4]"
                                       >
                                         + Add Batch
                                       </button>
@@ -848,7 +848,7 @@ Error details: ${err.message}`);
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                    className="px-4 py-2 bg-[#3597A4] text-white rounded-lg hover:bg-[#3597A4] disabled:opacity-50"
                   >
                     {isLoading ? 'Saving...' : 'Save'}
                   </button>
@@ -879,10 +879,10 @@ Error details: ${err.message}`);
               
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <div className="text-xs font-semibold text-green-600 uppercase">{dept.code}</div>
+                  <div className="text-xs font-semibold text-[#3597A4] uppercase">{dept.code}</div>
                   <h3 className="font-semibold text-slate-900">{dept.name}</h3>
                 </div>
-                <div className={`px-2 py-1 rounded text-xs font-semibold ${dept.is_active ? 'bg-green-100 text-green-800' : 'bg-slate-100 text-slate-800'}`}>
+                <div className={`px-2 py-1 rounded text-xs font-semibold ${dept.is_active ? 'bg-[#E6F4F6] text-[#3597A4]' : 'bg-slate-100 text-slate-800'}`}>
                   {dept.is_active ? 'Active' : 'Inactive'}
                 </div>
               </div>

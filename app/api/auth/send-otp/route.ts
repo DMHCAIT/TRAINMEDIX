@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import { generateOtpDb } from '../../../../src/lib/otpStoreDb';
 import { sendMail } from '../../../../src/lib/mailer';
 import { findUserByEmailDb } from '../../../../src/lib/userStoreDb';
@@ -56,9 +56,9 @@ export async function POST(req: NextRequest) {
         subject: 'Your TrainMedix Verification Code',
         html: `
           <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 24px;">
-            <h2 style="color: #2F855A;">TrainMedix Verification Code</h2>
+            <h2 style="color: #3597A4;">TrainMedix Verification Code</h2>
             <p>Use the code below to verify your email address. This code expires in 2 minutes.</p>
-            <div style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #2F855A; background: #EBF7F1; padding: 16px 24px; border-radius: 12px; text-align: center; margin: 20px 0;">
+            <div style="font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #3597A4; background: #E6F4F6; padding: 16px 24px; border-radius: 12px; text-align: center; margin: 20px 0;">
               ${otp}
             </div>
             <p style="color: #666; font-size: 12px;">If you didn't request this code, you can safely ignore this email.</p>

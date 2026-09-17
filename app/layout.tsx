@@ -9,6 +9,11 @@ import { Footer } from '../src/components/layout/Footer';
 export const metadata: Metadata = {
   title: 'TrainMedix | DMHCA Accredited Hospital Clinical Training Platform',
   description: 'Book DMHCA-accredited clinical rotations across 11 medical specialties in top tertiary hospitals in India.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -63,12 +63,12 @@ export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, 
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.25 }}
-          className="relative w-full max-w-2xl bg-[#F6F2EC] border border-[#CBE5D7] rounded-3xl shadow-2xl overflow-hidden z-50 max-h-[90vh] flex flex-col"
+          className="relative w-full max-w-2xl bg-[#F6F2EC] border border-[#E6F4F6] rounded-3xl shadow-2xl overflow-hidden z-50 max-h-[90vh] flex flex-col"
         >
           {/* Modal Header */}
           <div
             className="relative p-6 text-white sm:p-7"
-            style={{ backgroundImage: 'linear-gradient(to right, #2F855A, #276749)' }}
+            style={{ backgroundImage: 'linear-gradient(to right, #3597A4, #1F6F76)' }}
           >
             <button
               onClick={onClose}
@@ -105,10 +105,10 @@ export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, 
               {department.subDepartments?.map((subName, index) => (
                 <div
                   key={index}
-                  className="w-full bg-white border border-[#CBE5D7] p-4 rounded-2xl text-left flex items-center gap-3 shadow-2xs"
+                  className="w-full bg-white border border-[#E6F4F6] p-4 rounded-2xl text-left flex items-center gap-3 shadow-2xs"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-[#E2F0EA] text-[#2F855A] flex items-center justify-center text-xs font-black shadow-2xs">
+                    <div className="w-9 h-9 rounded-xl bg-[#E6F4F6] text-[#3597A4] flex items-center justify-center text-xs font-black shadow-2xs">
                       {index + 1}
                     </div>
                     <div>

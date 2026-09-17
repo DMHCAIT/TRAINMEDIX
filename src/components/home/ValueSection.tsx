@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -24,7 +24,7 @@ export const ValueSection: React.FC = () => {
       title: 'Department-Wise Booking',
       subtitle: 'Precision Specialty Focus',
       description: 'Book clinical exposure in specific departments like Emergency Medicine, Cardiology, ICU, Radiology, Surgery, and 6 more.',
-      iconBg: 'bg-[#E2F0EA] text-[#3D7A5C] border-[#C5DED0]',
+      iconBg: 'bg-[#E6F4F6] text-[#3597A4] border-[#E6F4F6]',
       badge: '11 Departments'
     },
     {
@@ -40,7 +40,7 @@ export const ValueSection: React.FC = () => {
       title: 'Flexible Training Duration',
       subtitle: '1 / 3 / 6 Months Options',
       description: 'Tailor your rotation to your schedule with flexible 1-month, 3-month, or 6-month clinical rotation options.',
-      iconBg: 'bg-[#E2F0EA] text-[#2F855A] border-[#C5DED0]',
+      iconBg: 'bg-[#E6F4F6] text-[#3597A4] border-[#E6F4F6]',
       badge: '1 - 6 Months'
     },
     {
@@ -48,7 +48,7 @@ export const ValueSection: React.FC = () => {
       title: 'City & Hospital Selection',
       subtitle: 'Top Metro Hubs',
       description: 'Choose your preferred location and pick top partner hospitals matching your career goals.',
-      iconBg: 'bg-[#E2F0EA] text-[#2F855A] border-[#C5DED0]',
+      iconBg: 'bg-[#E6F4F6] text-[#3597A4] border-[#E6F4F6]',
       badge: 'Top Cities'
     },
     {
@@ -77,7 +77,7 @@ export const ValueSection: React.FC = () => {
   };
 
   return (
-    <section className="py-10 sm:py-14 bg-[#EBF7F1] border-b border-[#CBE5D7] relative overflow-hidden">
+    <section className="py-10 sm:py-14 bg-[#E6F4F6] border-b border-[#E6F4F6] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -122,14 +122,14 @@ export const ValueSection: React.FC = () => {
                     <div className={`w-13 h-13 rounded-2xl border flex items-center justify-center ${item.iconBg} shadow-2xs`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="bg-[#EBF7F1] text-[#4A7865] border border-[#CBE5D7] text-[11px] font-bold px-3 py-1 rounded-full shadow-2xs">
+                    <span className="bg-[#E6F4F6] text-[#4A7865] border border-[#E6F4F6] text-[11px] font-bold px-3 py-1 rounded-full shadow-2xs">
                       {item.badge}
                     </span>
                   </div>
 
                   <div>
                     <h3 className="text-xl font-bold text-[#1F1C18] font-heading">{item.title}</h3>
-                    <p className="text-xs font-bold text-[#2F855A] mt-0.5">{item.subtitle}</p>
+                    <p className="text-xs font-bold text-[#3597A4] mt-0.5">{item.subtitle}</p>
                   </div>
 
                   <p className="text-slate-600 text-xs leading-relaxed">
@@ -144,7 +144,7 @@ export const ValueSection: React.FC = () => {
                   </span>
                   <button
                     onClick={() => setActiveTab('departments')}
-                    className="text-xs font-extrabold text-[#2F855A] hover:text-[#276749] transition flex items-center gap-1 cursor-pointer group"
+                    className="text-xs font-extrabold text-[#3597A4] hover:text-[#1F6F76] transition flex items-center gap-1 cursor-pointer group"
                   >
                     <span>Book Now</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -161,7 +161,7 @@ export const ValueSection: React.FC = () => {
             className="bg-[#1F1C18] text-white rounded-3xl p-7 flex flex-col justify-between shadow-2xl border border-slate-700/50"
           >
             <div className="space-y-4">
-              <div className="w-13 h-13 rounded-2xl bg-[#2F855A]/20 border border-[#2F855A]/40 flex items-center justify-center text-[#A8DEC2] shadow-inner">
+              <div className="w-13 h-13 rounded-2xl bg-[#3597A4]/20 border border-[#3597A4]/40 flex items-center justify-center text-[#A8DEC2] shadow-inner">
                 <Flame className="w-6 h-6 animate-bounce" />
               </div>
               <div>
@@ -170,15 +170,15 @@ export const ValueSection: React.FC = () => {
               </div>
               <ul className="space-y-3 text-xs text-slate-300">
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#84A98C] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#7BC0D4] shrink-0" />
                   <span><strong>100% Real Patient Exposure</strong> in OPD/IPD/OT</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#84A98C] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#7BC0D4] shrink-0" />
                   <span>Supervised by Senior Hospital Mentors</span>
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#84A98C] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#7BC0D4] shrink-0" />
                   <span>Clinical Logbook Verification</span>
                 </li>
                 <li className="flex items-center gap-2.5 text-slate-400 line-through">
@@ -190,7 +190,7 @@ export const ValueSection: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('departments')}
-              className="w-full mt-6 bg-[#2F855A] hover:bg-[#276749] text-white text-xs font-bold py-3.5 rounded-xl transition touch-target cursor-pointer shadow-sm"
+              className="w-full mt-6 bg-[#3597A4] hover:bg-[#1F6F76] text-white text-xs font-bold py-3.5 rounded-xl transition touch-target cursor-pointer shadow-sm"
             >
               Explore Clinical Departments
             </button>

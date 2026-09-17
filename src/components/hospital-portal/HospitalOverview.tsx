@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import {
@@ -72,10 +72,10 @@ export const HospitalOverview: React.FC = () => {
       {/* KPI Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {[
-          { label: 'Active Trainees', value: activeBookings.length, sub: 'Currently In Rotation', icon: <Users className="w-5 h-5 text-emerald-700" />, iconBg: 'bg-emerald-100/90 border border-emerald-300', border: 'border-emerald-200 hover:border-emerald-500' },
-          { label: 'Open Slots', value: openSlotsCount, sub: `${hospitalSlots.length} Total Slots`, icon: <Layers className="w-5 h-5 text-indigo-700" />, iconBg: 'bg-indigo-100/90 border border-indigo-300', border: 'border-indigo-200 hover:border-indigo-500' },
-          { label: 'Pending Approvals', value: pendingBookings.length, sub: 'Requires Review', icon: <Clock className="w-5 h-5 text-amber-700" />, iconBg: 'bg-amber-100/90 border border-amber-300', border: 'border-amber-200 hover:border-amber-500' },
-          { label: 'Departments', value: hospitalDepartments.length || departments.length, sub: 'Active Programs', icon: <Building2 className="w-5 h-5 text-[#2F855A]" />, iconBg: 'bg-[#E2F0EA] border border-[#BBE2D1]', border: 'border-[#BBE2D1] hover:border-[#2F855A]' },
+          { label: 'Active Trainees', value: activeBookings.length, sub: 'Currently In Rotation', icon: <Users className="w-5 h-5 text-emerald-700" />, iconBg: 'bg-emerald-100/90 border border-emerald-300', border: 'border-emerald-500' },
+          { label: 'Open Slots', value: openSlotsCount, sub: `${hospitalSlots.length} Total Slots`, icon: <Layers className="w-5 h-5 text-indigo-700" />, iconBg: 'bg-indigo-100/90 border border-indigo-300', border: 'border-indigo-500' },
+          { label: 'Pending Approvals', value: pendingBookings.length, sub: 'Requires Review', icon: <Clock className="w-5 h-5 text-amber-700" />, iconBg: 'bg-amber-100/90 border border-amber-300', border: 'border-amber-500' },
+          { label: 'Departments', value: hospitalDepartments.length || departments.length, sub: 'Active Programs', icon: <Building2 className="w-5 h-5 text-[#3597A4]" />, iconBg: 'bg-[#E6F4F6] border border-[#E6F4F6]', border: 'border-[#3597A4]' },
         ].map((kpi, i) => (
           <motion.div
             key={i}
@@ -125,7 +125,7 @@ export const HospitalOverview: React.FC = () => {
                   </tr>
                 ) : (
                   hospitalBookings.slice(0, 6).map((b) => (
-                    <tr key={b.id} className="border-b border-slate-100 hover:bg-[#E2F0EA]/30 transition">
+                    <tr key={b.id} className="border-b border-slate-100 hover:bg-[#E6F4F6]/30 transition">
                       <td className="px-5 py-3.5 font-bold text-slate-900 font-heading">{b.traineeName}</td>
                       <td className="px-5 py-3.5 text-slate-700">{b.departmentName}</td>
                       <td className="px-5 py-3.5 text-slate-600">{b.duration}</td>
@@ -161,10 +161,10 @@ export const HospitalOverview: React.FC = () => {
                   <div key={slot.id} className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-1.5">
                     <div className="flex justify-between font-bold text-slate-900">
                       <span>{dept?.name || 'Department'} ({slot.city})</span>
-                      <span className="text-[#2F855A]">{slot.availableSeats} left</span>
+                      <span className="text-[#3597A4]">{slot.availableSeats} left</span>
                     </div>
                     <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#2F855A] rounded-full transition-all" style={{ width: `${percent}%` }} />
+                      <div className="h-full bg-[#3597A4] rounded-full transition-all" style={{ width: `${percent}%` }} />
                     </div>
                     <div className="flex justify-between text-[10px] text-slate-500 font-medium">
                       <span>{slot.duration} · Starts {slot.startDate}</span>

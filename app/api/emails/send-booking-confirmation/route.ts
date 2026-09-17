@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import { sendMail } from '../../../../src/lib/mailer';
 
 interface BookingConfirmationRequest {
@@ -74,18 +74,18 @@ export async function POST(req: NextRequest) {
           <style>
             body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #2F855A 0%, #276749 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+            .header { background: linear-gradient(135deg, #3597A4 0%, #1F6F76 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
             .header h1 { margin: 0; font-size: 28px; }
             .content { background: #f9f9f9; padding: 30px; border: 1px solid #e0e0e0; border-radius: 0 0 8px 8px; }
-            .booking-details { background: white; padding: 20px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2F855A; }
+            .booking-details { background: white; padding: 20px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #3597A4; }
             .detail-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
             .detail-row:last-child { border-bottom: none; }
             .label { font-weight: bold; color: #555; }
             .value { color: #333; }
-            .amount-row { font-size: 18px; font-weight: bold; color: #2F855A; }
+            .amount-row { font-size: 18px; font-weight: bold; color: #3597A4; }
             .footer { background: #f0f0f0; padding: 20px; text-align: center; font-size: 12px; color: #666; border-radius: 6px; margin-top: 20px; }
-            .button { display: inline-block; background: #2F855A; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; margin: 20px 0; font-weight: bold; }
-            .highlight { background: #EBF7F1; padding: 15px; border-radius: 6px; margin: 15px 0; }
+            .button { display: inline-block; background: #3597A4; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; margin: 20px 0; font-weight: bold; }
+            .highlight { background: #E6F4F6; padding: 15px; border-radius: 6px; margin: 15px 0; }
           </style>
         </head>
         <body>
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
               <div class="booking-details">
                 <div class="detail-row">
                   <span class="label">Booking Reference:</span>
-                  <span class="value" style="font-weight: bold; color: #2F855A;">${bookingRef}</span>
+                  <span class="value" style="font-weight: bold; color: #3597A4;">${bookingRef}</span>
                 </div>
                 <div class="detail-row">
                   <span class="label">Specialization Department:</span>
@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
                 </div>
               </div>
 
-              <h3 style="color: #2F855A; margin-top: 25px;">What's Next?</h3>
+              <h3 style="color: #3597A4; margin-top: 25px;">What's Next?</h3>
               <ol>
                 <li><strong>Hospital Verification (24-48 hours):</strong> The ${hospitalName} admin team will verify your medical credentials and documents. You'll receive an email once approved.</li>
                 <li><strong>Pre-Rotation Orientation:</strong> Attend the mandatory online orientation covering hospital protocols, logbook procedures, and safety guidelines.</li>
@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
                 <li><strong>Certificate Issuance:</strong> Receive your official DMHCA certification upon successful completion and logbook approval.</li>
               </ol>
 
-              <h3 style="color: #2F855A;">Important Information</h3>
+              <h3 style="color: #3597A4;">Important Information</h3>
               <ul>
                 <li><strong>Cancellation Policy:</strong> Full refund available if cancelled within 7 days of payment</li>
                 <li><strong>Rescheduling:</strong> Contact hospital admin to reschedule your rotation dates (subject to availability)</li>

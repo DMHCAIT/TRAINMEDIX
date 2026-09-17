@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -94,7 +94,7 @@ export const AdminUsersManager: React.FC = () => {
     switch (role) {
       case 'admin': return 'bg-purple-100 text-purple-800';
       case 'hospital': return 'bg-blue-100 text-blue-800';
-      case 'trainee': return 'bg-green-100 text-green-800';
+      case 'trainee': return 'bg-[#E6F4F6] text-[#3597A4]';
       default: return 'bg-slate-100 text-slate-800';
     }
   };
@@ -115,7 +115,7 @@ export const AdminUsersManager: React.FC = () => {
             placeholder="Search by name or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
           />
         </div>
 
@@ -126,7 +126,7 @@ export const AdminUsersManager: React.FC = () => {
               onClick={() => setFilterRole(role)}
               className={`px-3 py-2 rounded-lg font-semibold text-sm capitalize transition ${
                 filterRole === role
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-[#3597A4] text-white'
                   : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
               }`}
             >
@@ -231,7 +231,7 @@ export const AdminUsersManager: React.FC = () => {
                       {user.role === 'hospital' ? (
                         user.isApproved ? (
                           <div className="flex items-center gap-2">
-                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 flex items-center gap-1">
+                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6F4F6] text-[#3597A4] flex items-center gap-1">
                               <Check size={12} /> Approved
                             </span>
                           </div>
@@ -242,7 +242,7 @@ export const AdminUsersManager: React.FC = () => {
                               <button
                                 onClick={() => handleApproveHospital(user.id)}
                                 disabled={approvingId === user.id || rejectingId === user.id}
-                                className="p-1 bg-green-100 hover:bg-green-200 text-green-700 rounded transition disabled:opacity-50"
+                                className="p-1 bg-[#E6F4F6] hover:bg-green-200 text-green-700 rounded transition disabled:opacity-50"
                                 title="Approve"
                               >
                                 {approvingId === user.id ? '...' : <Check size={14} />}

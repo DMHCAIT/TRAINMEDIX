@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -87,8 +87,8 @@ export const HowItWorks: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-4"
         >
-          <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-4 h-4 text-[#2F855A] animate-spin" style={{ animationDuration: '8s' }} />
+          <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
+            <Sparkles className="w-4 h-4 text-[#3597A4] animate-spin" style={{ animationDuration: '8s' }} />
             <span>Seamless Booking Process</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
@@ -119,20 +119,20 @@ export const HowItWorks: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold text-[#3D7A5C] bg-[#E2F0EA] border border-[#C5DED0] px-2.5 py-1 rounded-lg shadow-2xs">
+                    <span className="text-xs font-bold text-[#3597A4] bg-[#E6F4F6] border border-[#E6F4F6] px-2.5 py-1 rounded-lg shadow-2xs">
                       {item.badge}
                     </span>
-                    <span className="text-2xl font-black text-slate-300 group-hover:text-[#2F855A] transition-colors font-heading">
+                    <span className="text-2xl font-black text-slate-300 group-hover:text-[#3597A4] transition-colors font-heading">
                       {item.step}
                     </span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-[#E2F0EA] border border-[#C5DED0] flex items-center justify-center text-[#2F855A] mb-4 group-hover:bg-[#2F855A] group-hover:text-white group-hover:border-[#2F855A] transition-all duration-300 shadow-2xs">
+                  <div className="w-12 h-12 rounded-2xl bg-[#E6F4F6] border border-[#E6F4F6] flex items-center justify-center text-[#3597A4] mb-4 group-hover:bg-[#3597A4] group-hover:text-white group-hover:border-[#3597A4] transition-all duration-300 shadow-2xs">
                     <Icon className="w-6 h-6" />
                   </div>
 
                   <h3 className="text-base font-bold text-slate-900 font-heading">{item.title}</h3>
-                  <p className="text-[11px] font-bold text-[#2F855A] mt-0.5">{item.subtitle}</p>
+                  <p className="text-[11px] font-bold text-[#3597A4] mt-0.5">{item.subtitle}</p>
 
                   <p className="text-slate-600 text-xs mt-2.5 leading-relaxed">
                     {item.description}
@@ -141,7 +141,7 @@ export const HowItWorks: React.FC = () => {
 
                 <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
                   <span className="text-slate-500 font-medium">Instant Confirmation</span>
-                  <ChevronRight className="w-4 h-4 text-[#2F855A] group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-4 h-4 text-[#3597A4] group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
             );
@@ -160,7 +160,7 @@ export const HowItWorks: React.FC = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => setActiveTab('departments')}
-            className="w-full sm:w-auto bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-sm sm:text-base px-9 py-4 rounded-2xl transition shadow-lg shadow-[#2F855A]/30 inline-flex items-center justify-center gap-2.5 touch-target cursor-pointer"
+            className="w-full sm:w-auto bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-sm sm:text-base px-9 py-4 rounded-2xl transition shadow-lg shadow-[#3597A4]/30 inline-flex items-center justify-center gap-2.5 touch-target cursor-pointer"
           >
             <CalendarCheck className="w-5 h-5" />
             <span>Start Interactive Booking Engine</span>

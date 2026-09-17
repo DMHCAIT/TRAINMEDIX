@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -129,7 +129,7 @@ export const WhatsAppWidget: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-extrabold font-heading">TrainMedix Support</h4>
-                  <p className="text-[10px] text-emerald-100 flex items-center gap-1.5 font-medium">
+                  <p className="text-[10px] text-[#E6F4F6] flex items-center gap-1.5 font-medium">
                     <span className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" />
                     Online · Typically replies instantly
                   </p>

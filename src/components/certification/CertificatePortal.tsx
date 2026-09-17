@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,8 +45,8 @@ export const CertificatePortal: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center max-w-3xl mx-auto space-y-4"
       >
-        <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
-          <Award className="w-4 h-4 text-[#2F855A] animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
+          <Award className="w-4 h-4 text-[#3597A4] animate-pulse" />
           <span>DMHCA Verified Credentialing</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
@@ -77,14 +77,14 @@ export const CertificatePortal: React.FC = () => {
                 placeholder="Enter Code (e.g. DMHCA-TMX-2026-0041 or DMHCA-8891-VERIFIED)"
                 value={searchCode}
                 onChange={(e) => setSearchCode(e.target.value)}
-                className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 focus:border-[#2F855A] focus:ring-2 focus:ring-[#2F855A]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
+                className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 focus:border-[#3597A4] focus:ring-2 focus:ring-[#3597A4]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
               />
             </div>
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               type="submit"
-              className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-7 py-3.5 rounded-2xl transition shadow-md shadow-[#2F855A]/25 flex items-center justify-center gap-2 touch-target cursor-pointer"
+              className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-7 py-3.5 rounded-2xl transition shadow-md shadow-[#3597A4]/25 flex items-center justify-center gap-2 touch-target cursor-pointer"
             >
               <QrCode className="w-4 h-4" />
               <span>Verify Now</span>
@@ -118,7 +118,7 @@ export const CertificatePortal: React.FC = () => {
             {/* Certificate Header Badge */}
             <div className="flex items-center justify-between border-b border-slate-200/80 pb-4">
               <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-2xl bg-[#E2F0EA] border border-[#C5DED0] flex items-center justify-center text-[#2F855A] shadow-2xs">
+                <div className="w-11 h-11 rounded-2xl bg-[#E6F4F6] border border-[#E6F4F6] flex items-center justify-center text-[#3597A4] shadow-2xs">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
@@ -144,7 +144,7 @@ export const CertificatePortal: React.FC = () => {
             <div className="border-4 border-double border-slate-300/80 bg-gradient-to-br from-amber-50/30 via-white to-slate-50/50 p-8 sm:p-12 rounded-3xl text-center space-y-6 relative shadow-inner">
 
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 bg-[#E2F0EA] border border-[#C5DED0] text-[#3D7A5C] font-bold text-[10px] px-3.5 py-1 rounded-full uppercase tracking-widest shadow-2xs">
+                <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-[10px] px-3.5 py-1 rounded-full uppercase tracking-widest shadow-2xs">
                   <Sparkles className="w-3 h-3 text-amber-500" />
                   DMHCA Hospital Training Certification
                 </div>
@@ -155,7 +155,7 @@ export const CertificatePortal: React.FC = () => {
               </div>
 
               <div className="py-3 border-b border-t border-slate-200/80 max-w-lg mx-auto">
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-[#2F855A] tracking-wide font-heading">
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-[#3597A4] tracking-wide font-heading">
                   {activeCert.traineeName}
                 </h3>
                 <p className="text-xs font-bold text-slate-700 mt-1">{activeCert.qualification}</p>
@@ -178,7 +178,7 @@ export const CertificatePortal: React.FC = () => {
                     alt="QR Code Verification"
                     className="w-20 h-20 bg-white p-1"
                   />
-                  <span className="text-[10px] font-mono text-[#2F855A] font-extrabold">{activeCert.verificationCode}</span>
+                  <span className="text-[10px] font-mono text-[#3597A4] font-extrabold">{activeCert.verificationCode}</span>
                 </div>
 
                 <div className="space-y-1">

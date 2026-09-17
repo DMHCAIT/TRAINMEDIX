@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import {
@@ -131,9 +131,9 @@ export const SlotManagement: React.FC = () => {
     <div className="space-y-6 w-full max-w-full overflow-x-hidden">
 
       {/* Top Banner & Control */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-3xl border border-[#CBE5D7] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 sm:p-6 rounded-3xl border border-[#E6F4F6] shadow-xs">
         <div>
-          <div className="flex items-center gap-1 text-[11px] font-bold text-[#2F855A] mb-1">
+          <div className="flex items-center gap-1 text-[11px] font-bold text-[#3597A4] mb-1">
             <Building2 className="w-3.5 h-3.5" />
             <span>{activeHospital?.name || 'Hospital'} Slot Controller</span>
           </div>
@@ -147,7 +147,7 @@ export const SlotManagement: React.FC = () => {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => setShowAddSlotModal(true)}
-          className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/20 cursor-pointer shrink-0"
+          className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/20 cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4" />
           <span>Open New Training Slot</span>
@@ -157,7 +157,7 @@ export const SlotManagement: React.FC = () => {
       {/* Filters Bar */}
       <div className="bg-white/90 p-4 sm:p-5 rounded-3xl border border-slate-200/80 shadow-xs space-y-3 text-xs w-full max-w-full">
         <div className="flex items-center gap-2 font-bold text-slate-700 font-heading">
-          <Filter className="w-4 h-4 text-[#2F855A]" />
+          <Filter className="w-4 h-4 text-[#3597A4]" />
           <span>Date-Wise & Department Filters</span>
         </div>
 
@@ -170,7 +170,7 @@ export const SlotManagement: React.FC = () => {
               placeholder="Search department..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300/80 rounded-xl pl-8 pr-3 py-2 text-slate-900 focus:border-[#2F855A] focus:outline-none"
+              className="w-full bg-slate-50 border border-slate-300/80 rounded-xl pl-8 pr-3 py-2 text-slate-900 focus:border-[#3597A4] focus:outline-none"
             />
           </div>
 
@@ -213,7 +213,7 @@ export const SlotManagement: React.FC = () => {
                     setCustomCityFilterText(e.target.value);
                     setSelectedCityFilter(e.target.value.trim() || 'Other');
                   }}
-                  className="w-full bg-white border border-[#2F855A] rounded-lg px-2.5 py-1 text-xs text-slate-900 font-medium focus:outline-none"
+                  className="w-full bg-white border border-[#3597A4] rounded-lg px-2.5 py-1 text-xs text-slate-900 font-medium focus:outline-none"
                 />
               </div>
             )}
@@ -243,7 +243,7 @@ export const SlotManagement: React.FC = () => {
           <h3 className="text-sm font-extrabold text-slate-900 font-heading">
             {activeHospital?.name || 'Hospital'} Slots ({filteredSlots.length})
           </h3>
-          <span className="text-xs font-semibold text-[#2F855A]">Live Slot Controller</span>
+          <span className="text-xs font-semibold text-[#3597A4]">Live Slot Controller</span>
         </div>
 
         <div className="overflow-x-auto w-full">
@@ -272,11 +272,11 @@ export const SlotManagement: React.FC = () => {
                   const dept = departments.find((d) => d.id === slot.departmentId);
 
                   return (
-                    <tr key={slot.id} className="hover:bg-[#E2F0EA]/30 transition">
+                    <tr key={slot.id} className="hover:bg-[#E6F4F6]/30 transition">
                       <td className="p-4 font-extrabold text-slate-900 font-heading">
                         <div>{dept?.name || 'Clinical Department'}</div>
                         {slot.subDepartment && (
-                          <span className="inline-block mt-1 bg-[#EBF7F1] border border-[#CBE5D7] text-[#2F855A] text-[10px] font-bold px-2 py-0.5 rounded-md">
+                          <span className="inline-block mt-1 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] text-[10px] font-bold px-2 py-0.5 rounded-md">
                             {slot.subDepartment}
                           </span>
                         )}
@@ -353,7 +353,7 @@ export const SlotManagement: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white border border-[#CBE5D7] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-4 shadow-2xl text-slate-900 relative my-8"
+              className="bg-white border border-[#E6F4F6] rounded-3xl w-full max-w-lg p-6 sm:p-7 space-y-4 shadow-2xl text-slate-900 relative my-8"
             >
               <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
                 <div>
@@ -426,7 +426,7 @@ export const SlotManagement: React.FC = () => {
                             setCustomCityFormText(e.target.value);
                             setCity((e.target.value.trim() || 'Other') as CityName);
                           }}
-                          className="w-full bg-white border border-[#2F855A] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none shadow-xs"
+                          className="w-full bg-white border border-[#3597A4] rounded-xl px-3 py-2 text-xs text-slate-900 font-semibold focus:outline-none shadow-xs"
                         />
                       </div>
                     )}
@@ -471,7 +471,7 @@ export const SlotManagement: React.FC = () => {
                       min={1}
                       value={totalSeats}
                       onChange={(e) => setTotalSeats(Number(e.target.value))}
-                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                     />
                   </div>
 
@@ -483,7 +483,7 @@ export const SlotManagement: React.FC = () => {
                       min={0}
                       value={availableSeats}
                       onChange={(e) => setAvailableSeats(Number(e.target.value))}
-                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                     />
                   </div>
 
@@ -495,7 +495,7 @@ export const SlotManagement: React.FC = () => {
                       step={1000}
                       value={monthlyFee}
                       onChange={(e) => setMonthlyFee(Number(e.target.value))}
-                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:bg-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300/80 rounded-2xl px-3.5 py-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:bg-white focus:outline-none"
                     />
                   </div>
                 </div>
@@ -519,7 +519,7 @@ export const SlotManagement: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 bg-[#2F855A] hover:bg-[#276749] text-white font-bold rounded-xl shadow-md cursor-pointer"
+                    className="px-5 py-2.5 bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold rounded-xl shadow-md cursor-pointer"
                   >
                     Create Training Slot
                   </button>
@@ -539,7 +539,7 @@ export const SlotManagement: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white border border-[#CBE5D7] rounded-3xl w-full max-w-sm p-5 sm:p-6 space-y-4 shadow-2xl text-slate-900"
+              className="bg-white border border-[#E6F4F6] rounded-3xl w-full max-w-sm p-5 sm:p-6 space-y-4 shadow-2xl text-slate-900"
             >
               <h3 className="text-base font-extrabold text-slate-900 font-heading">Modify Seat Capacity</h3>
 
@@ -551,7 +551,7 @@ export const SlotManagement: React.FC = () => {
                     min={1}
                     value={editTotalSeats}
                     onChange={(e) => setEditTotalSeats(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:outline-none"
                   />
                 </div>
 
@@ -562,7 +562,7 @@ export const SlotManagement: React.FC = () => {
                     min={0}
                     value={editAvailableSeats}
                     onChange={(e) => setEditAvailableSeats(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-slate-900 font-bold focus:border-[#2F855A] focus:outline-none"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-slate-900 font-bold focus:border-[#3597A4] focus:outline-none"
                   />
                 </div>
 
@@ -577,7 +577,7 @@ export const SlotManagement: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleSaveSeatsEdit}
-                    className="px-4 py-2 bg-[#2F855A] text-white font-bold rounded-xl shadow-md cursor-pointer"
+                    className="px-4 py-2 bg-[#3597A4] text-white font-bold rounded-xl shadow-md cursor-pointer"
                   >
                     Update Seats
                   </button>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
@@ -120,7 +120,7 @@ export default function HospitalDetailPage() {
         <p className="text-xs text-slate-500 font-medium">The requested partner hospital could not be located.</p>
         <button
           onClick={() => router.push('/hospitals')}
-          className="bg-[#2F855A] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
+          className="bg-[#3597A4] text-white font-bold text-xs px-5 py-2.5 rounded-xl cursor-pointer"
         >
           Return to Hospital Network
         </button>
@@ -143,7 +143,7 @@ export default function HospitalDetailPage() {
       <div>
         <button
           onClick={() => router.push('/hospitals')}
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#2F855A] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#CBE5D7] shadow-2xs"
+          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-[#3597A4] transition cursor-pointer bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#E6F4F6] shadow-2xs"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Hospital Network</span>
@@ -154,7 +154,7 @@ export default function HospitalDetailPage() {
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card rounded-3xl overflow-hidden border border-[#CBE5D7] shadow-xl bg-white grid grid-cols-1 lg:grid-cols-12 gap-0"
+        className="glass-card rounded-3xl overflow-hidden border border-[#E6F4F6] shadow-xl bg-white grid grid-cols-1 lg:grid-cols-12 gap-0"
       >
         <div className="lg:col-span-5 relative h-64 lg:h-auto min-h-[260px] bg-slate-100 overflow-hidden">
           <img
@@ -172,7 +172,7 @@ export default function HospitalDetailPage() {
         <div className="lg:col-span-7 p-6 sm:p-8 space-y-5 flex flex-col justify-between">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#CBE5D7]">
+              <span className="bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#E6F4F6]">
                 Trainmedix Certified Training Center
               </span>
             </div>
@@ -182,7 +182,7 @@ export default function HospitalDetailPage() {
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 font-medium flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[#2F855A] shrink-0" />
+              <MapPin className="w-4 h-4 text-[#3597A4] shrink-0" />
               {(hospital.cities || [hospital.city]).join(', ')}
             </p>
 
@@ -194,7 +194,7 @@ export default function HospitalDetailPage() {
           </div>
 
           <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="bg-[#EBF7F1] p-3 rounded-2xl border border-[#CBE5D7]">
+            <div className="bg-[#E6F4F6] p-3 rounded-2xl border border-[#E6F4F6]">
               <span className="text-[10px] text-slate-500 font-bold uppercase block">Available Slots</span>
               <span className="text-sm font-extrabold text-emerald-700 flex items-center gap-1 font-heading">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
@@ -204,7 +204,7 @@ export default function HospitalDetailPage() {
 
             <button
               onClick={() => router.push('/departments')}
-              className="bg-[#2F855A] hover:bg-[#276749] text-white font-extrabold text-xs px-6 py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#2F855A]/25 cursor-pointer shrink-0"
+              className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-extrabold text-xs px-6 py-3.5 rounded-2xl transition flex items-center justify-center gap-2 shadow-md shadow-[#3597A4]/25 cursor-pointer shrink-0"
             >
               <CalendarCheck className="w-4 h-4" />
               <span>Book Rotation</span>
@@ -214,13 +214,13 @@ export default function HospitalDetailPage() {
       </motion.div>
 
       {/* CLINICAL HIGHLIGHTS (FULL WIDTH) */}
-      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#CBE5D7] shadow-lg space-y-4">
+      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#E6F4F6] shadow-lg space-y-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-[#E2F0EA] text-[#2F855A] flex items-center justify-center border border-[#C5DED0] shrink-0">
-            <Award className="w-4 h-4 text-[#2F855A]" />
+          <div className="w-8 h-8 rounded-xl bg-[#E6F4F6] text-[#3597A4] flex items-center justify-center border border-[#E6F4F6] shrink-0">
+            <Award className="w-4 h-4 text-[#3597A4]" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-extrabold text-[#2F855A] uppercase tracking-wide font-heading">
+            <h3 className="text-sm sm:text-base font-extrabold text-[#3597A4] uppercase tracking-wide font-heading">
               Key Institutional Strengths
             </h3>
           </div>
@@ -233,8 +233,8 @@ export default function HospitalDetailPage() {
             'Experienced medical and surgical specialists',
             'Quality emergency and critical care support'
           ]).map((highlight, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 bg-[#EBF7F1]/70 p-3.5 rounded-2xl border border-[#CBE5D7]/70 text-xs sm:text-sm">
-              <CheckCircle2 className="w-4 h-4 text-[#2F855A] shrink-0 mt-0.5" />
+            <div key={idx} className="flex items-start gap-2.5 bg-[#E6F4F6]/70 p-3.5 rounded-2xl border border-[#E6F4F6]/70 text-xs sm:text-sm">
+              <CheckCircle2 className="w-4 h-4 text-[#3597A4] shrink-0 mt-0.5" />
               <span className="font-medium text-slate-800 leading-snug">{highlight}</span>
             </div>
           ))}
@@ -245,7 +245,7 @@ export default function HospitalDetailPage() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <span className="text-xs font-extrabold text-[#2F855A] uppercase tracking-wider block font-heading">
+            <span className="text-xs font-extrabold text-[#3597A4] uppercase tracking-wider block font-heading">
               Clinical Specializations Offered
             </span>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading">
@@ -269,11 +269,11 @@ export default function HospitalDetailPage() {
               return (
                 <div
                   key={`${dept.id}-${subName}-${sIdx}`}
-                  className="bg-white rounded-2xl p-4 sm:p-5 border border-[#CBE5D7] shadow-xs hover:shadow-md hover:border-[#2F855A] text-left transition group flex flex-col justify-between gap-3"
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6F4F6] shadow-xs hover:shadow-md hover:border-[#3597A4] text-left transition group flex flex-col justify-between gap-3"
                 >
                   <div className="space-y-2.5">
                     {/* Category Badge */}
-                    <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#C5DED0]">
+                    <span className="inline-flex items-center gap-1 bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#E6F4F6]">
                       <Stethoscope className="w-3 h-3" />
                       {dept.code || 'CLINICAL'} ({deptName})
                     </span>
@@ -292,13 +292,13 @@ export default function HospitalDetailPage() {
                   {/* Fee & Action Buttons */}
                   <div className="pt-3 border-t border-slate-100 space-y-2.5 mt-auto">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-[#2F855A] font-heading">
+                      <span className="text-xs font-extrabold text-[#3597A4] font-heading">
                         ₹{(dept.baseFeePerMonth || 45000).toLocaleString('en-IN')}<span className="text-[10px] text-slate-400 font-normal">/mo</span>
                       </span>
                       <button
                         type="button"
                         onClick={() => router.push(subUrl)}
-                        className="text-[11px] text-[#2F855A] font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                        className="text-[11px] text-[#3597A4] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <Sparkles className="w-3 h-3 text-amber-500" />
                         <span>View details</span>
@@ -308,7 +308,7 @@ export default function HospitalDetailPage() {
                     <button
                       type="button"
                       onClick={() => handleBookSpecialization(dept, subName)}
-                      className="w-full bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                      className="w-full bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                     >
                       <CalendarCheck className="w-3.5 h-3.5" />
                       <span>Check Availability</span>
@@ -327,18 +327,18 @@ export default function HospitalDetailPage() {
           <h2 className="text-xl font-extrabold text-slate-900 font-heading">
             Open Rotation Slots at {hospital.name}
           </h2>
-          <span className="text-xs font-bold text-[#2F855A]">{hospitalSlots.length} Active Slots</span>
+          <span className="text-xs font-bold text-[#3597A4]">{hospitalSlots.length} Active Slots</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {hospitalSlots.map((slot) => {
             const slotDept = DEPARTMENTS.find(d => d.id === slot.departmentId);
             return (
-              <div key={slot.id} className="bg-white p-5 rounded-3xl border border-[#CBE5D7] shadow-xs space-y-3">
+              <div key={slot.id} className="bg-white p-5 rounded-3xl border border-[#E6F4F6] shadow-xs space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   {/* Category badge */}
                   {slotDept && (
-                    <span className="inline-flex items-center gap-1 bg-[#E2F0EA] text-[#3D7A5C] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#C5DED0]">
+                    <span className="inline-flex items-center gap-1 bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-[#E6F4F6]">
                       <Stethoscope className="w-3 h-3" />
                       {slotDept.code}
                     </span>
@@ -355,11 +355,11 @@ export default function HospitalDetailPage() {
                   </h4>
                   <div className="flex items-center gap-3 mt-1 text-[11px] text-slate-500 font-medium">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-[#2F855A]" />
+                      <Clock className="w-3 h-3 text-[#3597A4]" />
                       Starts {slot.startDate}
                     </span>
                     <span className="flex items-center gap-1">
-                      <CalendarCheck className="w-3 h-3 text-[#2F855A]" />
+                      <CalendarCheck className="w-3 h-3 text-[#3597A4]" />
                       {slot.duration}
                     </span>
                   </div>
@@ -371,7 +371,7 @@ export default function HospitalDetailPage() {
                   </span>
                   <button
                     onClick={() => handleBookSpecialization(slotDept, slot.subDepartment || '')}
-                    className="bg-[#2F855A] hover:bg-[#276749] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition cursor-pointer"
+                    className="bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition cursor-pointer"
                   >
                     Book Slot
                   </button>

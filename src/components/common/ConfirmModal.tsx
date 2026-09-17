@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,7 +45,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 15 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative w-full max-w-md bg-white border border-[#CBE5D7] rounded-3xl shadow-2xl p-6 sm:p-7 z-10 space-y-5"
+          className="relative w-full max-w-md bg-white border border-[#E6F4F6] rounded-3xl shadow-2xl p-6 sm:p-7 z-10 space-y-5"
         >
           {/* Header Close Button */}
           <button
@@ -62,7 +62,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
                 ? 'bg-rose-50 text-rose-600 border-rose-200'
                 : variant === 'warning'
                 ? 'bg-amber-50 text-amber-600 border-amber-200'
-                : 'bg-[#E2F0EA] text-[#2F855A] border-[#CBE5D7]'
+                : 'bg-[#E6F4F6] text-[#3597A4] border-[#E6F4F6]'
             }`}>
               {variant === 'danger' ? (
                 <Trash2 className="w-6 h-6" />
@@ -103,7 +103,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
                   ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/25'
                   : variant === 'warning'
                   ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-600/25'
-                  : 'bg-[#2F855A] hover:bg-[#276749] shadow-[#2F855A]/25'
+                  : 'bg-[#3597A4] hover:bg-[#1F6F76] shadow-[#3597A4]/25'
               }`}
             >
               {confirmText}
