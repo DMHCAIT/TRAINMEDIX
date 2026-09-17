@@ -320,11 +320,11 @@ export const HeroSection: React.FC = () => {
         {/* Metrics Counter Bar */}
         <div className="mt-0 grid grid-cols-2 md:grid-cols-4 gap-4 relative z-0 pt-4">
           <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-[#E6F4F6] text-center shadow-2xs">
-            <p className="text-2xl sm:text-3xl font-black text-[#3597A4] font-heading">11+</p>
+            <p className="text-2xl sm:text-3xl font-black text-[#3597A4] font-heading">50+</p>
             <p className="text-xs text-slate-600 font-semibold">Accredited Departments</p>
           </div>
           <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-[#E6F4F6] text-center shadow-2xs">
-            <p className="text-2xl sm:text-3xl font-black text-[#D97706] font-heading">50+</p>
+            <p className="text-2xl sm:text-3xl font-black text-[#D97706] font-heading">15+</p>
             <p className="text-xs text-slate-600 font-semibold">Partner Hospitals</p>
           </div>
           <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-[#E6F4F6] text-center shadow-2xs">
