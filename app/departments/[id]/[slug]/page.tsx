@@ -55,7 +55,7 @@ export default function DepartmentSubCategoryDetailPage() {
         name: foundSub,
         slug: toSlug(foundSub),
         parentDepartment: parentDept,
-        description: `Specialized ${foundSub} clinical rotation program under the ${parentDept.name} department, featuring direct patient care, mentor supervision, and DMHCA certification.`,
+        description: `Specialized ${foundSub} clinical rotation program under the ${parentDept.name} department, featuring direct patient care, mentor supervision, and a completion certificate.`,
         competencies: parentDept.clinicalHighlights || []
       };
     }
@@ -149,7 +149,7 @@ export default function DepartmentSubCategoryDetailPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-[#E6F4F6] font-medium leading-relaxed max-w-3xl">
-              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
+              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and an official completion certificate.
             </p>
 
             {/* Quick Metrics */}
@@ -221,12 +221,12 @@ export default function DepartmentSubCategoryDetailPage() {
               <Award className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-extrabold text-slate-900 font-heading">DMHCA Certificate</h3>
+              <h3 className="text-sm font-extrabold text-slate-900 font-heading">Training Certificate</h3>
               <p className="text-[11px] text-slate-600 font-medium">Verify online with QR Code</p>
             </div>
           </div>
           <p className="text-xs text-slate-600 font-medium leading-relaxed">
-            Upon successful completion of the {subCategory.name} rotation and logbook evaluation by the hospital department lead, candidates receive an official DMHCA accredited rotation certificate.
+            Upon successful completion of the {subCategory.name} rotation and logbook evaluation by the hospital department lead, candidates receive an official rotation certificate.
           </p>
         </div>
 

@@ -7,37 +7,12 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   ShieldCheck,
   Phone,
-  Mail,
   MapPin,
   CheckCircle2,
   ArrowUp,
   Plus
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-
-const InstagramIcon = () => (
-  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-  </svg>
-);
-
-const FacebookIcon = () => (
-  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z" />
-  </svg>
-);
-
-const YoutubeIcon = () => (
-  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
-  </svg>
-);
-
-const LinkedinIcon = () => (
-  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-  </svg>
-);
 
 const WhatsAppIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -87,7 +62,7 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-white font-bold text-lg font-heading">Book Clinical Experience, Not Just Courses</h4>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1">India's First Department-Wise Hospital Training Booking Platform by DMHCA</p>
+                <p className="text-slate-400 text-xs sm:text-sm mt-1">India's First Department-Wise Hospital Training Booking Platform</p>
               </div>
             </div>
 
@@ -121,13 +96,13 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              TrainMedix connects healthcare professionals with verified hospital training departments across India, real patient interaction, and DMHCA certification.
+              TrainMedix connects healthcare professionals with verified hospital training departments across India, real patient interaction, and completion certificates.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <div className="flex items-center gap-2 bg-[#2B2722] border border-[#3E3831] px-3.5 py-2 rounded-xl text-[11px] text-slate-200">
                 <ShieldCheck className="w-4 h-4 text-[#7BC0D4]" />
-                <span>DMHCA Verified Platform</span>
+                <span>Verified Training Platform</span>
               </div>
               <div className="flex items-center gap-2 bg-[#2B2722] border border-[#3E3831] px-3.5 py-2 rounded-xl text-[11px] text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-[#3597A4]" />
@@ -135,48 +110,6 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Media Links */}
-            <div className="pt-2">
-              <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block mb-2 font-heading">Connect With Us</span>
-              <div className="flex items-center gap-2.5">
-                <a
-                  href="https://www.instagram.com/dmhca_official/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-xl bg-linear-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-pink-600/25"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-                <a
-                  href="https://www.facebook.com/dmhca.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-xl bg-[#1877F2] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-blue-600/25"
-                  aria-label="Facebook"
-                >
-                  <FacebookIcon />
-                </a>
-                <a
-                  href="https://www.youtube.com/@dmhca"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-xl bg-[#FF0000] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-red-600/25"
-                  aria-label="YouTube"
-                >
-                  <YoutubeIcon />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/dmhca/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-xl bg-[#0A66C2] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-md shadow-blue-700/25"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedinIcon />
-                </a>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links Container (Side-by-side on mobile) */}
@@ -267,11 +200,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-xs">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#3597A4] shrink-0 mt-0.5" />
-                <span>Buliding No.-581/2, First Floor, Khatana Farm, Mandi Rd, Sultanpur, New Delhi</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#3597A4] shrink-0" />
-                <span>info@dmhca.in</span>
+                <span>8-2-351/W/B 1st Floor, Green Valley, Navodaya society, Banjara Hills Road no-3, Behind Times of India, Hyderabad, Telangana 500034</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#3597A4] shrink-0" />
@@ -280,7 +209,7 @@ export const Footer: React.FC = () => {
 
               <a
                 href={role === 'hospital' && isLoggedIn 
-                  ? "https://wa.me/919899711530?text=Hello%2C%20I%20am%20interested%20in%20hospital%20Partner%20with%20DMHCA."
+                  ? "https://wa.me/919899711530?text=Hello%2C%20I%20am%20interested%20in%20hospital%20partnership."
                   : "https://wa.me/919899711530?text=Hello%2C%20I%20am%20interested%20in%20clinical%20training."
                 }
                 target="_blank"
@@ -296,12 +225,12 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-[#36312B] pt-4 sm:pt-5 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© 2026 TrainMedix by DMHCA. All rights reserved.</p>
+          <p>© 2026 TrainMedix. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-4 text-slate-400">
               <span>Verified Hospital Partner Network</span>
               <span>·</span>
-              <span>DMHCA Accredited</span>
+              <span>Accredited</span>
             </div>
             <motion.button
               whileHover={{ scale: 1.1 }}

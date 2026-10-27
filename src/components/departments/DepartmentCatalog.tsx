@@ -157,7 +157,7 @@ export const DepartmentCatalog: React.FC = () => {
           Explore Clinical Training <span className="gradient-text-blue">Departments</span>
         </h1>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Choose your specialty rotation from DMHCA accredited departments across partner tertiary hospitals.
+          Choose your specialty rotation from verified departments across partner tertiary hospitals.
         </p>
       </motion.div>
 
@@ -263,7 +263,7 @@ export const DepartmentCatalog: React.FC = () => {
                     {/* Top Accreditation & Status Badges */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
                       <span className="bg-white/95 backdrop-blur-md text-[#3597A4] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-sm border border-white/40">
-                        DMHCA Accredited
+                        Verified
                       </span>
                       {dept.featured && (
                         <span className="bg-[#3597A4] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">

@@ -466,7 +466,7 @@ export const AdminHospitalsManager: React.FC = () => {
                       type="text"
                       value={formData.accreditation}
                       onChange={(e) => setFormData({ ...formData, accreditation: e.target.value })}
-                      placeholder="e.g., DMHCA Certified"
+                      placeholder="e.g., Verified Training Partner"
                       className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#3597A4]"
                     />
                   </div>

@@ -934,7 +934,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
 
 export const INITIAL_CERTIFICATES: Certificate[] = [
   {
-    certificateId: 'DMHCA-TMX-2026-0041',
+    certificateId: 'TMX-2026-0041',
     traineeName: 'Dr. Ananya Roy',
     qualification: 'MBBS',
     departmentName: 'Emergency Medicine',
@@ -943,9 +943,9 @@ export const INITIAL_CERTIFICATES: Certificate[] = [
     duration: '3 Months',
     issueDate: '2026-07-15',
     completionDate: '2026-07-10',
-    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DMHCA-VERIFIED-TMX-2026-0041',
-    verificationCode: 'DMHCA-8891-VERIFIED',
-    dmhcaRegNumber: 'DMHCA/CERT/2026/EM-8812'
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TMX-VERIFIED-2026-0041',
+    verificationCode: 'TMX-8891-VERIFIED',
+    registrationNumber: 'TMX/CERT/2026/EM-8812'
   }
 ];
 
@@ -986,7 +986,7 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     id: 'notif-2',
     type: 'Email',
     recipient: 'ananya.roy@healthmed.org',
-    title: 'DMHCA Clinical Rotation Onboarding Guide',
+    title: 'Clinical Rotation Onboarding Guide',
     message: 'Welcome to TrainMedix! Please review your hospital orientation schedule and logbook requirements.',
     timestamp: '2026-07-20 10:32 AM',
     status: 'Read'

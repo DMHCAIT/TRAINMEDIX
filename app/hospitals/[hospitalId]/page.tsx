@@ -83,7 +83,7 @@ export default function HospitalDetailPage() {
           iconName: 'Stethoscope',
           featured: false,
           baseFeePerMonth: 45000,
-          clinicalHighlights: ['Patient care', 'DMHCA certification'],
+          clinicalHighlights: ['Patient care', 'Completion certificate'],
           image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
         };
 
@@ -284,7 +284,7 @@ export default function HospitalDetailPage() {
                         {subName}
                       </h3>
                       <p className="text-[11px] text-slate-500 font-medium mt-0.5 line-clamp-2">
-                        Clinical exposure & DMHCA certified logbook evaluation.
+                        Clinical exposure & supervisor-evaluated logbook.
                       </p>
                     </div>
                   </div>

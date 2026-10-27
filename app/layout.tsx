@@ -7,8 +7,8 @@ import { Footer } from '../src/components/layout/Footer';
 // import { WhatsAppWidget } from '../src/components/support/WhatsAppWidget'; // TODO: Hidden for now
 
 export const metadata: Metadata = {
-  title: 'TrainMedix | DMHCA Accredited Hospital Clinical Training Platform',
-  description: 'Book DMHCA-accredited clinical rotations across 11 medical specialties in top tertiary hospitals in India.',
+  title: 'TrainMedix | Hospital Clinical Training Platform',
+  description: 'Book clinical rotations across 11 medical specialties in leading tertiary hospitals in India.',
   icons: {
     icon: '/logo.png',
     shortcut: '/logo.png',

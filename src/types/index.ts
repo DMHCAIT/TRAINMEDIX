@@ -143,7 +143,7 @@ export interface Certificate {
   completionDate: string;
   qrCodeUrl: string;
   verificationCode: string;
-  dmhcaRegNumber: string;
+  registrationNumber: string;
 }
 
 export interface NotificationItem {

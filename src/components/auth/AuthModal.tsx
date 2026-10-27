@@ -532,7 +532,7 @@ export const AuthModal: React.FC = () => {
               </div>
               <div>
                 <span className="bg-white/20 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-white/30">
-                  DMHCA Certified Portal
+                  Certified Training Portal
                 </span>
                 <h3 className="text-xl font-extrabold font-heading tracking-tight text-white mt-0.5">
                   {activeTab === 'login' ? 'Welcome Back to TrainMedix' : signupRole === 'hospital' ? 'Register Hospital Partner' : 'Create Trainee Account'}
@@ -915,7 +915,7 @@ export const AuthModal: React.FC = () => {
                             Step 2: Enter your Email ID & Contact
                           </h4>
                           <p className="text-xs text-slate-600 font-medium">
-                            We will send your DMHCA training certificates and rotation confirmations to this email.
+                            We will send your training certificates and rotation confirmations to this email.
                           </p>
                         </div>
 

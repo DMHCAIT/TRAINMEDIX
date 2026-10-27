@@ -47,13 +47,13 @@ export const CertificatePortal: React.FC = () => {
       >
         <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-2xs">
           <Award className="w-4 h-4 text-[#3597A4] animate-pulse" />
-          <span>DMHCA Verified Credentialing</span>
+          <span>Verified Credentialing</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-heading">
           Official Clinical Training <span className="gradient-text-blue">Certification</span>
         </h1>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Every TrainMedix clinical rotation culminates in an official DMHCA digital & physical certificate equipped with tamper-proof QR code verification.
+          Every TrainMedix clinical rotation culminates in an official digital and physical certificate equipped with tamper-proof QR code verification.
         </p>
       </motion.div>
 
@@ -67,14 +67,14 @@ export const CertificatePortal: React.FC = () => {
       >
         <form onSubmit={handleVerifySearch} className="space-y-3.5">
           <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider font-heading">
-            Verify Certificate Code / DMHCA Registration Number
+            Verify Certificate Code / Registration Number
           </label>
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Enter Code (e.g. DMHCA-TMX-2026-0041 or DMHCA-8891-VERIFIED)"
+                placeholder="Enter Code (e.g. TMX-2026-0041 or TMX-8891-VERIFIED)"
                 value={searchCode}
                 onChange={(e) => setSearchCode(e.target.value)}
                 className="w-full bg-white/90 border border-slate-300/80 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-slate-900 focus:border-[#3597A4] focus:ring-2 focus:ring-[#3597A4]/20 focus:outline-none touch-target transition shadow-2xs font-medium"
@@ -97,7 +97,7 @@ export const CertificatePortal: React.FC = () => {
               animate={{ opacity: 1 }}
               className="text-xs text-rose-600 font-bold flex items-center gap-1"
             >
-              ⚠️ Certificate code not found. Try searching with "DMHCA-8891-VERIFIED" or "TMX-2026".
+              ⚠️ Certificate code not found. Try searching with "TMX-8891-VERIFIED" or "TMX-2026".
             </motion.p>
           )}
         </form>
@@ -123,9 +123,9 @@ export const CertificatePortal: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-xs font-extrabold text-emerald-700 flex items-center gap-1.5 font-heading">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Authenticated & Verified by DMHCA
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Authenticated & Verified
                   </span>
-                  <p className="text-[11px] text-slate-500 font-medium">Reg No: {activeCert.dmhcaRegNumber}</p>
+                  <p className="text-[11px] text-slate-500 font-medium">Reg No: {activeCert.registrationNumber}</p>
                 </div>
               </div>
 
@@ -146,7 +146,7 @@ export const CertificatePortal: React.FC = () => {
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] font-bold text-[10px] px-3.5 py-1 rounded-full uppercase tracking-widest shadow-2xs">
                   <Sparkles className="w-3 h-3 text-amber-500" />
-                  DMHCA Hospital Training Certification
+                  Hospital Training Certification
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight">
                   Certificate of Clinical Excellence
@@ -162,7 +162,7 @@ export const CertificatePortal: React.FC = () => {
               </div>
 
               <p className="text-xs sm:text-sm text-slate-700 max-w-2xl mx-auto leading-relaxed font-medium">
-                has successfully completed <strong>{activeCert.duration}</strong> of direct clinical training in the Department of <strong className="text-slate-900 font-heading">{activeCert.departmentName}</strong> at <strong className="text-slate-900 font-heading">{activeCert.hospitalName}</strong> under the supervision of DMHCA accredited clinical faculty.
+                has successfully completed <strong>{activeCert.duration}</strong> of direct clinical training in the Department of <strong className="text-slate-900 font-heading">{activeCert.departmentName}</strong> at <strong className="text-slate-900 font-heading">{activeCert.hospitalName}</strong> under the supervision of the hospital's clinical faculty.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 max-w-3xl mx-auto items-center text-xs">
@@ -182,7 +182,7 @@ export const CertificatePortal: React.FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <p className="font-bold text-slate-900 font-heading">DMHCA Director Seal</p>
+                  <p className="font-bold text-slate-900 font-heading">Program Director</p>
                   <p className="text-emerald-700 font-bold text-xs font-heading">Dr. S. K. Mehta, MD</p>
                 </div>
               </div>

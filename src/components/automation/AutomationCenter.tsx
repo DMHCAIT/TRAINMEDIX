@@ -58,7 +58,7 @@ const defaultRules: AutomationRule[] = [
   {
     id: 'auto-4',
     name: 'Certificate Ready',
-    description: 'Notify trainee when DMHCA certificate is issued and available for download',
+    description: 'Notify trainee when their completion certificate is issued and available for download',
     trigger: 'On certificate issued',
     channel: 'whatsapp',
     enabled: true,

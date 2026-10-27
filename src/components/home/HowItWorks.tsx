@@ -53,7 +53,7 @@ export const HowItWorks: React.FC = () => {
     {
       step: '05',
       title: 'Confirm & Start Training',
-      subtitle: 'DMHCA Onboarding',
+      subtitle: 'Trainee Onboarding',
       description: 'Fill medical credentials, upload documents, complete payment, and receive instant onboarding confirmation.',
       icon: CheckCircle2,
       badge: 'Step 5'

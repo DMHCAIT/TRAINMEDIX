@@ -611,15 +611,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       (c) =>
         c.certificateId.toUpperCase() === term ||
         c.verificationCode.toUpperCase() === term ||
-        c.dmhcaRegNumber.toUpperCase() === term ||
+        c.registrationNumber.toUpperCase() === term ||
         term.includes(c.verificationCode.toUpperCase())
     );
     if (found) return found;
 
     // Generate dynamic mock certificate if requested for demo
-    if (term.startsWith('TMX') || term.startsWith('DMHCA')) {
+    if (term.startsWith('TMX')) {
       const dynamicCert: Certificate = {
-        certificateId: `DMHCA-TMX-${term.replace(/[^A-Z0-9]/g, '')}`,
+        certificateId: term,
         traineeName: 'Dr. Clinical Practitioner',
         qualification: 'MBBS, MD',
         departmentName: 'Emergency Medicine',
@@ -630,7 +630,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         completionDate: '2026-06-30',
         qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${term}`,
         verificationCode: term,
-        dmhcaRegNumber: `DMHCA/CERT/2026/${term}`
+        registrationNumber: `TMX/CERT/2026/${term}`
       };
       setCertificates((prev) => [...prev, dynamicCert]);
       return dynamicCert;

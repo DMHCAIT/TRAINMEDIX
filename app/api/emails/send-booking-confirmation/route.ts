@@ -144,8 +144,8 @@ export async function POST(req: NextRequest) {
                 <li><strong>Hospital Verification (24-48 hours):</strong> The ${hospitalName} admin team will verify your medical credentials and documents. You'll receive an email once approved.</li>
                 <li><strong>Pre-Rotation Orientation:</strong> Attend the mandatory online orientation covering hospital protocols, logbook procedures, and safety guidelines.</li>
                 <li><strong>Onboarding at Hospital:</strong> Report to the hospital on your rotation start date with all original documents and ID proof.</li>
-                <li><strong>Logbook Tracking:</strong> Track all procedures observed/assisted in your DMHCA-certified digital logbook throughout the rotation.</li>
-                <li><strong>Certificate Issuance:</strong> Receive your official DMHCA certification upon successful completion and logbook approval.</li>
+                <li><strong>Logbook Tracking:</strong> Track all procedures observed/assisted in your digital logbook throughout the rotation.</li>
+                <li><strong>Certificate Issuance:</strong> Receive your completion certificate upon successful completion and logbook approval.</li>
               </ol>
 
               <h3 style="color: #3597A4;">Important Information</h3>
@@ -170,7 +170,7 @@ export async function POST(req: NextRequest) {
               <p>Best regards,<br>
               <strong>TrainMedix Team</strong><br>
               Hospital Clinical Training Platform<br>
-              DMHCA Accredited Programs</p>
+              Clinical Training Programs</p>
             </div>
 
             <div class="footer">

@@ -65,7 +65,7 @@ export function getSubCategoryDetailByDeptAndSlug(deptParam?: string, slugParam?
           name: foundSub,
           slug: toSlug(foundSub),
           parentDepartment: dept,
-          description: `Specialized ${foundSub} clinical rotation program under the ${dept.name} department, featuring direct patient care, mentor supervision, and DMHCA certification.`,
+          description: `Specialized ${foundSub} clinical rotation program under the ${dept.name} department, featuring direct patient care, mentor supervision, and a completion certificate.`,
           competencies: dept.clinicalHighlights
         };
       }
@@ -89,7 +89,7 @@ export function getSubCategoryDetailBySlug(slug: string): SubCategoryDetail | nu
       name: fallback.name,
       slug: fallback.slug,
       parentDepartment: fallback.parentDept,
-      description: `Specialized ${fallback.name} clinical rotation program under the ${fallback.parentDept.name} department, featuring direct patient care, mentor supervision, and DMHCA certification.`,
+      description: `Specialized ${fallback.name} clinical rotation program under the ${fallback.parentDept.name} department, featuring direct patient care, mentor supervision, and a completion certificate.`,
       competencies: fallback.parentDept.clinicalHighlights
     };
   }
@@ -98,7 +98,7 @@ export function getSubCategoryDetailBySlug(slug: string): SubCategoryDetail | nu
     name: found.name,
     slug: found.slug,
     parentDepartment: found.parentDept,
-    description: `Specialized ${found.name} clinical rotation program under the ${found.parentDept.name} department, featuring direct patient care, mentor supervision, and DMHCA certification.`,
+    description: `Specialized ${found.name} clinical rotation program under the ${found.parentDept.name} department, featuring direct patient care, mentor supervision, and a completion certificate.`,
     competencies: found.parentDept.clinicalHighlights
   };
 }

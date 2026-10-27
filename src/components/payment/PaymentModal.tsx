@@ -81,7 +81,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         key: orderData.keyId,
         amount: orderData.order.amount,
         currency: orderData.order.currency,
-        name: 'DMHCA / TrainMedix',
+        name: 'TrainMedix',
         description: `${bookingData.departmentName || 'Clinical Rotation'} - ${bookingData.hospitalName || ''}`,
         order_id: orderData.order.id,
         prefill: {
@@ -141,7 +141,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         <div className="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-600" />
-            <h3 className="text-base font-bold text-slate-900 font-heading">DMHCA Secure Payment Desk</h3>
+            <h3 className="text-base font-bold text-slate-900 font-heading">Secure Payment</h3>
           </div>
           <button onClick={onClose} className="p-1 text-slate-400 hover:text-slate-700 rounded-lg touch-target flex items-center justify-center">
             <X className="w-5 h-5" />
@@ -221,4 +221,3 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     </div>
   );
 };
-

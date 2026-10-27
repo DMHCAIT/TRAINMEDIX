@@ -116,7 +116,7 @@ export const SubCategoryModal: React.FC<SubCategoryModalProps> = ({ department, 
                         {subName}
                       </h4>
                       <span className="text-[10px] font-semibold text-slate-500 block">
-                        Clinical Program • DMHCA Certified
+                        Clinical Training Program
                       </span>
                     </div>
                   </div>

@@ -654,7 +654,7 @@ export const HospitalDashboard: React.FC = () => {
           <div className="space-y-2">
             <h2 className="text-2xl font-bold text-slate-900">Approval Pending</h2>
             <p className="text-slate-600 max-w-md">
-              Your hospital partner account is awaiting approval from the DMHCA organization. Once approved, you'll be able to add departments and manage rotation slots.
+              Your hospital partner account is awaiting approval. Once approved, you'll be able to add departments and manage rotation slots.
             </p>
           </div>
 

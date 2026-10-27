@@ -108,7 +108,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccess }) => 
               Admin Panel
             </h1>
             <p className="text-xs text-slate-600 font-bold mt-1 tracking-wide">
-              DMHCA Content & Platform Management System
+              TrainMedix Content & Platform Management System
             </p>
           </div>
         </div>
@@ -194,7 +194,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccess }) => 
         {/* Footer Security Badge */}
         <div className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-slate-500">
           <ShieldCheck className="w-4 h-4 text-[#3597A4]" />
-          <span>DMHCA Encrypted Administrative Session</span>
+          <span>Encrypted Administrative Session</span>
         </div>
 
       </motion.div>

@@ -16,15 +16,15 @@ interface ChatMessage {
 const quickReplies = [
   'How do I book a rotation?',
   'What departments are available?',
-  'How does DMHCA certification work?',
+  'How does certification work?',
   'Can I pay via EMI?',
   'I need to reschedule my rotation',
 ];
 
 const botResponses: Record<string, string> = {
-  'how do i book a rotation?': 'You can book a clinical rotation in 3 simple steps:\n1. Browse departments & choose your specialty\n2. Select a DMHCA-accredited partner hospital\n3. Complete payment via UPI, card, or EMI\n\nHead to the "Book Rotation" tab to get started!',
+  'how do i book a rotation?': 'You can book a clinical rotation in 3 simple steps:\n1. Browse departments & choose your specialty\n2. Select a verified partner hospital\n3. Complete payment via UPI, card, or EMI\n\nHead to the "Book Rotation" tab to get started!',
   'what departments are available?': 'TrainMedix offers rotations across 11 super-specialty departments including Cardiology, Neurology, Orthopedics, Dermatology, Gastroenterology, Pulmonology, Nephrology, Oncology, Pediatrics, Radiology, and Emergency Medicine.',
-  'how does dmhca certification work?': 'Upon completing your clinical rotation, TrainMedix issues an official DMHCA-verified digital certificate with a tamper-proof QR code. The certificate is verifiable by any institution worldwide.',
+  'how does certification work?': 'Upon completing your clinical rotation, TrainMedix issues a digital certificate with a tamper-proof QR code. The certificate is verifiable by any institution worldwide.',
   'can i pay via emi?': 'Yes! TrainMedix supports multiple payment options including UPI, Credit/Debit Cards, Net Banking, and No-Cost EMI plans starting from ₹8,333/month for eligible programs.',
   'i need to reschedule my rotation': 'You can request a reschedule from your Trainee Dashboard under "My Bookings". Rescheduling is free if done 7+ days before the start date. For urgent changes, please contact our support team.',
 };

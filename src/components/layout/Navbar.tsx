@@ -179,9 +179,6 @@ export const Navbar: React.FC = () => {
                 <span className="font-black text-3xl tracking-tight text-[#1F1C18] font-heading">
                   Train<span className="text-[#3597A4]">Medix</span>
                 </span>
-                <span className="bg-[#E6F4F6] text-[#3597A4] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase">
-                  DMHCA
-                </span>
               </div>
               <p className="text-[10px] text-slate-500 font-semibold">Hospital Clinical Platform</p>
             </div>
@@ -248,7 +245,7 @@ export const Navbar: React.FC = () => {
                               {userProfile?.fullName || (role === 'trainee' ? 'Dr. Ananya Roy' : role === 'hospital' ? 'Max Super Speciality' : 'System Administrator')}
                             </h4>
                             <p className="text-[10px] text-[#3597A4] font-bold">
-                              {userProfile?.email || (role === 'trainee' ? 'MBBS • MCI-2022-77142' : role === 'hospital' ? 'Certified Partner Training Hospital' : 'DMHCA Platform Coordinator')}
+                              {userProfile?.email || (role === 'trainee' ? 'MBBS • MCI-2022-77142' : role === 'hospital' ? 'Certified Partner Training Hospital' : 'Platform Coordinator')}
                             </p>
                           </div>
                         </div>

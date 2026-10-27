@@ -93,7 +93,7 @@ export const UserDashboard: React.FC = () => {
               className="w-full md:w-auto bg-[#3597A4] hover:bg-[#1F6F76] text-white font-bold text-xs px-6 py-3.5 rounded-2xl transition shadow-md shadow-[#3597A4]/25 flex items-center justify-center gap-2 touch-target cursor-pointer"
             >
               <Award className="w-4 h-4" />
-              <span>Claim / View DMHCA Certificate</span>
+              <span>Claim / View Training Certificate</span>
             </motion.button>
           </div>
         </div>
@@ -264,7 +264,7 @@ export const UserDashboard: React.FC = () => {
                 <div className="space-y-2.5 pt-2 text-xs text-slate-600">
                   <div className="flex justify-between"><span>Cases Logged:</span> <span className="font-bold text-slate-900">{logbook.length} Procedures</span></div>
                   <div className="flex justify-between"><span>Shift Attendance:</span> <span className="font-extrabold text-emerald-700">{bookings.length > 0 ? '100% Present' : '0%'}</span></div>
-                  <div className="flex justify-between"><span>DMHCA QR Verification:</span> <span className="font-bold text-[#3597A4]">{isLoggedIn ? 'Verified' : 'Pending'}</span></div>
+                  <div className="flex justify-between"><span>Certificate QR Verification:</span> <span className="font-bold text-[#3597A4]">{isLoggedIn ? 'Verified' : 'Pending'}</span></div>
                 </div>
               </div>
             </div>
@@ -351,7 +351,7 @@ export const UserDashboard: React.FC = () => {
         >
           <div className="glass-card rounded-3xl p-7 space-y-4 border border-slate-200/80 shadow-xs">
             <h3 className="text-lg font-bold text-slate-900 font-heading">Hospital Credentialing Documents</h3>
-            <p className="text-xs text-slate-600">All submitted documents are verified by DMHCA & hospital administration.</p>
+            <p className="text-xs text-slate-600">All submitted documents are verified by the hospital administration.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
               {[

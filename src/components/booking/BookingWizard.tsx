@@ -49,11 +49,11 @@ const ROTATION_DURATION_OPTIONS: Array<{
   },
   {
     dur: '6 Months',
-    desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and DMHCA certification.'
+    desc: 'In-depth clinical mastery, emergency response leadership, sub-specialty exposure, and a completion certificate.'
   },
   {
     dur: '12 Months',
-    desc: 'Full-year immersion with advanced procedural independence, research exposure, and complete DMHCA certification.'
+    desc: 'Full-year immersion with advanced procedural independence, research exposure, and a completion certificate.'
   }
 ];
 
@@ -1088,7 +1088,7 @@ export const BookingWizard: React.FC = () => {
 
                     <div className="p-4 bg-white/90 rounded-2xl border border-slate-200/80 text-[11px] text-slate-600 flex items-center gap-2.5">
                       <Lock className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>All document uploads are securely verified by DMHCA & hospital administration prior to rotation onboarding.</span>
+                      <span>All document uploads are securely verified by the hospital administration prior to rotation onboarding.</span>
                     </div>
                   </div>
 

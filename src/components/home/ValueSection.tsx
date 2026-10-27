@@ -54,8 +54,8 @@ export const ValueSection: React.FC = () => {
     {
       icon: Award,
       title: 'Verified Certification',
-      subtitle: 'DMHCA Verified',
-      description: 'Receive an official DMHCA clinical completion certificate with instant verification credentialing and career advancement.',
+      subtitle: 'Verified Completion',
+      description: 'Receive a clinical completion certificate with instant verification and career advancement.',
       iconBg: 'bg-[#FCF7E8] text-[#D6A125] border-[#F4E6BD]',
       badge: 'Instant Verification'
     }

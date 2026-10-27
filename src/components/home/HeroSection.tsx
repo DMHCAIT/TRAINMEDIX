@@ -52,7 +52,7 @@ export const HeroSection: React.FC = () => {
           {/* Left Content Area (7 Cols) */}
           <div className="lg:col-span-7 space-y-7 z-10 pt-4">
 
-            {/* DMHCA Platform Badge Pill */}
+            {/* Platform Badge Pill */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
               className="inline-flex items-center gap-2.5 bg-[#E6F4F6] border border-[#E6F4F6] text-[#3597A4] text-xs font-extrabold px-4 py-2 rounded-full shadow-2xs"
             >
               <span className="w-2 h-2 rounded-full bg-[#3597A4] animate-pulse" />
-              <span className="tracking-wide uppercase text-[11px]">Certified Clinical Training Platform by DMHCA</span>
+              <span className="tracking-wide uppercase text-[11px]">Certified Clinical Training Platform</span>
             </motion.div>
 
             {/* Headline */}
@@ -77,7 +77,7 @@ export const HeroSection: React.FC = () => {
               </h1>
 
               <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl pt-3 leading-relaxed font-medium">
-                Book clinical exposure with certified medical specialists in top DMHCA-accredited tertiary hospitals across India.
+                Book clinical exposure with certified medical specialists in leading tertiary hospitals across India.
               </p>
             </motion.div>
 
@@ -126,7 +126,7 @@ export const HeroSection: React.FC = () => {
               {/* Chat Pill 2 */}
               <div className="flex items-center gap-3 pl-6">
                 <div className="bg-[#E6F4F6] text-[#3597A4] text-xs font-semibold px-4 py-2.5 rounded-2xl rounded-tl-xs border border-[#E6F4F6] shadow-2xs flex items-center gap-2">
-                  <span>Select hospital & duration for instant DMHCA slot 🏥</span>
+                  <span>Select hospital & duration for an instant booking 🏥</span>
                   <span className="text-[10px] text-[#3597A4] font-mono ml-1">11:34 AM</span>
                   <CheckCheck className="w-3.5 h-3.5 text-[#3597A4]" />
                 </div>

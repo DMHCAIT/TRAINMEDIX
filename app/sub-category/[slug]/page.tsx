@@ -123,7 +123,7 @@ export default function SubCategoryDetailPage() {
             </h1>
 
             <p className="text-sm sm:text-base text-[#E6F4F6] font-medium leading-relaxed max-w-3xl">
-              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and official DMHCA certification.
+              Specialized clinical rotation in <strong>{subCategory.name}</strong> under the <strong>{parentDept.name}</strong> department. Includes patient exposure, procedural skills, case logbook signatures, and an official completion certificate.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold text-white/90">
